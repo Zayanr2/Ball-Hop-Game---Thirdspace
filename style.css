@@ -138,30 +138,30 @@ body {
 
 .platform1 {
     width: 120px;
-    left: 5%;
-    top: 20%;
+    left: 8%;
+    top: 12%;
 }
 
 .platform2 {
     width: 90px;
-    right: 7%;
-    top: 20%;
+    left: 20%;
+    top: 24%;
 }
 
 .platform3 {
     width: 105px;
-    left: 5%;
-    bottom: 18%;
+    right: 85%;
+    bottom: 20%;
 }
 
 .platform4 {
-    width:80px;
-    right: 5%;
-    bottom: 18%;
+    width:125px;
+    right: 50%;
+    bottom: 10%;
 }
 
 .platform5 {
-    width: 100px;
-    left: 45%;
-    bottom: 7%;
+    width: 100px;   
+    right: 75%;
+    bottom: 30%;
 }
