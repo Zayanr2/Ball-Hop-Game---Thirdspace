@@ -165,3 +165,76 @@ body {
     right: 75%;
     bottom: 30%;
 }
+
+.cloud {
+    position:absolute;
+    width: 100px;
+    height: 30px;
+    background: rgb(178, 176, 228);
+    border-radius: 20px; 
+}
+
+.cloud::before{
+    content:"";
+    position:absolute;
+    width: 40px;
+    height: 40px;
+    background: rgb(178, 176, 228);
+    border-radius: 50%;
+    left: 15px;
+    top: -20px:
+}
+
+.cloud::after{
+    content:"";
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    background: rgb(178, 176, 228);
+    border-radius: 50%;
+    left: 15px;
+    top: -25px:
+}
+
+.cloud1{
+    right: 50%;
+    top: 10%;
+    transform:scale(1) rotate(180deg);
+}
+
+.cloud2{
+    right: 40%;
+    top: 15%;
+    transform:scale(0.4) rotate(180deg);
+}
+
+.cloud3{
+    right: 80%;
+    top: 50%;
+    transform:scale(1.5) rotate(180deg);
+
+}
+
+.cloud4{
+    right: 5%;
+    top: 80%;
+    transform:scale(1.2) rotate(180deg);
+}
+
+.cloud5{
+    right: 15%;
+    top: 30%;
+    transform:scale(1.2) rotate(180deg);
+}
+
+.cloud6{
+    right: 25%;
+    top: 60%;
+    transform:scale(0.4) rotate(180deg);
+}
+
+.cloud7{
+    right: 65%;
+    top: 80%;
+    transform:scale(0.4) rotate(180deg);
+}
