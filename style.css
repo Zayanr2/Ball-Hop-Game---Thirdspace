@@ -406,4 +406,41 @@ body {
     top: 90%;
 }
 
-.visualarrow {}
+.visualarrow {
+    position: absolute;
+    width:7px;
+    height: 30px;
+    background: #f4f4f7;
+    border-radius: 10px;
+}
+
+.visualarrow::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px ;
+    border-top: 7px solid #f4f4f7;
+    border-right: 7px solid #f4f4f7;
+    transform: rotate(-45deg);
+    top:-5px;
+    left: -7px;
+}
+
+.arrowUP{
+    left: 40%;
+    top: 40%;
+    transform: translateX(-50%);
+    
+}
+
+.arrowRight {
+    left: 55%;
+    top: 80%;
+    transform: rotate(45deg)
+}
+
+.arrowLeft {
+    left: 44%;
+    top: 80%;
+    transform: rotate(-45deg)
+}
