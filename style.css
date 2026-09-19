@@ -268,3 +268,30 @@ body {
     font-weight: 800;
     color: #f4f4f7;
 }
+
+.controls {
+    display:flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+
+}
+
+.key {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(165deg, #ffffff, rgb(172, 174, 219));
+    color: rgb( 129, 126, 204);
+    border-radius: 12px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size:28px;
+    font-weight:bold;
+    font-family:Arial, Helvetica, sans-serif;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.5);
+}
+
+.lables {
+    display: flex;
+}
