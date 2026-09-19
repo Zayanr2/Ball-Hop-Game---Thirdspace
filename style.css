@@ -6,63 +6,50 @@ h1  {
     font-style: italic;
     font-weight: 800;
     letter-spacing: -6px;
-    color: #f4f4f7;
-
-
-}   
+    color: #f4f4f7;}   
 
 h1 span {
-    display: inline-block;
-}
+    display: inline-block;}
 
 h1 span:nth-child(1) {
     transform: translateY(12px);
     font-size: 100px;
-    margin-right: -2px;
-}
+    margin-right: -2px;}
 
 h1 span:nth-child(2) {
     transform: translateY(7px);
     font-size: 92px;
-    margin-right: -3px;
-}
+    margin-right: -3px;}
 
 h1 span:nth-child(3) {
     transform: translateY(3px);
     font-size: 85px;
-    margin-right: -4px;
-}
+    margin-right: -4px;}
 
 h1 span:nth-child(4) {
     transform: translateY(0px);
     font-size: 80px;
-    margin-right: -3px;
-}
+    margin-right: -3px;}
 
 h1 span:nth-child(5) {
     transform: translateY(-2px);
     font-size: 75px;
-    margin-right: -2px;
-}
+    margin-right: -2px;}
 
 h1 span:nth-child(6) {
     transform: translateY(-2px);
     font-size: 75px;
-    margin-right: -1px;
-}
+    margin-right: -1px;}
 
 h1 span:nth-child(7) {
     transform: translateY(-2px);
-    font-size: 75px;
-}
+    font-size: 75px;}
 
 .word-space {
-    margin-left:18px;
-}
+    margin-left:18px;}
 
 body {
-    background-color: rgb( 129, 126, 204);
-}
+    background-color: rgb( 129, 126, 204);}
 
 .underline {
     width:300px;
@@ -70,7 +57,6 @@ body {
     margin: -93px auto 0;
     position: relative;
     transform: rotate(-3.5deg);
-
 }
 
 .underline::after{
@@ -81,7 +67,6 @@ body {
     height: 15px;
     background: linear-gradient( to right, transparent 0%, #f4f4f7 35%);
     border-radius: 50%;
-
 }
 
 .startButton {
@@ -100,8 +85,7 @@ body {
     box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
     cursor: pointer;
     transition:0.2s;
-    margin-top: 75px;
-}
+    margin-top: 75px;}
 
 .instructionButton {
     display:block;
@@ -118,13 +102,11 @@ body {
     font-style: italic;
     box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
     cursor: pointer;
-    transition:0.2s;
-}
+    transition:0.2s;}
 
 .startButton:hover , .instructionButton:hover {
     transform: translateY(-3px);
-     background: linear-gradient(165deg, #d1d1d1, rgb(136, 137, 182));
-}
+     background: linear-gradient(165deg, #d1d1d1, rgb(136, 137, 182));}
 
 .platform {
     position: absolute;
@@ -133,58 +115,49 @@ body {
     background: #4583e0;
     border: 2px solid #f8f8fa;
     border-radius: 20px;
-    box-shadow: -5px 5px 0px rgba(0,0,0,0.12);
-}
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.12);}
 
 .platform1 {
     width: 120px;
     left: 8%;
-    top: 12%;
-}
+    top: 12%;}
 
 .platform2 {
     width: 90px;
     left: 20%;
-    top: 24%;
-}
+    top: 24%;}
 
 .platform3 {
     width: 105px;
     right: 85%;
-    bottom: 20%;
-}
+    bottom: 20%;}
 
 .platform4 {
     width:125px;
     right: 50%;
-    bottom: 10%;
-}
+    bottom: 10%;}
 
 .platform5 {
     width: 100px;   
     right: 75%;
-    bottom: 30%;
-}
+    bottom: 30%;}
 
 .platform6 {
     width: 115px;   
     right: 10%;
-    bottom: 45%;
-}
+    bottom: 45%;}
 
 .platform7 {
     width: 75px;   
     right: 15%;
-    bottom: 30%;
-}
+    bottom: 30%;}
 
 .cloud {
     position:absolute;  
     width: 100px;
     height: 30px;
     background: rgb(178, 176, 228);
-    border-radius: 20px; 
-}
+    border-radius: 20px; }
 
 .cloud::before{
     content:"";
@@ -194,8 +167,7 @@ body {
     background: rgb(178, 176, 228);
     border-radius: 50%;
     left: 15px;
-    top: -20px;
-}
+    top: -20px;}
 
 .cloud::after{
     content:"";
@@ -205,51 +177,43 @@ body {
     background: rgb(178, 176, 228);
     border-radius: 50%;
     right: 15px;
-    top: -25px;
-}
+    top: -25px;}
 
 .cloud1{
     right: 50%;
     top: 10%;
-    transform:scale(1) 
-}
+    transform:scale(1) }
 
 .cloud2{
     right: 40%;
     top: 15%;
-    transform:scale(0.4) 
-}
+    transform:scale(0.4) }
 
 .cloud3{
     right: 80%;
     top: 50%;
     transform:scale(1.5) 
-
 }
 
 .cloud4{
     right: 5%;
     top: 80%;
-    transform:scale(1.2) 
-}
+    transform:scale(1.2) }
 
 .cloud5{
     right: 15%;
     top: 30%;
-    transform:scale(1.2) 
-}
+    transform:scale(1.2) }
 
 .cloud6{
     right: 25%;
     top: 60%;
-    transform:scale(0.4) 
-}
+    transform:scale(0.4) }
 
 .cloud7{
     right: 65%;
     top: 80%;
-    transform:scale(0.4) 
-}
+    transform:scale(0.4) }
 
 #startScreen {
     display:none;
@@ -267,15 +231,13 @@ body {
     font-style: italic;
     font-weight: 800;
     color: #f4f4f7;
-    transform: rotate(-3deg);
-}
+    transform: rotate(-3deg);}
 
 .controls {
     display:flex;
     justify-content: center;
     gap: 70px;
     margin-top: 30px;
-
 }
 
 .key {
@@ -290,8 +252,7 @@ body {
     font-size:28px;
     font-weight:bold;
     font-family:Arial, Helvetica, sans-serif;
-    box-shadow: -5px 5px 0px rgba(0,0,0,0.5);
-}
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.5);}
 
 .lables {
     display: flex;
@@ -300,9 +261,8 @@ body {
     margin-top: -5px;
     color: #f4f4f7;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-}
+    font-size: 18px;
+    font-weight: bold;}
 
 .instructionUnderline {
     width:300px;
@@ -311,7 +271,6 @@ body {
     margin-bottom: 60px;
     position: relative;
     transform: rotate(-3.5deg);
-
 }
 
 .instructionUnderline::after{
@@ -322,5 +281,93 @@ body {
     height: 12px;
     background: linear-gradient( to right, transparent 0%, #f4f4f7 35%);
     border-radius: 50%;
+}
+
+.instructionText{
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 30px;
+    color: #f4f4f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:15px;
+    font-weight: bold;
+    text-align: center;}
+
+.cloudI {
+    position:absolute;  
+    width: 100px;
+    height: 30px;
+    background: rgb(178, 176, 228);
+    border-radius: 20px; }
+
+.cloudI::before{
+    content:"";
+    position:absolute;
+    width: 40px;
+    height: 40px;
+    background: rgb(178, 176, 228);
+    border-radius: 50%;
+    left: 15px;
+    top: -20px;}
+
+.cloudI::after{
+    content:"";
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    background: rgb(178, 176, 228);
+    border-radius: 50%;
+    right: 15px;
+    top: -25px;}
+
+.cloudI1{
+    right: 13%;
+    top: 10%;
+    transform:scale(1) }
+
+.cloudI2{
+    right: 3%;
+    top: 15%;
+    transform:scale(0.4) }
+
+.cloudI3{
+    right: 80%;
+    top: 40%;
+    transform:scale(1.5) }
+
+.cloudI4{
+    right: 5%;
+    top: 70%;
+    transform:scale(1.2) }
+
+.cloudI5{
+    right: 90%;
+    top: 23%;
+    transform:scale(0.9) }   
+
+.cloudI6{
+    right: 18%;
+    top: 50%;
+    transform:scale(0.5) }   
+
+.BackButtonInstructionScreen {
+    position:absolute;
+    top: 25px;
+    left: 25px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(165deg, #ffffff, rgb(172, 174, 219));
+    color: rgb( 129, 126, 204);
+    font-size: 18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.3);
+
 
 }
+
+.BackButtonInstructionScreen:hover {
+    transform: translateY(-3px);
+     background: linear-gradient(165deg, #d1d1d1, rgb(136, 137, 182));}
