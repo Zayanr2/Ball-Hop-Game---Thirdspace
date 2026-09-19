@@ -1,11 +1,52 @@
-h1 {
+h1  {
     font-size: 80px;
     color: #ffffff;
     text-align: center;
     margin-top: 120px;
-    font-family: "Lucida Calligraphy", 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
-    font-weight: bold;
+    font-weight: 800;
+}   
+
+h1 span {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+h1 span:nth-child(1) {
+    transform: translateY(10px);
+    font-size: 70px;
+    
+}
+
+h1 span:nth-child(2) {
+    transform: translateY(5px);
+    font-size: 64px;
+}
+
+h1 span:nth-child(3) {
+    transform: translateY(2px);
+    font-size: 58px;
+}
+
+h1 span:nth-child(4) {
+    transform: translateY(0px);
+    font-size: 58px;
+}
+
+h1 span:nth-child(5) {
+    transform: translateY(-2px);
+    font-size: 50px;
+}
+
+h1 span:nth-child(6) {
+    transform: translateY(-5px);
+    font-size: 50px;
+}
+
+h1 span:nth-child(7) {
+    transform: translateY(-10px);
+    font-size: 50px;
 }
 
 body {
@@ -19,7 +60,7 @@ body {
     padding:10px;
     border: none;
     border-radius: 22px;
-    background-color: #ffffff;
+    background: linear-gradient(165deg, #ffffff, rgb(173, 174, 243));
     color: rgb( 129, 126, 204);
     font-size: 24px;
     font-weight: bold;
@@ -37,7 +78,7 @@ body {
     padding: 10px;
     border:none;
     border-radius: 22px;
-    background-color: #ffffff;
+    background: linear-gradient(165deg, #ffffff, rgb(172, 174, 219));
     color:rgb( 129, 126, 204);
     font-size: 24px;
     font-weight: bold;
@@ -50,5 +91,5 @@ body {
 
 .startButton:hover , .instructionButton:hover {
     transform: translateY(-3px);
-    background-color:rgb(201, 199, 223)
+     background: linear-gradient(165deg, #d1d1d1, rgb(136, 137, 182));
 }
