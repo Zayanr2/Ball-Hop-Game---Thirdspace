@@ -64,6 +64,24 @@ body {
     background-color: rgb( 129, 126, 204);
 }
 
+.underline {
+    width:180px;
+    height: 12px;
+    margin: 2px auto 0;
+    position: relative;
+    transform: rotate(-3deg);
+}
+
+.underline::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    height: 100%;
+    background: linear-gradient( to right, transparent 0%, #f4f4f7 35%);
+    border-radius: 50%;
+}
+
 .startButton {
     display:block;
     margin: 20px auto;
