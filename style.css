@@ -166,8 +166,20 @@ body {
     bottom: 30%;
 }
 
+.platform6 {
+    width: 115px;   
+    right: 10%;
+    bottom: 45%;
+}
+
+.platform7 {
+    width: 75px;   
+    right: 15%;
+    bottom: 30%;
+}
+
 .cloud {
-    position:absolute;
+    position:absolute;  
     width: 100px;
     height: 30px;
     background: rgb(178, 176, 228);
