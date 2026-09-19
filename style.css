@@ -259,20 +259,21 @@ body {
     display: block;
 }
 
-.heading {
+.HowTO {
     font: size 70px;
     text-align: center;
-    margin-top: 80px;
+    margin-top: 50px;
     font-family: 'Baloo 2', sans-serif;
     font-style: italic;
     font-weight: 800;
     color: #f4f4f7;
+    transform: rotate(-3deg);
 }
 
 .controls {
     display:flex;
     justify-content: center;
-    gap: 30px;
+    gap: 70px;
     margin-top: 30px;
 
 }
@@ -294,4 +295,32 @@ body {
 
 .lables {
     display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-top: -5px;
+    color: #f4f4f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.instructionUnderline {
+    width:300px;
+    height: 12px;
+    margin: -80px auto 0;
+    margin-bottom: 60px;
+    position: relative;
+    transform: rotate(-3.5deg);
+
+}
+
+.instructionUnderline::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    height: 12px;
+    background: linear-gradient( to right, transparent 0%, #f4f4f7 35%);
+    border-radius: 50%;
+
 }
