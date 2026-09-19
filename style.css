@@ -204,49 +204,49 @@ body {
     height: 50px;
     background: rgb(178, 176, 228);
     border-radius: 50%;
-    left: 15px;
+    right: 15px;
     top: -25px;
 }
 
 .cloud1{
     right: 50%;
     top: 10%;
-    transform:scale(1) rotate(180deg);
+    transform:scale(1) 
 }
 
 .cloud2{
     right: 40%;
     top: 15%;
-    transform:scale(0.4) rotate(180deg);
+    transform:scale(0.4) 
 }
 
 .cloud3{
     right: 80%;
     top: 50%;
-    transform:scale(1.5) rotate(180deg);
+    transform:scale(1.5) 
 
 }
 
 .cloud4{
     right: 5%;
     top: 80%;
-    transform:scale(1.2) rotate(180deg);
+    transform:scale(1.2) 
 }
 
 .cloud5{
     right: 15%;
     top: 30%;
-    transform:scale(1.2) rotate(180deg);
+    transform:scale(1.2) 
 }
 
 .cloud6{
     right: 25%;
     top: 60%;
-    transform:scale(0.4) rotate(180deg);
+    transform:scale(0.4) 
 }
 
 .cloud7{
     right: 65%;
     top: 80%;
-    transform:scale(0.4) rotate(180deg);
+    transform:scale(0.4) 
 }
