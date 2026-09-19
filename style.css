@@ -125,3 +125,43 @@ body {
     transform: translateY(-3px);
      background: linear-gradient(165deg, #d1d1d1, rgb(136, 137, 182));
 }
+
+.platform {
+    position: absolute;
+    display:block;
+    height: 18px;
+    background: #4583e0;
+    border: 2px solid #f8f8fa;
+    border-radius: 20px;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.12);
+}
+
+.platform1 {
+    width: 120px;
+    left: 5%;
+    top: 20%;
+}
+
+.platform2 {
+    width: 90px;
+    right: 7%;
+    top: 20%;
+}
+
+.platform3 {
+    width: 105px;
+    left: 5%;
+    bottom: 18%;
+}
+
+.platform4 {
+    width:80px;
+    right: 5%;
+    bottom: 18%;
+}
+
+.platform5 {
+    width: 100px;
+    left: 45%;
+    bottom: 7%;
+}
