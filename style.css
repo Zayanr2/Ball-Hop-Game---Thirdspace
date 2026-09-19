@@ -371,3 +371,39 @@ body {
 .BackButtonInstructionScreen:hover {
     transform: translateY(-3px);
      background: linear-gradient(165deg, #d1d1d1, rgb(136, 137, 182));}
+
+.visualPlatform {
+    position: absolute;
+    height: 18px;
+    width:120px;
+    background: #4583e0;
+    border: 2px solid #f8f8fa;
+    border-radius: 20px;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.12);
+    margin:0 auto;}
+    
+
+
+.visualBall {
+    position: absolute;
+    width:35px;
+    height: 35px;
+    background: #f4f4f7;
+    border-radius: 20px;
+    margin:30px auto 0px;
+    right: 48.5%;
+    top: 80%;}
+
+
+
+.platform2 {
+
+    right: 50%;
+    top: 75%;
+}
+.platform1 {
+    right: 8%;
+    top: 90%;
+}
+
+.visualarrow {}
