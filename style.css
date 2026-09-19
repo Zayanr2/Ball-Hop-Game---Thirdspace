@@ -250,3 +250,21 @@ body {
     top: 80%;
     transform:scale(0.4) 
 }
+
+#startScreen {
+    display:none;
+}
+
+.instructionScreen{
+    display: block;
+}
+
+.heading {
+    font: size 70px;
+    text-align: center;
+    margin-top: 80px;
+    font-family: 'Baloo 2', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    color: #f4f4f7;
+}
