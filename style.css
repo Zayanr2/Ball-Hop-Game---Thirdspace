@@ -25,6 +25,9 @@ body {
     font-weight: bold;
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Trebuchet MS',  Arial, sans-serif;
     font-style: italic;
+    box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition:0.2s;
 }
 
 .instructionButton {
@@ -40,4 +43,12 @@ body {
     font-weight: bold;
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Trebuchet MS',  Arial, sans-serif;
     font-style: italic;
+    box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition:0.2s;
+}
+
+.startButton:hover , .instructionButton:hover {
+    transform: translateY(-3px);
+    background-color:rgb(201, 199, 223)
 }
