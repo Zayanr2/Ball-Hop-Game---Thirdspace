@@ -3,8 +3,41 @@ h1 {
     color: #ffffff;
     text-align: center;
     margin-top: 120px;
+    font-family: "Lucida Calligraphy", 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
 }
 
 body {
     background-color: rgb( 129, 126, 204);
+}
+
+.startButton {
+    display:block;
+    margin: 20px auto;
+    width: 200px;
+    padding:10px;
+    border: none;
+    border-radius: 22px;
+    background-color: #ffffff;
+    color: rgb( 129, 126, 204);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Trebuchet MS',  Arial, sans-serif;
+    font-style: italic;
+}
+
+.instructionButton {
+    display:block;
+    margin: 20px auto;
+    width:200px;
+    padding: 10px;
+    border:none;
+    border-radius: 22px;
+    background-color: #ffffff;
+    color:rgb( 129, 126, 204);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Trebuchet MS',  Arial, sans-serif;
+    font-style: italic;
 }
