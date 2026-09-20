@@ -39,34 +39,88 @@ let ballX = 50;//bals x cotdinart
 let ballSpeed = 10// the speed the abll will move at
 let jumping = false
 
-function jump() {
-    ballY -=15;// moves ball up
+function jump(direction) {
+    ballY -=3;// moves ball up
     gameBall.style.top = ballY +"%";// links the ballY variable to the actual position of the pall from the left
 
+
     setTimeout(function() {
-        ballY+= 15;
+        ballY -= 3;
+        gameBall.style.top = ballY +"%";
+
+        
+    },50);
+
+    setTimeout(function() {
+        ballY -= 3;
+        gameBall.style.top = ballY +"%";
+
+        
+    },100);
+
+    setTimeout(function() {
+        ballY -= 3;
+        gameBall.style.top = ballY +"%";
+
+        
+    },150);
+
+    setTimeout(function() {
+        ballY -= 3;
+        gameBall.style.top = ballY +"%";
+
+        
+    },200);
+
+    setTimeout(function() {
+        ballY += 3;
+        gameBall.style.top = ballY +"%";
+
+        
+    },250);
+
+    setTimeout(function() {
+        ballY += 3;
+        gameBall.style.top = ballY +"%";
+
+        
+    },300);
+
+    setTimeout(function() {
+        ballY += 3;
+        gameBall.style.top = ballY +"%";
+
+        
+    },350);
+
+    setTimeout(function() {
+        ballY += 3;
+        gameBall.style.top = ballY +"%";
+
+        
+    },400);
+
+
+
+    setTimeout(function() {
+        ballY+= 3;
         gameBall.style.top = ballY +"%";
 
         jumping=false;
-    },400);
+    },450);
 
 }
 
 document.addEventListener("keydown", function(event) {
     if(event.key === "d") {//if d is press 
-        ballX += ballSpeed;//changes the ballx cordinat
-        gameBall.style.left = ballX +"%";// links the ballx variable to the actual position of the pall from the left
         
         jumping = true;
-        jump();
+        jump("right");
     }
 
      if(event.key === "a") {//if d is press 
-        ballX -= ballSpeed;//changes the ballx cordinat
-        gameBall.style.left = ballX +"%";// links the ballx variable to the actual position of the pall from the left
-        
         jumping = true;
-        jump();
+        jump("left");
     }
 
     if(event.key === "w"&& !jumping) {//if d is press and the pall isnt moving
