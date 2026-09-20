@@ -526,6 +526,7 @@ body {
     text-align: center;
     border-radius: 20px;
     cursor:pointer;
+    transition: font-size 0.2s ease, background 0.2s ease;
 }
     
 
