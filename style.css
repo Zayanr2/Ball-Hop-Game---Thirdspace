@@ -480,9 +480,27 @@ body {
     position:absolute;
     width:35px;
     height:35px;
-    background:#F4f4f4;
+    background:radial-gradient(circle at 30% 25%, white,#d3d1d1 45%,#7a7a7c 100%);
     border-radius: 50%;
     top: 81%;
     left:48.5%;
     box-shadow:-3px 5px 0px rgba(0,0,0,0.12);
+}
+
+.score{
+    position: absolute;
+    top:20px;
+    left: 41.5%;
+    width: 180px;
+    height:55px;
+    background :#f8f8fa;
+    border: 3px solid rgb(70, 68, 122);
+    border-radius:50px;
+    color:rgb(70, 68, 122);
+    font-size: 28px;
+    font-weight:800;
+    font-family:'baloo 2', sans-serif;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.15);
 }
