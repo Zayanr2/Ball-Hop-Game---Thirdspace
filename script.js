@@ -107,6 +107,9 @@ playAgainButton.addEventListener("click", function() {
     gameOverlay.style.display="Flex";
     pauseButton.style.display = "none";
 
+    elapsedTime = 0;
+    liveTimer.textContent = "TIME:00:00"; 
+
 });
 
 // main menu button directions
@@ -124,6 +127,9 @@ restartButton.addEventListener("click", function() {
     gameOverlay.style.display = "flex";
     pauseButton.style.display = "none"
     scoreScreen.style.display = "none"
+
+    elapsedTime = 0;
+    liveTimer.textContent = "TIME:00:00";
 });
 
 // scorscreen directions
