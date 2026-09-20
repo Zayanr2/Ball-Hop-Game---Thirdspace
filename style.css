@@ -444,13 +444,22 @@ body {
     transform: rotate(-45deg)}
 
 .game {
+    position: relative;
+    display: none;
     width: 1000px;
     height: 600px;
     background-color: rgb( 129, 126, 204);
-}
+ }   
 
 .gameStartPlatform{
     position: absolute;
     width:700px;
     height:25px;
+    background: #fd0202;
+    border:3px solid #f8f8fa;
+    border-radius:20px;
+    left:150px;
+    top:300px;
+    box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
+
 }

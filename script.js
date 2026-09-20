@@ -2,7 +2,7 @@ const startScreen = document.getElementById("startScreen");
 const instructionScreen =document.querySelector(".instructionScreen");
 const instructionButton = document.querySelector(".instructionButton");
 const backButtonInstructionScreen = document.querySelector(".BackButtonInstructionScreen");
-const gameScreen = document.querySelector("instructionScreen");
+const gameScreen = document.querySelector(".game");
 const startButton = document.querySelector(".startButton");
 
 
@@ -16,5 +16,4 @@ backButtonInstructionScreen.addEventListener("click", function() {
 
 startButton.addEventListener("click", function(){
     startScreen.style.display="none";
-    gameScreen.style.display = "block";
-});
+    gameScreen.style.display = "block";});
