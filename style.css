@@ -1,0 +1,508 @@
+#startScreen 
+{display:block;}
+
+.instructionScreen {
+     display: none;
+}
+
+
+
+
+h1  {
+    font-size: 80px;
+    text-align: center;
+    margin-top: 120px;
+    font-family: 'Baloo 2', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -6px;
+    color: #f4f4f7;}   
+
+h1 span {
+    display: inline-block;}
+
+h1 span:nth-child(1) {
+    transform: translateY(12px);
+    font-size: 100px;
+    margin-right: -2px;}
+
+h1 span:nth-child(2) {
+    transform: translateY(7px);
+    font-size: 92px;
+    margin-right: -3px;}
+
+h1 span:nth-child(3) {
+    transform: translateY(3px);
+    font-size: 85px;
+    margin-right: -4px;}
+
+h1 span:nth-child(4) {
+    transform: translateY(0px);
+    font-size: 80px;
+    margin-right: -3px;}
+
+h1 span:nth-child(5) {
+    transform: translateY(-2px);
+    font-size: 75px;
+    margin-right: -2px;}
+
+h1 span:nth-child(6) {
+    transform: translateY(-2px);
+    font-size: 75px;
+    margin-right: -1px;}
+
+h1 span:nth-child(7) {
+    transform: translateY(-2px);
+    font-size: 75px;}
+
+.word-space {
+    margin-left:18px;}
+
+body {
+    background-color: rgb( 129, 126, 204);}
+
+.underline {
+    width:300px;
+    height: 15px;
+    margin: -93px auto 0;
+    position: relative;
+    transform: rotate(-3.5deg);
+}
+
+.underline::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    height: 15px;
+    background: linear-gradient( to right, transparent 0%, #f4f4f7 35%);
+    border-radius: 50%;
+}
+
+.startButton {
+    display:block;
+    margin: 20px auto;
+    width: 200px;
+    padding:10px;
+    border: none;
+    border-radius: 22px;
+    background: linear-gradient(165deg, #ffffff, rgb(173, 174, 243));
+    color: rgb( 129, 126, 204);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Trebuchet MS',  Arial, sans-serif;
+    font-style: italic;
+    box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition:0.2s;
+    margin-top: 75px;}
+
+.instructionButton {
+    display:block;
+    margin: 20px auto;
+    width:200px;
+    padding: 10px;
+    border:none;
+    border-radius: 22px;
+    background: linear-gradient(165deg, #ffffff, rgb(172, 174, 219));
+    color:rgb( 129, 126, 204);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Trebuchet MS',  Arial, sans-serif;
+    font-style: italic;
+    box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition:0.2s;}
+
+.startButton:hover , .instructionButton:hover {
+    transform: translateY(-3px);
+     background: linear-gradient(165deg, #d1d1d1, rgb(136, 137, 182));}
+
+.platform {
+    position: absolute;
+    display:block;
+    height: 18px;
+    background: #4583e0;
+    border: 2px solid #f8f8fa;
+    border-radius: 20px;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.12);}
+
+.platform1 {
+    width: 120px;
+    left: 8%;
+    top: 70%;}
+
+.platform2 {
+    width: 90px;
+    left: 20%;
+    top: 24%;}
+
+.platform3 {
+    width: 105px;
+    right: 85%;
+    bottom: 35%;}
+
+.platform4 {
+    width:125px;
+    right: 50%;
+    bottom: 10%;}
+
+.platform5 {
+    width: 100px;   
+    right: 75%;
+    bottom: 70%;}
+
+.platform6 {
+    width: 115px;   
+    right: 10%;
+    bottom: 45%;}
+
+.platform7 {
+    width: 75px;   
+    right: 15%;
+    bottom: 30%;}
+
+.cloud {
+    position:absolute;  
+    width: 100px;
+    height: 30px;
+    background: rgb(178, 176, 228);
+    border-radius: 20px; }
+
+.cloud::before{
+    content:"";
+    position:absolute;
+    width: 40px;
+    height: 40px;
+    background: rgb(178, 176, 228);
+    border-radius: 50%;
+    left: 15px;
+    top: -20px;}
+
+.cloud::after{
+    content:"";
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    background: rgb(178, 176, 228);
+    border-radius: 50%;
+    right: 15px;
+    top: -25px;}
+
+.cloud1{
+    right: 50%;
+    top: 10%;
+    transform:scale(1) }
+
+.cloud2{
+    right: 40%;
+    top: 15%;
+    transform:scale(0.4) }
+
+.cloud3{
+    right: 80%;
+    top: 50%;
+    transform:scale(1.5) 
+}
+
+.cloud4{
+    right: 5%;
+    top: 80%;
+    transform:scale(1.2) }
+
+.cloud5{
+    right: 15%;
+    top: 30%;
+    transform:scale(1.2) }
+
+.cloud6{
+    right: 25%;
+    top: 60%;
+    transform:scale(0.4) }
+
+.cloud7{
+    right: 65%;
+    top: 80%;
+    transform:scale(0.4) }
+
+
+.HowTO {
+    font: size 70px;
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Baloo 2', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    color: #f4f4f7;
+    transform: rotate(-3deg);}
+
+.controls {
+    display:flex;
+    justify-content: center;
+    gap: 70px;
+    margin-top: 30px;
+}
+
+.key {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(165deg, #ffffff, rgb(172, 174, 219));
+    color: rgb( 129, 126, 204);
+    border-radius: 12px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size:28px;
+    font-weight:bold;
+    font-family:Arial, Helvetica, sans-serif;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.5);}
+
+.lables {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-top: -5px;
+    color: #f4f4f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;}
+
+.instructionUnderline {
+    width:300px;
+    height: 12px;
+    margin: -80px auto 0;
+    margin-bottom: 60px;
+    position: relative;
+    transform: rotate(-3.5deg);
+}
+
+.instructionUnderline::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    height: 12px;
+    background: linear-gradient( to right, transparent 0%, #f4f4f7 35%);
+    border-radius: 50%;
+}
+
+.instructionText{
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 30px;
+    color: #f4f4f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:15px;
+    font-weight: bold;
+    text-align: center;}
+
+.cloudI {
+    position:absolute;  
+    width: 100px;
+    height: 30px;
+    background: rgb(178, 176, 228);
+    border-radius: 20px; }
+
+.cloudI::before{
+    content:"";
+    position:absolute;
+    width: 40px;
+    height: 40px;
+    background: rgb(178, 176, 228);
+    border-radius: 50%;
+    left: 15px;
+    top: -20px;}
+
+.cloudI::after{
+    content:"";
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    background: rgb(178, 176, 228);
+    border-radius: 50%;
+    right: 15px;
+    top: -25px;}
+
+.cloudI1{
+    right: 13%;
+    top: 10%;
+    transform:scale(1) }
+
+.cloudI2{
+    right: 3%;
+    top: 15%;
+    transform:scale(0.4) }
+
+.cloudI3{
+    right: 80%;
+    top: 40%;
+    transform:scale(1.5) }
+
+.cloudI4{
+    right: 5%;
+    top: 70%;
+    transform:scale(1.2) }
+
+.cloudI5{
+    right: 90%;
+    top: 23%;
+    transform:scale(0.9) }   
+
+.cloudI6{
+    right: 18%;
+    top: 50%;
+    transform:scale(0.5) }   
+
+.cloudI7{
+    right: 95%;
+    top: 70%;
+    transform:scale(0.5) }  
+
+.BackButtonInstructionScreen {
+    position:absolute;
+    top: 25px;
+    left: 25px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(165deg, #ffffff, rgb(172, 174, 219));
+    color: rgb( 129, 126, 204);
+    font-size: 18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.3);
+
+
+}
+
+.BackButtonInstructionScreen:hover {
+    transform: translateY(-3px);
+     background: linear-gradient(165deg, #d1d1d1, rgb(136, 137, 182));}
+
+.visualPlatform {
+    position: absolute;
+    height: 18px;
+    width:120px;
+    background: #4583e0;
+    border: 2px solid #f8f8fa;
+    border-radius: 20px;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.12);
+    margin:0 auto;}
+    
+
+.visualBall {
+    position: absolute;
+    width:35px;
+    height: 35px;
+    background: #f4f4f7;
+    border-radius: 20px;
+    margin:30px auto 0px;
+    right: 48.5%;
+    top: 80%;
+    box-shadow: -2px 5px 0px rgba(0,0,0,0.12);}
+
+.platform2 {
+
+    right: 50%;
+    top: 70%;}
+.platform1 {
+    right: 8%;
+    top: 90%;}
+
+.visualarrow {
+    position: absolute;
+    width:7px;
+    height: 30px;
+    background: #f4f4f7;
+    border-radius: 10px;}
+
+.visualarrow::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px ;
+    border-top: 7px solid #f4f4f7;
+    border-right: 7px solid #f4f4f7;
+    transform: rotate(-45deg);
+    top:-5px;
+    left: -7px;}
+
+.arrowUp{
+    left: 49.35%;
+    top: 77%;}
+
+.arrowRight {
+    left: 55%;
+    top: 80%;
+    transform: rotate(45deg)}
+
+.arrowLeft {
+
+    left: 44%;
+    top: 80%;
+    transform: rotate(-45deg)}
+
+.game {
+    position: relative;
+    display: none;
+    width: 1000px;
+    height: 550px;
+    background-color: rgb( 129, 126, 204);
+ }   
+
+.gameStartPlatform{
+    position: absolute;
+    width:750px;
+    height: 90px;
+    background: #4583e0;
+    border:3px solid #f8f8fa;
+    border-radius:20px;
+    left: 125px;
+    top: 480px;
+    box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
+
+}
+
+.platformNotch {
+    position:absolute;
+    width: 150px;
+    height: 40px;
+    background: #4583e0;
+    border: 3px solid #f8f8fa;
+    border-bottom:none;
+    border-radius: 15px 15px 0 0;
+    left: 50%;
+    top: -43px;
+    transform: translateX(-50%);
+}
+.gameBall{
+    position:absolute;
+    width:35px;
+    height:35px;
+    background:radial-gradient(circle at 30% 25%, white,#d3d1d1 45%,#7a7a7c 100%);
+    border-radius: 50%;
+    top: 81%;
+    left:48.5%;
+    box-shadow:-3px 5px 0px rgba(0,0,0,0.12);
+}
+
+.score{
+    position: absolute;
+    top:20px;
+    left: 41.5%;
+    width: 180px;
+    height:55px;
+    background :#f8f8fa;
+    border: 3px solid rgb(123, 121, 197);
+    border-radius:50px;
+    color:rgb(144, 142, 212);
+    font-size: 28px;
+    font-weight:800;
+    font-family:'baloo 2', sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    line-height: 50px;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.15);
+}

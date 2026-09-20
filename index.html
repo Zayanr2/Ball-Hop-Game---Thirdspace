@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ball Hop Game</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="startScreen">
+        <div class="platform platform1"></div>
+        <div class="platform platform2"></div>
+        <div class="platform platform3"></div>
+        <div class="platform platform4"></div>
+        <div class="platform platform5"></div>
+        <div class="platform platform6"></div>
+        <div class="platform platform7"></div>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+        <div class="cloud cloud5"></div>
+        <div class="cloud cloud6"></div>
+        <div class="cloud cloud7"></div>
+        <h1>
+            <span>B</span>
+            <span>A</span>
+            <span>L</span>
+            <span>L</span>
+            <span class ="word-space">H</span>
+            <span>O</span>
+            <span>P</span>
+        </h1>
+
+        <div class="underline"></div>
+        <button class="startButton">START</button>
+        <button class="instructionButton">INSTRUCTIONS</button>
+    </div>
+    <div class = "instructionScreen">
+        <button class="BackButtonInstructionScreen"> BACK</button>
+        <h1 class="HowTO">HOW TO PLAY</h1>
+
+        <div class="instructionUnderline"></div>
+        <div class="lables">
+            <span>JUMP LEFT </span> 
+            <span>JUMP FORWARD </span>
+            <span>JUMP RIGHT </span>
+        </div>
+        
+        <div class="controls">
+            <div class="key">A</div>
+            <div class="key">W</div>
+            <div class="key">D</div>
+        </div>
+        <div class="cloudI cloudI1"></div>
+        <div class="cloudI cloudI2"></div>
+        <div class="cloudI cloudI3"></div>
+        <div class="cloudI cloudI4"></div>
+        <div class="cloudI cloudI5"></div>
+        <div class="cloudI cloudI6"></div>
+        <div class="cloudI cloudI7"></div>
+        
+        <p class = "instructionText"> JUMP FROM ONE PLATFORM TO ANOTHER USING THE 3 CONTROLS <br> THE FURTHER YOU GO, THE HIGHER YOUR SCORE!</p>
+        <div class="visualPlatform platform1"></div>
+
+        <div class="visualarrow arrowLeft"></div>
+        <div class="visualarrow arrowUp"></div>
+        <div class="visualarrow arrowRight"></div>
+
+        <div class="visualBall"></div>
+        <div class="visualPlatform platform2"></div>
+    </div>
+    <div class = "game">
+        <div class="gameOverlay">CLICK TO BEGIN</div>
+        <div class="score"> SCORE: 0</div>
+        <div class="gameStartPlatform">
+            <div class="platformNotch"></div>
+        </div>
+        <div class="gameBall"></div>
+
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
