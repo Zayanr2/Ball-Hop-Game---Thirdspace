@@ -21,7 +21,13 @@ const pauseMenu = document.querySelector(".pauseMenu");// where all the pause bu
 const pauseOverlay = document.querySelector(".pauseOverlay");// blurs the game when paused
 const gameOverlay = document.querySelector(".gameOverlay");// tells you to click to begin the timer and game
 const finalScore = document.getElementById("finalScore");//keeps trak of the final score
+const finalTime =  document.getElementById("finalTime");
 
+
+//variables For ingame time calculation 
+let startTime;
+let elapsedTime = 0;
+let gameTimer;
 
 
 
@@ -49,6 +55,14 @@ startButton.addEventListener("click", function(){
 gameOverlay.addEventListener("click", function() { 
     gameOverlay.style.display="none";
     pauseButton.style.display="block";
+
+    //for time calculation
+    startTime=Date.now();
+    gameTimer = setInterval(function(){
+        elapsedTime = Date.now()- startTime;
+    }, 1000);
+
+
 });
 
 
@@ -101,6 +115,16 @@ restartButton.addEventListener("click", function() {
 // scorscreen directions
 
 function showScoreScreen() {
+
+    //more time suff 
+    clearInterval(gameTimer);
+    elapsedTime = Date.now() - startTime;
+
+        //for rounding to seconds
+    let seconds = Math.floor(elapsedTime/1000)
+
+        //for rounding to minutes
+
     pauseMenu.style.display = "none";
     pauseOverlay.style.display = "none";
     gameOverlay.style.display = "none";
