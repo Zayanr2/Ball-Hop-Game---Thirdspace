@@ -392,27 +392,23 @@ body {
     border-radius: 20px;
     margin:30px auto 0px;
     right: 48.5%;
-    top: 80%;}
-
-
+    top: 80%;
+    box-shadow: -2px 5px 0px rgba(0,0,0,0.12);}
 
 .platform2 {
 
     right: 50%;
-    top: 75%;
-}
+    top: 70%;}
 .platform1 {
     right: 8%;
-    top: 90%;
-}
+    top: 90%;}
 
 .visualarrow {
     position: absolute;
     width:7px;
     height: 30px;
     background: #f4f4f7;
-    border-radius: 10px;
-}
+    border-radius: 10px;}
 
 .visualarrow::after {
     content: "";
@@ -423,24 +419,19 @@ body {
     border-right: 7px solid #f4f4f7;
     transform: rotate(-45deg);
     top:-5px;
-    left: -7px;
-}
+    left: -7px;}
 
-.arrowUP{
-    left: 40%;
-    top: 40%;
-    transform: translateX(-50%);
-    
-}
+.arrowUp{
+    left: 49.35%;
+    top: 77%;
+    }
 
 .arrowRight {
     left: 55%;
     top: 80%;
-    transform: rotate(45deg)
-}
+    transform: rotate(45deg)}
 
 .arrowLeft {
     left: 44%;
     top: 80%;
-    transform: rotate(-45deg)
-}
+    transform: rotate(-45deg)}
