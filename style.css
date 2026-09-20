@@ -447,19 +447,42 @@ body {
     position: relative;
     display: none;
     width: 1000px;
-    height: 600px;
+    height: 550px;
     background-color: rgb( 129, 126, 204);
  }   
 
 .gameStartPlatform{
     position: absolute;
-    width:700px;
-    height:25px;
-    background: #fd0202;
+    width:750px;
+    height: 90px;
+    background: #4583e0;
     border:3px solid #f8f8fa;
     border-radius:20px;
-    left:150px;
-    top:300px;
+    left: 125px;
+    top: 480px;
     box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
 
+}
+
+.platformNotch {
+    position:absolute;
+    width: 150px;
+    height: 40px;
+    background: #4583e0;
+    border: 3px solid #f8f8fa;
+    border-bottom:none;
+    border-radius: 15px 15px 0 0;
+    left: 50%;
+    top: -43px;
+    transform: translateX(-50%);
+}
+.gameBall{
+    position:absolute;
+    width:35px;
+    height:35px;
+    background:#F4f4f4;
+    border-radius: 50%;
+    top: 81%;
+    left:48.5%;
+    box-shadow:-3px 5px 0px rgba(0,0,0,0.12);
 }
