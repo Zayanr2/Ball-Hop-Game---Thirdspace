@@ -4,6 +4,7 @@ const instructionButton = document.querySelector(".instructionButton");
 const backButtonInstructionScreen = document.querySelector(".BackButtonInstructionScreen");
 const gameScreen = document.querySelector(".game");
 const startButton = document.querySelector(".startButton");
+const gameOverlay = document.querySelector(".gameOverlay");
 
 
 instructionButton.addEventListener("click", function() {
@@ -17,3 +18,7 @@ backButtonInstructionScreen.addEventListener("click", function() {
 startButton.addEventListener("click", function(){
     startScreen.style.display="none";
     gameScreen.style.display = "block";});
+    
+gameOverlay.addEventListener("click", function() { 
+    gameOverlay.style.display="none";
+});
