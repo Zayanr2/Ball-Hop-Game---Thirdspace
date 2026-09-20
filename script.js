@@ -36,8 +36,8 @@ let pauseStartTime; //stors the amount of time the game was paused using the but
 // vriables for moving the ball using the keys 
 let ballY = 75; // bals y cordinat
 let ballX = 50;//bals x cotdinart
-let ballSpeed = 5// the speed the abll will move at
-let isJumping = false
+let ballSpeed = 10// the speed the abll will move at
+let jumping = false
 
 function jump() {
     ballY -=15;// moves ball up
@@ -47,8 +47,8 @@ function jump() {
         ballY+= 15;
         gameBall.style.top = ballY +"%";
 
-        isJumping=false;
-    },100);
+        jumping=false;
+    },400);
 
 }
 
@@ -56,15 +56,21 @@ document.addEventListener("keydown", function(event) {
     if(event.key === "d") {//if d is press 
         ballX += ballSpeed;//changes the ballx cordinat
         gameBall.style.left = ballX +"%";// links the ballx variable to the actual position of the pall from the left
+        
+        jumping = true;
+        jump();
     }
 
      if(event.key === "a") {//if d is press 
         ballX -= ballSpeed;//changes the ballx cordinat
         gameBall.style.left = ballX +"%";// links the ballx variable to the actual position of the pall from the left
+        
+        jumping = true;
+        jump();
     }
 
-    if(event.key === "w"&& !isJumping) {//if d is press and the pall isnt moving
-        isJumping = true;
+    if(event.key === "w"&& !jumping) {//if d is press and the pall isnt moving
+        jumping = true;
         jump();
     }
 });
