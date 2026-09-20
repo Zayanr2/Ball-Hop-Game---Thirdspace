@@ -495,7 +495,7 @@ body {
     background:radial-gradient(circle at 30% 25%, white,#d3d1d1 45%,#7a7a7c 100%);
     border-radius: 50%;
     transform: translateX(-50%);
-    top: 81%;
+    top: 75%;
     left:50%;
     box-shadow:-3px 5px 0px rgba(0,0,0,0.12);
 }
@@ -581,7 +581,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 320px;
+    width: 450px;
     padding: 30px;
     background: rgb(85, 83, 150);
     border-radius: 24px;
@@ -598,10 +598,13 @@ body {
 
 .pauseMenu button{
     display:block;
-    width:100%;
+    width: 100%;
+    align-content: center;
+    left:50%;
     margin:12px 0;
     padding: 12px;
     border:none;
+    color: rgb(78, 79, 165);
     border-radius:15px;
     font-family: 'baloo 2', sans-serif;
     font-size: 20px;
