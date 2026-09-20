@@ -70,21 +70,36 @@
         <div class="visualBall"></div>
         <div class="visualPlatform platform2"></div>
     </div>
+
     <div class = "game">
         <div class="gameOverlay">CLICK TO BEGIN</div>
         <button class="pauseButton"> ||</button>
         <div class="pauseOverlay"></div>
+
         <div class = "pauseMenu">
             <h2>GAME PAUSED</h2>
             <button class="resumeButton">RESUME GAME</button>
             <button class="restartButton">RESTART GAME</button>
             <button class="quitButton">QUIT GAME</button>
         </div>
+
         <div class="score"> SCORE: 0</div>
         <div class="gameStartPlatform">
             <div class="platformNotch"></div>
         </div>
         <div class="gameBall"></div>
+
+        <div class = "score-screen" id=""scoreScreen">
+            <div class="scoreBox"> 
+                <h1>GAME OVER</h1> 
+
+                <p> SCORE: <span id="finalScore">0</span></p>
+
+                <button id="playAgainButton">PLAY AGAIN</button>
+                <button id="mainMenuButton">MAIN MENU</button>
+
+            </div>
+        </div>
 
     </div>
     <script src="./script.js"></script>

@@ -15,6 +15,11 @@ const restartButton = document.querySelector(".restartButton");
 const quitButton = document.querySelector(".quitButtton");
 const pauseOverlay = document.querySelector(".pauseOverlay");
 
+const scoreScreen = document.getElementById("scoreScreen");
+const finalScore = document.getElementById("finalScore");
+const playAgainButton = document.getElementById("playAgainButton");
+const mainMenuButton = document.getElementById("mainMenuButton");
+
 
 
 instructionButton.addEventListener("click", function() {
@@ -45,5 +50,23 @@ resumeButton.addEventListener("click", function() {
 });
 
 quitButton.addEventListener( "click", function() {
-    pauseMenu,style.display = "none";
-    startScreen.style.display = "block";});
+    
+    showScoreScreen();
+});
+
+playAgainButton.addEventListener("click", function() {
+    scoreScreen.style.display="none";
+    startScreen.style.display="Flex";
+
+});
+
+mainMenuButton.addEventListener("click", function() { 
+    scoreScreen.style.display="none";
+    startScreen.style.display="flex";
+})
+
+function showScoreScreen() {
+    finalScore.textContent = score;
+    scoreScreen.style.display = "flex";
+}
+

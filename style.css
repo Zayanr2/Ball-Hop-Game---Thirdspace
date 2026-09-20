@@ -637,3 +637,6 @@ body {
     border-radius: 15px;
 }
 
+.score-screen {
+    display: none;
+}
