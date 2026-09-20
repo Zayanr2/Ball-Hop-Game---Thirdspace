@@ -1,11 +1,19 @@
 const startScreen = document.getElementById("startScreen");
+
 const instructionScreen =document.querySelector(".instructionScreen");
 const instructionButton = document.querySelector(".instructionButton");
 const backButtonInstructionScreen = document.querySelector(".BackButtonInstructionScreen");
+
 const gameScreen = document.querySelector(".game");
 const startButton = document.querySelector(".startButton");
 const gameOverlay = document.querySelector(".gameOverlay");
+
 const pauseButton = document.querySelector(".pauseButton");
+const pauseMenu = document.querySelector(".pauseMenu");
+const resumeButton = document.querySelector(".resumeButton");
+const restartButton = document.querySelector(".restartButton");
+const quitButton = document.querySelector(".quitButtton")
+
 
 
 instructionButton.addEventListener("click", function() {

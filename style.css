@@ -556,3 +556,24 @@ body {
     background: rgba(255,255,255,0.4);
     transform: scale(1.1);
 }
+
+.pauseMenu{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    padding: 30px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 24px;
+    text-align: center;
+    z-index: 20;
+    font-family: 'Baloo 2', sans-serif;}
+
+.pauseMenu h2{
+    margin: 0 0 20px;
+    font-size: 38px;
+    font-weight: 800;
+}
+
