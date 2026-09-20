@@ -438,6 +438,19 @@ body {
     transform: rotate(45deg)}
 
 .arrowLeft {
+
     left: 44%;
     top: 80%;
     transform: rotate(-45deg)}
+
+.game {
+    width: 1000px;
+    height: 600px;
+    background-color: rgb( 129, 126, 204);
+}
+
+.gameStartPlatform{
+    position: absolute;
+    width:700px;
+    height:25px;
+}
