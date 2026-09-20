@@ -351,6 +351,11 @@ body {
     top: 50%;
     transform:scale(0.5) }   
 
+.cloudI7{
+    right: 95%;
+    top: 70%;
+    transform:scale(0.5) }  
+
 .BackButtonInstructionScreen {
     position:absolute;
     top: 25px;
@@ -382,7 +387,6 @@ body {
     box-shadow: -5px 5px 0px rgba(0,0,0,0.12);
     margin:0 auto;}
     
-
 
 .visualBall {
     position: absolute;
@@ -423,8 +427,7 @@ body {
 
 .arrowUp{
     left: 49.35%;
-    top: 77%;
-    }
+    top: 77%;}
 
 .arrowRight {
     left: 55%;
