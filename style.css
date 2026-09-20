@@ -457,6 +457,8 @@ body {
     width: 1000px;
     height: 550px;
     background-color: rgb( 129, 126, 204);
+    margin: auto;
+
  }   
 
 .gameStartPlatform{
@@ -466,8 +468,9 @@ body {
     background: #4583e0;
     border:3px solid #f8f8fa;
     border-radius:20px;
-    left: 125px;
-    top: 480px;
+    transform:translateX(-50%);
+    left: 50%;
+    top: 446px;
     box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
 
 }
@@ -486,19 +489,22 @@ body {
 }
 .gameBall{
     position:absolute;
+    
     width:35px;
     height:35px;
     background:radial-gradient(circle at 30% 25%, white,#d3d1d1 45%,#7a7a7c 100%);
     border-radius: 50%;
+    transform: translateX(-50%);
     top: 81%;
-    left:48.5%;
+    left:50%;
     box-shadow:-3px 5px 0px rgba(0,0,0,0.12);
 }
 
 .score{
     position: absolute;
+    transform:translateX(-50%);
     top:20px;
-    left: 41.5%;
+    left: 50%;
     width: 180px;
     height:55px;
     background :#f8f8fa;
@@ -518,7 +524,7 @@ body {
 .gameOverlay {
    position: absolute;
     width: 100%;
-    height: 113%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
@@ -621,7 +627,7 @@ body {
     top:-1;
     left:0;
     width:100%;
-    height:113%;
+    height:100%;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter:blur(3px);
     z-index: 15;
