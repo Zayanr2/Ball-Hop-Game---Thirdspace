@@ -36,7 +36,7 @@ function startTimer(){
         elapsedTime = Date.now() - startTime;
 
         let seconds = Math.floor(elapsedTime/1000);
-        let minutes = Math.floor(minutes/60);
+        let minutes = Math.floor(seconds/60);
         seconds = seconds % 60;
 
         if(seconds<10) {
