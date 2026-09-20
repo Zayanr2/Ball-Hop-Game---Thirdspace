@@ -57,10 +57,8 @@ gameOverlay.addEventListener("click", function() {
     pauseButton.style.display="block";
 
     //for time calculation
-    startTime=Date.now();
-    gameTimer = setInterval(function(){
-        elapsedTime = Date.now()- startTime;
-    }, 1000);
+    startTime=Date.now();//records when the game starts 
+    gameTimer = setInterval(function(){ elapsedTime = Date.now()- startTime; }, 1000); // checks the elapsed time every second and keeps track
 
 
 });
@@ -117,13 +115,20 @@ restartButton.addEventListener("click", function() {
 function showScoreScreen() {
 
     //more time suff 
-    clearInterval(gameTimer);
-    elapsedTime = Date.now() - startTime;
+    clearInterval(gameTimer); // stops tracking the time 
+    elapsedTime = Date.now() - startTime; // collects the final time that was tracked
 
         //for rounding to seconds
-    let seconds = Math.floor(elapsedTime/1000)
+    let seconds = Math.floor(elapsedTime/1000);//converts milisecons to seconds 
 
         //for rounding to minutes
+    let minutes = Math.floor(seconds/60); // convers seconds to minutes 
+    seconds = seconds % 60;// gets the remaining seconds 
+
+    if(seconds <10) {
+        seconds = "0" + seconds;
+    }//add a 0 when sconds are less the 10
+    finalTime.textContent = minutes+ ":" + seconds;
 
     pauseMenu.style.display = "none";
     pauseOverlay.style.display = "none";
