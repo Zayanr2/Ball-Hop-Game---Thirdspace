@@ -1,3 +1,13 @@
+#startScreen 
+{display:block;}
+
+.instructionScreen {
+     display: none;
+}
+
+
+
+
 h1  {
     font-size: 80px;
     text-align: center;
@@ -215,13 +225,6 @@ body {
     top: 80%;
     transform:scale(0.4) }
 
-#startScreen {
-    display:none;
-}
-
-.instructionScreen{
-    display: block;
-}
 
 .HowTO {
     font: size 70px;
