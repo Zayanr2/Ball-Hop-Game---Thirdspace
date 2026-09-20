@@ -12,7 +12,8 @@ const pauseButton = document.querySelector(".pauseButton");
 const pauseMenu = document.querySelector(".pauseMenu");
 const resumeButton = document.querySelector(".resumeButton");
 const restartButton = document.querySelector(".restartButton");
-const quitButton = document.querySelector(".quitButtton")
+const quitButton = document.querySelector(".quitButtton");
+const pauseOverlay = document.querySelector(".pauseOverlay");
 
 
 
@@ -35,10 +36,12 @@ gameOverlay.addEventListener("click", function() {
 
 pauseButton.addEventListener("click", function() {
     pauseMenu.style.display = "block";
+    pauseOverlay.style.display = "block";
 });
 
 resumeButton.addEventListener("click", function() {
-    pauseMenu.style.display = "none"
+    pauseMenu.style.display = "none";
+    pauseOverlay.style.display = "none";
 });
 
 quitButton.addEventListener( "click", function() {
