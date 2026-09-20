@@ -33,3 +33,15 @@ gameOverlay.addEventListener("click", function() {
     pauseButton.style.display="block";
 });
 
+pauseButton.addEventListener("click", function() {
+    pauseMenu.style.display = "block";
+});
+
+resumeButton.addEventListener("click", function() {
+    pauseMenu.style.display = "none"
+});
+
+quitButton.addEventListener( "click", function() {
+    pauseMenu,style.display = "none";
+    startScreen.style.display = "block";
+})
