@@ -43,5 +43,4 @@ resumeButton.addEventListener("click", function() {
 
 quitButton.addEventListener( "click", function() {
     pauseMenu,style.display = "none";
-    startScreen.style.display = "block";
-})
+    startScreen.style.display = "block";});
