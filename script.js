@@ -27,9 +27,24 @@ const liveTimer = document.querySelector(".liveTimer");//live timer display
 //variables For ingame time calculation 
 let startTime;
 let elapsedTime = 0;
+
 let gameTimer;
 
+function startTimer(){
+    startTime = Date.now() - elapsedTime;
+    gameTimer = setInterval(function() { 
+        elapsedTime = Date.now() - startTime;
 
+        let seconds = Math.floor(elapsedTime/1000);
+        let minutes = Math.floor(minutes/60);
+        seconds = seconds % 60;
+
+        if(seconds<10) {
+            seconds = "0" + seconds;}
+
+        liveTimer.textContent = "TIME:" + minutes + ":" + seconds;
+    }, 1000);
+}
 
 
 // instruction button directions
@@ -55,27 +70,9 @@ startButton.addEventListener("click", function(){
 gameOverlay.addEventListener("click", function() { 
     gameOverlay.style.display="none";
     pauseButton.style.display="block";
-
-    //for time calculation live and final timer 
-    startTime=Date.now();//records when the game starts 
-    gameTimer = setInterval(function(){ 
-        elapsedTime = Date.now()- startTime; //clculates ellapsed time 
     
-
-        //for live timer 
-        let seconds = Math.floor(elapsedTime/ 1000);// find the number of seconds 
-        let minutes = Math.floor(seconds / 60);// finds number of minutes 
-        seconds = seconds % 60;//checks for remaining seconds after calculating seconds 
-        if(seconds<10) {
-            seconds = "0" +seconds; // adds zer if the secons are less than 10, example 05s or 07s
-        }
-    
-        liveTimer.textContent = "TIME:" + minutes + ":" + seconds;//combines secons and minutes to show time 
-
-    
-    }, 1000); // checks the elapsed time every second and keeps track
-
-
+    elapsedTime = 0
+    startTimer();
 });
 
 
@@ -83,6 +80,8 @@ gameOverlay.addEventListener("click", function() {
 pauseButton.addEventListener("click", function() {
     pauseMenu.style.display = "block";
     pauseOverlay.style.display = "block";
+
+    clearInterval(gameTimer); //stops the timer
 });
 
 
@@ -90,6 +89,8 @@ pauseButton.addEventListener("click", function() {
 resumeButton.addEventListener("click", function() {
     pauseMenu.style.display = "none";
     pauseOverlay.style.display = "none";
+
+    startTimer();
 });
 
 
