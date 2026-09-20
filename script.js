@@ -5,6 +5,7 @@ const backButtonInstructionScreen = document.querySelector(".BackButtonInstructi
 const gameScreen = document.querySelector(".game");
 const startButton = document.querySelector(".startButton");
 const gameOverlay = document.querySelector(".gameOverlay");
+const pauseButton = document.querySelector(".pauseButton");
 
 
 instructionButton.addEventListener("click", function() {
@@ -21,4 +22,6 @@ startButton.addEventListener("click", function(){
     
 gameOverlay.addEventListener("click", function() { 
     gameOverlay.style.display="none";
+    pauseButton.style.display="block";
 });
+
