@@ -23,6 +23,8 @@ const gameOverlay = document.querySelector(".gameOverlay");// tells you to click
 const finalScore = document.getElementById("finalScore");//keeps trak of the final score
 const finalTime =  document.getElementById("finalTime");// final time display
 const liveTimer = document.querySelector(".liveTimer");//live timer display
+let gameBall=document.querySelector(".gameBall");//this is the ball
+
 
 //variables For ingame time calculation 
 let startTime;//stores the time when the timer starts 
@@ -35,9 +37,37 @@ let pauseStartTime; //stors the amount of time the game was paused using the but
 let ballY = 75; // bals y cordinat
 let ballX = 50;//bals x cotdinart
 let ballSpeed = 5// the speed the abll will move at
+let isJumping = false
 
+function jump() {
+    ballY -=15;// moves ball up
+    gameBall.style.top = ballY +"%";// links the ballY variable to the actual position of the pall from the left
 
+    setTimeout(function() {
+        ballY+= 15;
+        gameBall.style.top = ballY +"%";
 
+        isJumping=false;
+    },100);
+
+}
+
+document.addEventListener("keydown", function(event) {
+    if(event.key === "d") {//if d is press 
+        ballX += ballSpeed;//changes the ballx cordinat
+        gameBall.style.left = ballX +"%";// links the ballx variable to the actual position of the pall from the left
+    }
+
+     if(event.key === "a") {//if d is press 
+        ballX -= ballSpeed;//changes the ballx cordinat
+        gameBall.style.left = ballX +"%";// links the ballx variable to the actual position of the pall from the left
+    }
+
+    if(event.key === "w"&& !isJumping) {//if d is press and the pall isnt moving
+        isJumping = true;
+        jump();
+    }
+});
 
 
 
