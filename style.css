@@ -504,7 +504,7 @@ body {
     position: absolute;
     transform:translateX(-50%);
     top:20px;
-    left: 50%;
+    left: 40%;
     width: 180px;
     height:55px;
     background :#f8f8fa;
@@ -710,4 +710,24 @@ border: radius 20px;
 #finalScore{
     color: rgb(173,174,243);
     font-size: 38px;
+}
+
+.liveTimer {
+    position:absolute;
+    transform:translateX(-50%);
+    top:20px;
+    left: 59%;
+    width:180px;
+    height: 55px;
+    background:#f4f4f7;
+    border: 3px solid rgb(123, 121, 197);
+    border-radius: 50px;
+    color: rgb(144, 142, 212);
+    font-size: 28px;
+    font-weight: 800;
+    font-family: 'baloo 2', sans-serif;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.15);
 }

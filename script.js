@@ -21,8 +21,8 @@ const pauseMenu = document.querySelector(".pauseMenu");// where all the pause bu
 const pauseOverlay = document.querySelector(".pauseOverlay");// blurs the game when paused
 const gameOverlay = document.querySelector(".gameOverlay");// tells you to click to begin the timer and game
 const finalScore = document.getElementById("finalScore");//keeps trak of the final score
-const finalTime =  document.getElementById("finalTime");
-
+const finalTime =  document.getElementById("finalTime");// final time display
+const liveTimer = document.querySelector(".liveTimer");//live timer display
 
 //variables For ingame time calculation 
 let startTime;
@@ -56,9 +56,24 @@ gameOverlay.addEventListener("click", function() {
     gameOverlay.style.display="none";
     pauseButton.style.display="block";
 
-    //for time calculation
+    //for time calculation live and final timer 
     startTime=Date.now();//records when the game starts 
-    gameTimer = setInterval(function(){ elapsedTime = Date.now()- startTime; }, 1000); // checks the elapsed time every second and keeps track
+    gameTimer = setInterval(function(){ 
+        elapsedTime = Date.now()- startTime; //clculates ellapsed time 
+    
+
+        //for live timer 
+        let seconds = Math.floor(elapsedTime/ 1000);// find the number of seconds 
+        let minutes = Math.floor(seconds / 60);// finds number of minutes 
+        seconds = seconds % 60;//checks for remaining seconds after calculating seconds 
+        if(seconds<10) {
+            seconds = "0" +seconds; // adds zer if the secons are less than 10, example 05s or 07s
+        }
+    
+        liveTimer.textContent = "TIME:" + minutes + ":" + seconds;//combines secons and minutes to show time 
+
+    
+    }, 1000); // checks the elapsed time every second and keeps track
 
 
 });
@@ -125,10 +140,11 @@ function showScoreScreen() {
     let minutes = Math.floor(seconds/60); // convers seconds to minutes 
     seconds = seconds % 60;// gets the remaining seconds 
 
+    let displaySeconds = seconds;
     if(seconds <10) {
-        seconds = "0" + seconds;
+        displaySeconds = "0" + seconds;
     }//add a 0 when sconds are less the 10
-    finalTime.textContent = minutes+ ":" + seconds;
+    finalTime.textContent = minutes+ ":" + displaySeconds;
 
     pauseMenu.style.display = "none";
     pauseOverlay.style.display = "none";
