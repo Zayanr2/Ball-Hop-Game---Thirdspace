@@ -637,6 +637,7 @@ body {
     border-radius: 15px;
 }
 
+
 .score-screen {
     display: none;
     position: absolute;
@@ -646,5 +647,67 @@ body {
     height:100%;
     background: rgb(129, 126, 204);
     z-index: 30;
+    border-radius:20px;
+    justify-content: center;
+    align-items: center ;
 border: radius 20px;
+}
+
+.scoreBox {
+    width: 750px;
+    padding:35px;
+    background:rgb(85,83,150);
+    border-radius:25px;
+    text-align:center;
+    font-family: 'baloon 2',sans-serif;
+    box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
+}
+
+.scoreBox button{
+    display:block;
+    width:100%;
+    margin: 12px 0;
+    padding:12px;
+    border:none;
+    border-radius: 15px;
+    color:rgb(78,79,165);
+    font-family: "ballo 2", sans-serif;
+    font-size: 20px;
+    font-weight:700;
+    background: linear-gradient(165deg, #FFFFFF, rgb(173, 174, 243));
+    cursor:pointer;
+    transition:background 0.3s ease, transform 0.3 ease;
+}
+
+.scoreBox button:hover{
+    transform:scale(1.03);
+    background: linear-gradient(165deg, #aaa7a7, rgb(118, 119, 177));
+}
+
+.scoreBox button:active{
+    transform:scale(1.04);
+    background: linear-gradient(165deg, #7c7a7a, rgb(92, 93, 139));
+}
+
+.scoreBox p {
+    margin: 10px 0 25px;
+    color:#f8f8fa;
+    font-family: "Ballo 2", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+
+}
+
+.scoreBox h1 {
+    margin: 0 0 25px;
+    color:#f8f8fa;
+    font-family: "Ballo 2", sans-serif;
+    font-size: 55px;
+    font-weight: 800;
+
+}
+
+#finalScore{
+    color: rgb(173,174,243);
+    font-size: 38px;
 }
