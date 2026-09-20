@@ -30,6 +30,17 @@ let elapsedTime = 0;// stores the time that has passed in the game
 let gameTimer; // this is what changes the elapsed time every second
 let pauseStartTime; //stors the amount of time the game was paused using the button
 
+
+// vriables for moving the ball using the keys 
+let ballY = 75; // bals y cordinat
+let ballX = 50;//bals x cotdinart
+let ballSpeed = 5// the speed the abll will move at
+
+
+
+
+
+
 function startTimer(){// starts and calculates the timer in the game
     startTime = Date.now() - elapsedTime; // timer continues from where it left of before pausing
     gameTimer = setInterval(function() { 
