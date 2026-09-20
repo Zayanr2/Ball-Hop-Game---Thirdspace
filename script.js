@@ -12,7 +12,7 @@ const pauseButton = document.querySelector(".pauseButton");
 const pauseMenu = document.querySelector(".pauseMenu");
 const resumeButton = document.querySelector(".resumeButton");
 const restartButton = document.querySelector(".restartButton");
-const quitButton = document.querySelector(".quitButtton");
+const quitButton = document.querySelector(".quitButton");
 const pauseOverlay = document.querySelector(".pauseOverlay");
 
 const scoreScreen = document.getElementById("scoreScreen");
@@ -32,7 +32,11 @@ backButtonInstructionScreen.addEventListener("click", function() {
 
 startButton.addEventListener("click", function(){
     startScreen.style.display="none";
-    gameScreen.style.display = "block";});
+    gameScreen.style.display = "block";
+    gameOverlay.style.display = "flex";
+    pauseButton.style.display = "none";
+});
+    
     
 gameOverlay.addEventListener("click", function() { 
     gameOverlay.style.display="none";
@@ -56,17 +60,23 @@ quitButton.addEventListener( "click", function() {
 
 playAgainButton.addEventListener("click", function() {
     scoreScreen.style.display="none";
-    startScreen.style.display="Flex";
+    gameScreen.style.display = "block"
+    gameOverlay.style.display="Flex";
+    pauseButton.style.display = "none";
 
 });
 
 mainMenuButton.addEventListener("click", function() { 
     scoreScreen.style.display="none";
-    startScreen.style.display="flex";
+    gameScreen.style.display="none";
+    startScreen.style.display = "block";
 })
 
 function showScoreScreen() {
-    finalScore.textContent = score;
+    pauseMenu.style.display = "none";
+    pauseOverlay.style.display = "none";
+    gameOverlay.style.display = "none";
+    pauseButton.style.display = "none";
     scoreScreen.style.display = "flex";
 }
 
