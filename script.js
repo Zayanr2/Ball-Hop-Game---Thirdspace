@@ -39,14 +39,38 @@ let ballY = 75; // bals y cordinat
 let ballX = 50;//bals x cotdinart
 let ballSpeed = 10// the speed the abll will move at
 let jumping = false// is the ball currently moving
+let BallGoingDown = false;// checks if the pall is going down or not after jumping
 
 
 // variables for the platform movment and duplication
 let platformX = 56 // x value of the platform
+let platformY = 65 // y value of the platform
+
+function getBallBottom() {
+    return ballY + 3.2;// give the bottom edge of the ball
+}
+
+function getPlatformDistance() {// gets the distance between the ball and the platform
+    return platformX-ballX;// platfroms bositionn minus the balls position
+}
+function landingWidth() {// checks if the ball landed on the platform
+    let platformLeft = platformX;// the left side of the platform is the x cordinat 
+    let platformRight = platformX + 18;// the right side of the platform is left side plus 18 percent
+
+    return ballX >= platformLeft && ballX <= platformRight;// this will chek if the ball is on the platform or not
+
+
+}
+
+function landingHeight() {
+    return getBallBottom() >= platformY;// if the height is on the platform too.
+}
+
+
 
 function jump(direction) {
     let horizontalMovement =0;
-
+    BallGoingDown = false;
     if(direction === "left"){// if its left
         horizontalMovement = -1.5;// the falue of horizontal movement is -2
     }
@@ -99,7 +123,7 @@ function jump(direction) {
         gameBall.style.top = ballY +"%";// links the bally variable to the actual position of the balll
 
     },200);
-
+    BallGoingDown = true;
     setTimeout(function() {
         ballY += 3;
         ballX += horizontalMovement; //move ball left or right if there is horizontal movement
