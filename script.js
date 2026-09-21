@@ -67,7 +67,6 @@ function landingHeight() {
 }
 
 
-
 function jump(direction) {
     let horizontalMovement =0;
     BallGoingDown = false;
