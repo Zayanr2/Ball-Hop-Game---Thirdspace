@@ -184,120 +184,106 @@ document.addEventListener("keydown", function(event) { // assigns W, A and D key
     }
 }); // key functions 
 
-function startTimer(){// starts and calculates the timer in the game
-    startTime = Date.now() - elapsedTime; // timer continues from where it left of before pausing
-    gameTimer = setInterval(function() { 
+function startTimer(){// the function the will keep track of the time
+    startTime = Date.now() - elapsedTime; // if the timer was paused, this will make sure the time is acurate
+    gameTimer = setInterval(function() { // updats time every 1000 mliseconds 
         elapsedTime = Date.now() - startTime; // checks how much time has passes in milliseconds since u started
 
         let seconds = Math.floor(elapsedTime/1000);// checks for the number of seconds
         let minutes = Math.floor(seconds/60);// checks for the number of minutes 
         seconds = seconds % 60;// calculates the seconds remaining after the minutes
 
-        if(seconds<10) {
+        if(seconds<10) {// if the time is less then 10s
             seconds = "0" + seconds;}// ads a zer if its 0-9 seconds 
  
         liveTimer.textContent = "TIME:" + minutes + ":" + seconds;// displays the time
     }, 1000); // runs once every second
-}// timmer function 
+};
 
+instructionButton.addEventListener("click", function() {// instruction button directions
+    startScreen.style.display = "none";// dont display the start screen
+    instructionScreen.style.display="block"; // display the instruction screen
+});       
 
-// instruction button directions
-instructionButton.addEventListener("click", function() {
-    startScreen.style.display = "none";
-    instructionScreen.style.display="block";});    
-
-// back button directions
-backButtonInstructionScreen.addEventListener("click", function() {
-    instructionScreen.style.display="none"; 
-    startScreen.style.display = "block"});
-
-// start button directions
-startButton.addEventListener("click", function(){
-    startScreen.style.display="none";
-    gameScreen.style.display = "block";
-    gameOverlay.style.display = "flex";
-    pauseButton.style.display = "none";
-});
-    
-
-// game overlay directions
-gameOverlay.addEventListener("click", function() { 
-    gameOverlay.style.display="none";
-    pauseButton.style.display="block";
-    
-    elapsedTime = 0
-    startTimer();
+backButtonInstructionScreen.addEventListener("click", function() {// back button diraxctions 
+    instructionScreen.style.display="none"; // dont display the instruction screen anymore 
+    startScreen.style.display = "block";// display the staart/main screen now
 });
 
+startButton.addEventListener("click", function(){// start button directions
+    startScreen.style.display="none";// dont disply the scren
+    gameScreen.style.display = "block";// display the game screen
+    gameOverlay.style.display = "flex";// display the overlay
+    pauseButton.style.display = "none"; // dont display the pause button 
+});
+    
+gameOverlay.addEventListener("click", function() {// game overlay directions 
+    gameOverlay.style.display="none"; // dont display the overlay anymore
+    pauseButton.style.display="block";// display the pause button now 
+    
+    elapsedTime = 0 // resets the timer back to 0 to restart the time
+    startTimer();// start the timer function again 
+});
 
-// pause button directions
-pauseButton.addEventListener("click", function() {
-    pauseMenu.style.display = "block";
-    pauseOverlay.style.display = "block";
+pauseButton.addEventListener("click", function() {// pause button directions
+    pauseMenu.style.display = "block";// display the pause menu
+    pauseOverlay.style.display = "block";// display the pause overlayy screen
 
     clearInterval(gameTimer); //stops the timer
-    pauseStartTime = Date.now();
+    pauseStartTime = Date.now();// stores the time when the game was paused so that we can calculate how much time has passed since the game was paused and add it to the start time so that the timer continues from where it left off
 });
 
+resumeButton.addEventListener("click", function() {// resume button directions
+    pauseMenu.style.display = "none";// dont display the pause menu
+    pauseOverlay.style.display = "none"; // dontdisplay the pause overlay 
 
-// resume button directions
-resumeButton.addEventListener("click", function() {
-    pauseMenu.style.display = "none";
-    pauseOverlay.style.display = "none";
-
-    startTime += Date.now() - pauseStartTime;
-    startTimer();
+    startTime += Date.now() - pauseStartTime;// calculates the time that has passed since the game was paused and adds it to the start time so that the timer continues from where it left off
+    startTimer();// start the timer asgians 
 });
 
-
-// quit button directions
-quitButton.addEventListener( "click", function() {
+quitButton.addEventListener( "click", function() {// quit button directions
     
-    showScoreScreen();
+    showScoreScreen();// show the score screen
 });
 
-// play again button directions
-playAgainButton.addEventListener("click", function() {
-    scoreScreen.style.display="none";
-    gameScreen.style.display = "block"
-    gameOverlay.style.display="Flex";
-    pauseButton.style.display = "none";
+playAgainButton.addEventListener("click", function() {// play again button directions
+    scoreScreen.style.display="none";// dont show the score screen
+    gameScreen.style.display = "block"// display the gamescreen
+    gameOverlay.style.display="Flex";// display the overlay
+    pauseButton.style.display = "none";// dont show the pause button
 
     elapsedTime = 0;//resets the timer 
     liveTimer.textContent = "TIME:00:00"; // resets the timer display
 
 });
 
-// main menu button directions
-mainMenuButton.addEventListener("click", function() { 
-    scoreScreen.style.display="none";
-    gameScreen.style.display="none";
-    startScreen.style.display = "block";
+mainMenuButton.addEventListener("click", function() {// main menu button directions 
+    scoreScreen.style.display="none";// dont schow the score screen
+    gameScreen.style.display="none";// dont show the gamescreen
+    startScreen.style.display = "block"; // show startscreen
 })
 
-// restart button directions
-restartButton.addEventListener("click", function() {
-    pauseMenu.style.display ="none";
-    pauseOverlay.style.display = "none";
-    gameScreen.style.display = "block";
-    gameOverlay.style.display = "flex";
-    pauseButton.style.display = "none"
-    scoreScreen.style.display = "none"
+restartButton.addEventListener("click", function() {// restart button directions
+    pauseMenu.style.display ="none"; // dont display to pause menu
+    pauseOverlay.style.display = "none";// dont display the pause overlay 
+    gameScreen.style.display = "block";// ddisplay the gamescreen
+    gameOverlay.style.display = "flex";// display the overlay
+    pauseButton.style.display = "none";// dont show the pause button
+    scoreScreen.style.display = "none";// not show the score screen
 
     elapsedTime = 0;// resets the timer 
     liveTimer.textContent = "TIME:00:00";// resets the timer display
 });
 
 // scorscreen directions
-
-function showScoreScreen() {
+function showScoreScreen() {//
 
     //more time suff 
     clearInterval(gameTimer); // stops tracking the time 
-     if (pauseStartTime) 
+     if (pauseStartTime) // if the game was paused
         {elapsedTime = pauseStartTime - startTime; }// collects the final time that was tracked when u were paused
-     else{
-        elapsedTime= Date.now() - startTime;
+     else{//everything else 
+        elapsedTime= Date.now() - startTime;//colects the time u were playing the game
      }
         //for rounding to seconds
     let seconds = Math.floor(elapsedTime/1000);//converts milisecons to seconds 
@@ -306,16 +292,16 @@ function showScoreScreen() {
     let minutes = Math.floor(seconds/60); // convers seconds to minutes 
     seconds = seconds % 60;// gets the remaining seconds 
 
-    let displaySeconds = seconds;
-    if(seconds <10) {
-        displaySeconds = "0" + seconds;
+    let displaySeconds = seconds;// sets the display seconds to the seconds variable
+    if(seconds <10) {//if its less than 10
+        displaySeconds = "0" + seconds;// adds a 0 in front of the seconds 
     }//add a 0 when sconds are less the 10
-    finalTime.textContent = minutes+ ":" + displaySeconds;
+    finalTime.textContent = minutes+ ":" + displaySeconds;// displays the final time on scorescreen 
 
-    pauseMenu.style.display = "none";
-    pauseOverlay.style.display = "none";
-    gameOverlay.style.display = "none";
-    pauseButton.style.display = "none";
-    scoreScreen.style.display = "flex";
+    pauseMenu.style.display = "none";// dont display the pause menu
+    pauseOverlay.style.display = "none";// dont display the paus overlay
+    gameOverlay.style.display = "none";// dont display the overlay
+    pauseButton.style.display = "none";// dont display the bpause button 
+    scoreScreen.style.display = "flex";// display the scorescreen 
 }
 
