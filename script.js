@@ -24,6 +24,7 @@ const finalScore = document.getElementById("finalScore");//keeps trak of the fin
 const finalTime =  document.getElementById("finalTime");// final time display
 const liveTimer = document.querySelector(".liveTimer");//live timer display
 let gameBall=document.querySelector(".gameBall");//this is the ball
+const gamePlatform = document.querySelector(".gamePlatform");
 
 
 //variables For ingame time calculation 
@@ -37,17 +38,21 @@ let pauseStartTime; //stors the amount of time the game was paused using the but
 let ballY = 75; // bals y cordinat
 let ballX = 50;//bals x cotdinart
 let ballSpeed = 10// the speed the abll will move at
-let jumping = false
+let jumping = false// is the ball currently moving
+
+
+// variables for the platform movment and duplication
+let platformX = 56 // x value of the platform
 
 function jump(direction) {
     let horizontalMovement =0;
 
     if(direction === "left"){// if its left
-        horizontalMovement = -2;// the falue of horizontal movement is -2
+        horizontalMovement = -1.5;// the falue of horizontal movement is -2
     }
 
     else if (direction === "right"){ //if its right 
-        horizontalMovement = 2; // the value of the horizontal movement is 2
+        horizontalMovement = 1.5; // the value of the horizontal movement is 2
     }
 
     else if (direction === "up"){ //if its right 

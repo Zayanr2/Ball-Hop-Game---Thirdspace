@@ -731,3 +731,14 @@ border: radius 20px;
     justify-content: center;
     box-shadow: -5px 5px 0px rgba(0,0,0,0.15);
 }
+
+.gamePlatform{
+    position:absolute;
+    width: 180px;
+    height: 20px;
+    background: rgb(87, 168, 221);
+    border: 3px solid, #ffffff;
+    border-radius: 10px;
+    left: 56%;
+    top: 60%;
+}
