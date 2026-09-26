@@ -50,7 +50,7 @@ let platforms = [
         y:65,
         width:18,
         height:20,
-        speed:1,
+        speed:0.9,
         direction:1,
 
     },
@@ -60,11 +60,17 @@ let platforms = [
         width:13,
         height:18,
         speed:1,
-        direction:0.7,
+        direction:-1,
 
     }
 ];
-platforms.forEach
+platforms.forEach(function(platform, index) {
+    gamePlatforms[index].style.left = platform.x + "%";
+    gamePlatforms[index].style.top = platform.y + "%";
+    gamePlatforms[index].style.width = platform.width + "%";
+    gamePlatforms[index].style.height = platform.height + "px";
+});
+
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
 }
