@@ -41,6 +41,7 @@
     let ballSpeed = 10// the speed the abll will move at
     let jumping = false// is the ball currently moving
     let BallGoingDown = false;// checks if the pall is going down or not after jumping
+    let currentPlatform = null;//
 
 
     // variables for the platform movment and duplication
@@ -83,6 +84,7 @@
         jumping  = false;// sets the jumping variable to no 
         BallGoingDown =  false;// sets the ball is going downn variable to no 
 
+        currentPlatform = null;
         gameBall.style.left = ballX + "%";// links balls x to the balls x attribuite 
         gameBall.style.top = ballY + "%";// links the balls y to the y attribute 
     }// resets the ball tot he original position 
@@ -101,6 +103,8 @@
             if(BallGoingDown && LandingOnPlatform(platform)) {
                 ballY = platform.y -3.2;
                 gameBall.style.top = ballY + "%";
+
+                currentPlatform = platform;
                 jumping = false;
                 BallGoingDown = false;
                 return true;
@@ -108,130 +112,30 @@
         }
         return false;
     }
-    function jump(direction) { // this is how the ball will jump
-        let horizontalMovement =0; // sets a variable that meadure horizontal movement
-        let verticalMovement = 3;
-        BallGoingDown = false; //ball isn't curving back yet
+    
+    function jump(direction) {
+        if (jumping) return;
 
-        if(direction === "left"){// if jump function is with left specification
-            horizontalMovement = -1;// the value of horizontal movement is -1.5
+        jumping = true;
+        BallGoingDown = false;
+
+        let horizontalMovement = 0;
+
+        if (direction === "left"){
+            horizontalMovement = -1;
+        }
+        else if (direction === "right"){
+            horizontalMovement = 1;
+        }
+        else if (direction === "up"){
+            horizontalMovement = 1;
         }
 
-        else if (direction === "right"){ //if jump is with right  specification
-            horizontalMovement = 1; // the value of the horizontal movement is 1.5
-        }
+        let horizontalDistance = horizontalMovement * 8;
 
-        else if (direction === "up"){ //if the jump specification is Up 
-            horizontalMovement = 0; // the value of the horizontal movement is o
-        }
-
-        ballY -= verticalMovement;// moves ball up 
-        ballX += horizontalMovement; //move ball left or right if there is horizontal movement
-        gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-        gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-
-        setTimeout(function() {
-            ballY -=verticalMovement;// moves ball up
-            verticalMovement -= 0.5;// tell how much the ball goes up 
-            ballX += horizontalMovement * 0.8; //move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-            
-        },50);
-
-        setTimeout(function() {
-            ballY -=verticalMovement;// moves ball up
-            ballX += horizontalMovement *1.2; //move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-            
-        },100);
-
-        setTimeout(function() {
-            ballY -=verticalMovement;// moves ball up
-            ballX += horizontalMovement * 1.5; //move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-            
-        },150);
-
-        setTimeout(function() {
-            ballY -=verticalMovement;// moves ball up
-            ballX += horizontalMovement  * 1.7//move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-        },200);
-        BallGoingDown = true; // ball started going back down after the jump
-        verticalMovement = 3;
-        setTimeout(function() {
-            ballY +=verticalMovement;// moves ball up
-            ballX += horizontalMovement * 1.7; //move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-        
-            if (LandingCheck()) {
-            return;// Finish function
-            }
-        
-        },250);
-
-        setTimeout(function() {
-            if (!jumping) return;
-            ballY +=verticalMovement;// moves ball up
-            ballX += horizontalMovement - 1.5; //move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-            if (LandingCheck()) {
-            return;
-            }
-        },300);
-
-        setTimeout(function() {
-
-            if (!jumping) return;
-            ballY +=verticalMovement;// moves ball up
-            ballX += horizontalMovement * 1.2; //move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-            if (LandingCheck()) {
-            return;// end function 
-            }
-        },350);
-
-        setTimeout(function() {
-
-            if (!jumping) return;
-            ballY +=verticalMovement;// moves ball up
-            ballX += horizontalMovement * 0.8; //move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-            if (LandingCheck()) {
-            return;// end function 
-            }
-        },400);
-
-        setTimeout(function() {
-
-            if (!jumping) return;
-            ballY +=verticalMovement;// moves ball up
-            ballX += horizontalMovement * 0.5; //move ball left or right if there is horizontal movement
-            gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
-            gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
-
-            if (LandingCheck()) {// checks if the pall has landed 
-            return;//end the function 
-            }
-        },450);// refreshes at this time 
-
-    }// jump function 
+        let jumpStartX = ballX;
+        let jumpStartY = ballY;
+    }
 
     function platformMovment() {
         platforms.forEach(function(platform, index){
@@ -253,17 +157,14 @@
     document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
         if(event.key === "d") {//if d is press 
             
-            jumping = true;// jump is in progress
             jump("right");// jump function with right mechanics 
         }
 
         if(event.key === "a") {//if a is press 
-            jumping = true;// jumps is in progress 
             jump("left");//jump function with the left mechanics
         }
 
         if(event.key === "w") {//if d is press and the pall isnt moving
-            jumping = true;// jump is in progress 
             jump("up");// jump with the up mechanics 
         }
     }); // key functions 
