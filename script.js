@@ -46,32 +46,46 @@ let BallGoingDown = false;// checks if the pall is going down or not after jumpi
 // variables for the platform movment and duplication
 let platforms = [
     {
-        x:56,
-        startX:56,
-        y:65,
-        width:18,
-        height:20,
-        speed:0.9,
-        direction:1,
+        x:56,// x value 
+        startX:56,// starting x value helps to rested 
+        y:65,// y value 
+        width:18,//width 
+        height:20,// height 
+        speed:0.9,// speed that the platform moves 
+        direction:1,// direction of the platform 
+        opacity:1,// how clear the platform is 
 
     },
     {
-        x:35,
-        startX:35,
-        y:52,
-        width:13,
-        height:18,
-        speed:1,
-        direction:-1,
+        x:35,// x value 
+        startX:35,// the first ex value of the platform helps to reset 
+        y:52,// y value  
+        width:13,// widthc 
+        height:18,// height 
+        speed:1,// speed of the platform 
+        direction:-1,// direction of the platform 
+        opacity: 0.5,// how clear is the platform 
 
-    }
+    }// platforms 
 ];
 platforms.forEach(function(platform, index) {
     gamePlatforms[index].style.left = platform.x + "%";// uspdated platforms left position 
     gamePlatforms[index].style.top = platform.y + "%";// updates platforms top position 
     gamePlatforms[index].style.width = platform.width + "%";// updates platoforms widtch
     gamePlatforms[index].style.height = platform.height + "px"; // updates platforms height 
+    gamePlatforms[index].style.opacity= platform.opacity; // updates the platforms transperency 
+
 });// updates platforms 
+
+function resetBall() {
+    ballX = 50;// setts the balls x back to 50
+    ballY = 75;// sets the balls y back to 50 
+    jumping  = false;// sets the jumping variable to no 
+    BallGoingDown =  false;// sets the ball is going downn variable to no 
+
+    gameBall.style.left = ballX + "%";// links balls x to the balls x attribuite 
+    gameBall.style.top = ballY + "%";// links the balls y to the y attribute 
+}// resets the ball tot he original position 
 
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
@@ -227,6 +241,7 @@ function platformMovment() {
         gamePlatforms[index].style.top = platform.y + "%";
         gamePlatforms[index].style.width= platform.width + "%";
         gamePlatforms[index].style.height= platform.height + "px";
+        gamePlatforms[index].style.opacity= platform.opacity;
     });
 }
 
@@ -325,6 +340,7 @@ playAgainButton.addEventListener("click", function() {// play again button direc
     });//reset
 
     platformMovment();// runs the platform movment function
+    resetBall();// this resets the ball to the original position 
     elapsedTime = 0;//resets the timer 
     liveTimer.textContent = "TIME:00:00"; // resets the timer display
 
@@ -349,6 +365,7 @@ restartButton.addEventListener("click", function() {// restart button directions
     });//reset
 
     platformMovment();// runs the platform movment function
+    resetBall();//this resets the ball to the pikining position 
     elapsedTime = 0;// resets the timer 
     liveTimer.textContent = "TIME:00:00";// resets the timer display
 });
