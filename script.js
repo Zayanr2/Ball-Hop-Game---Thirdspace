@@ -128,13 +128,37 @@
             horizontalMovement = 1;
         }
         else if (direction === "up"){
-            horizontalMovement = 1;
+            horizontalMovement = 0;
         }
 
         let horizontalDistance = horizontalMovement * 8;
 
         let jumpStartX = ballX;
         let jumpStartY = ballY;
+        let jumpHeight = 15;
+        let jumpProgress = 0;
+        
+
+        let jumpTimer = setInterval(function() {
+        jumpProgress += 0.1;
+        if (jumpProgress >1){
+            jumpProgress =1;
+        }
+
+        let verticalOffset = Math.sin(jumpProgress * Math.PI) * jumpHeight;
+
+        ballY = jumpStartY - verticalOffset;
+        gameBall.style.top = ballY + "%";
+
+        ballX = jumpStartX + (horizontalDistance*jumpProgress);
+        gameBall.style.left = ballX + "%";
+
+        if (jumpProgress >=1) {
+            clearInterval(jumpTimer)
+            jumping = false;
+            BallGoingDown = false;
+        }
+        }, 30);
     }
 
     function platformMovment() {
