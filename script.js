@@ -114,6 +114,8 @@
     }
     
     function jump(direction) {
+        
+
         if (jumping) return;
 
         jumping = true;
@@ -137,8 +139,7 @@
         let jumpStartY = ballY;
         let jumpHeight = 15;
         let jumpProgress = 0;
-        
-
+        let verticalDistance = -11;
         let jumpTimer = setInterval(function() {
         jumpProgress += 0.1;
         if (jumpProgress >1){
@@ -147,7 +148,7 @@
 
         let verticalOffset = Math.sin(jumpProgress * Math.PI) * jumpHeight;
 
-        ballY = jumpStartY - verticalOffset;
+        ballY = jumpStartY + (verticalDistance * jumpProgress) - verticalOffset;
         gameBall.style.top = ballY + "%";
 
         ballX = jumpStartX + (horizontalDistance*jumpProgress);
