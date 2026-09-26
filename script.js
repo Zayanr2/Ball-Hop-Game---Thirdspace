@@ -126,42 +126,77 @@ function jump(direction) { // this is how the ball will jump
         ballX += horizontalMovement; //move ball left or right if there is horizontal movement
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
+     
+        if (BallGoingDown && landingWidth() && landingHeight()) {
+        ballY = platformY - 3.2;
+        gameBall.style.top = ballY + "%";
+        jumping = false;
+        return;
+        }
+    
     },250);
 
     setTimeout(function() {
+        if (!jumping) return;
         ballY +=3;// moves ball up by 3
         ballX += horizontalMovement; //move ball left or right if there is horizontal movement
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
 
-        
+        if (BallGoingDown && landingWidth() && landingHeight()) {
+        ballY = platformY - 3.2;
+        gameBall.style.top = ballY + "%";
+        jumping = false;
+        return;
+        }
     },300);
 
     setTimeout(function() {
+
+        if (!jumping) return;
         ballY +=3;// moves ball up by 3
         ballX += horizontalMovement; //move ball left or right if there is horizontal movement
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
 
-        
+        if (BallGoingDown && landingWidth() && landingHeight()) {
+        ballY = platformY - 3.2;
+        gameBall.style.top = ballY + "%";
+        jumping = false;
+        return;
+        }
     },350);
 
     setTimeout(function() {
+
+        if (!jumping) return;
         ballY +=3;// moves ball up by 3
         ballX += horizontalMovement; //move ball left or right if there is horizontal movement
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
 
-        
+        if (BallGoingDown && landingWidth() && landingHeight()) {
+        ballY = platformY - 3.2;
+        gameBall.style.top = ballY + "%";
+        jumping = false;
+        return;
+        }
     },400);
 
     setTimeout(function() {
+
+        if (!jumping) return;
         ballY +=3;// moves ball up by 3
         ballX += horizontalMovement; //move ball left or right if there is horizontal movement
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
 
-        jumping=false;// ball stopped jumping 
+         if (BallGoingDown && landingWidth() && landingHeight()) {
+        ballY = platformY - 3.2;
+        gameBall.style.top = ballY + "%";
+        jumping = false;
+        return;
+        }
     },450);
 
 }// jump function 
@@ -178,7 +213,7 @@ document.addEventListener("keydown", function(event) { // assigns W, A and D key
         jump("left");//jump function with the left mechanics
     }
 
-    if(event.key === "w"&& !jumping) {//if d is press and the pall isnt moving
+    if(event.key === "w") {//if d is press and the pall isnt moving
         jumping = true;// jump is in progress 
         jump("up");// jump with the up mechanics 
     }
