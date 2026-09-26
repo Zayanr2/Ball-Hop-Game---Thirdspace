@@ -457,7 +457,11 @@ body {
     width: 1000px;
     height: 550px;
     border-radius: 15px;
-    background: linear-gradient(to bottom, rgb(145, 142, 215) 0%, rgb(129,126,204) 45%, rgb(88, 86, 149) 100%);
+    background: linear-gradient(
+        to bottom, 
+        rgb(145, 142, 215) 0%, 
+        rgb(129,126,204) 45%, 
+        rgb(88, 86, 149) 100%);
     margin: auto;
     perspective: 800px;
     overflow:hidden;
@@ -469,8 +473,20 @@ body {
     width: 140%;
     height: 100%;
     left: -20%;
-    top: 20%;
-    background: repeating-linear-gradient(90deg , rgba(255,255,255,0.03)0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 80px), rgba(80,78,145,0.35) ;
+    top: 5%;
+    background: 
+        repeating-linear-gradient(
+            90deg, 
+            rgba(255,255,255,0.03)0px, 
+            rgba(255,255,255,0.03) 2px, 
+            transparent 2px, 
+            transparent 80px
+            ), 
+        linear-gradient(
+            to bottom,
+            rgba(180,178,228,0.05),
+            rgba(70,68,130,0.4)
+            );
     transform: rotateX(50deg);
     transform-origin: center;
     z-index: 0;
@@ -479,13 +495,13 @@ body {
 .gameStartPlatform{
     position: absolute;
     width:750px;
-    height: 90px;
+    height: 65px;
     background: #4583e0;
     border:3px solid #f8f8fa;
     border-radius:20px;
-    transform:translateX(-50%);
+    transform:translateX(-50%) perspective(500px) rotateX(20deg);
     left: 50%;
-    top: 446px;
+    top: 460px;
     box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
 
 }
@@ -493,14 +509,14 @@ body {
 .platformNotch {
     position:absolute;
     width: 150px;
-    height: 40px;
+    height: 27px;
     background: #4583e0;
     border: 3px solid #f8f8fa;
     border-bottom:none;
     border-radius: 15px 15px 0 0;
     left: 50%;
-    top: -43px;
-    transform: translateX(-50%);
+    top: -29px;
+    transform: translateX(-50%) perspective(500px) rotateX(20deg);
 }
 .gameBall{
     position:absolute;
@@ -753,11 +769,11 @@ border: radius 20px;
     width: 180px;
     height: 20px;
     background: rgb(66, 139, 187);
-    border: 3px solid, #ffffff;
+    border: 3px solid #ffffff;
     border-radius: 10px;
     left: 56%;
     top: 65%;
     box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.379);
 
-    transform: perspective(500px) rotateX(20deg);
+    transform: perspective(500px) rotateX(25deg);
 }
