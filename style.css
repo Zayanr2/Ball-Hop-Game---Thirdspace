@@ -456,9 +456,10 @@ body {
     display: none;
     width: 1000px;
     height: 550px;
-    background-color: rgb( 129, 126, 204);
+    border-radius: 15px;
+    background: linear-gradient(to bottom, rgb(145, 142, 215) 0%, rgb(129,126,204) 45%, rgb(88, 86, 149) 100%);
     margin: auto;
-
+    perspective: 800px;
  }   
 
 .gameStartPlatform{
