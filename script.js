@@ -32,6 +32,7 @@ let startTime;//stores the time when the timer starts
 let elapsedTime = 0;// stores the time that has passed in the game
 let gameTimer; // this is what changes the elapsed time every second
 let pauseStartTime; //stors the amount of time the game was paused using the button
+let platformTimer;
 
 
 // vriables for moving the ball using the keys 
@@ -67,14 +68,23 @@ let platforms = [
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
 }
-
 function LandingOnPlatform(platform) {
     let platformLeft = platform.x;
     let platformRight = platform.x + platform.width;
 
     return ballX >= platformLeft && ballX <= platformRight && getBallBottom() >= platform.y;
 }
-
+function LandingCheck() {
+    for (let platform of platforms) {
+        if(BallGoingDown && LandingOnPlatform(platform)) {
+            ballY = platform.y -3.2;
+            gameball.style.top = ballY + "%";
+            jumping = false;
+            return true;
+        }
+    }
+    return false;
+}
 
 function jump(direction) { // this is how the ball will jump
     let horizontalMovement =0; // sets a variable that meadure horizontal movement
@@ -139,10 +149,7 @@ function jump(direction) { // this is how the ball will jump
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
      
-        if (BallGoingDown && landingWidth() && landingHeight()) {
-        ballY = platformY - 3.2; // the bally equals the platforms y cordinat minus the 3.2, (it sits on top)
-        gameBall.style.top = ballY + "%"; // links to the top attribut of the ball
-        jumping = false;// jumping has stopped
+        if (LandingCheck()) {
         return;// Finish function
         }
     
@@ -155,10 +162,7 @@ function jump(direction) { // this is how the ball will jump
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
 
-        if (BallGoingDown && landingWidth() && landingHeight()) {
-        ballY = platformY - 3.2;
-        gameBall.style.top = ballY + "%";
-        jumping = false;
+        if (LandingCheck()) {
         return;
         }
     },300);
@@ -171,10 +175,7 @@ function jump(direction) { // this is how the ball will jump
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
 
-        if (BallGoingDown && landingWidth() && landingHeight()) {
-        ballY = platformY - 3.2; //ball sits on top 
-        gameBall.style.top = ballY + "%";// links to ball top attribut 
-        jumping = false;// jumping hs stoped 
+        if (LandingCheck()) {
         return;// end function 
         }
     },350);
@@ -187,10 +188,7 @@ function jump(direction) { // this is how the ball will jump
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
 
-        if (BallGoingDown && landingWidth() && landingHeight()) {
-        ballY = platformY - 3.2; // the ball sits on top of the platform 
-        gameBall.style.top = ballY + "%";// links to the top attribute 
-        jumping = false;// jumping has stoped 
+        if (LandingCheck()) {
         return;// end function 
         }
     },400);
@@ -203,13 +201,10 @@ function jump(direction) { // this is how the ball will jump
         gameBall.style.left = ballX + "%"; // links the ballx variable to left property of the ball
         gameBall.style.top = ballY +"%";// links the ballY variable to the top property of the ball
 
-         if (BallGoingDown && landingWidth() && landingHeight()) {
-        ballY = platformY - 3.2;// ball will sit on the top of the platform 
-        gameBall.style.top = ballY + "%";// links to the top attripute 
-        jumping = false;// jumping has stoped 
+         if (LandingCheck()) {// checks if the pall has landed 
         return;//end the function 
         }
-    },450);
+    },450);// refreshes at this time 
 
 }// jump function 
 
@@ -228,7 +223,6 @@ function platformMovment() {
     });
 }
 
-setInterval(platformMovment,30);
 
 document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
     if(event.key === "d") {//if d is press 
@@ -287,6 +281,7 @@ gameOverlay.addEventListener("click", function() {// game overlay directions
     
     elapsedTime = 0 // resets the timer back to 0 to restart the time
     startTimer();// start the timer function again 
+    platformTimer = setInterval(platformMovment, 30); // starts the platform movement function every 30 milliseconds
 });
 
 pauseButton.addEventListener("click", function() {// pause button directions

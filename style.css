@@ -777,11 +777,3 @@ border: radius 20px;
 
     transform: perspective(500px) rotateX(25deg);
 }
-
-.gamePlatform2 {
-    width: 130px;
-    height: 18px;
-    left: 35%;
-    top: 52%;
-    transform: perspective(500px) rotateX(25deg);
-}
