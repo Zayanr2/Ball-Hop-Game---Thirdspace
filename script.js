@@ -64,7 +64,7 @@ let platforms = [
 
     }
 ];
-
+platforms.forEach
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
 }
@@ -85,7 +85,6 @@ function LandingCheck() {
     }
     return false;
 }
-
 function jump(direction) { // this is how the ball will jump
     let horizontalMovement =0; // sets a variable that meadure horizontal movement
     BallGoingDown = false; //ball isn't curving back yet
