@@ -47,6 +47,7 @@ let BallGoingDown = false;// checks if the pall is going down or not after jumpi
 let platforms = [
     {
         x:56,
+        startX:56,
         y:65,
         width:18,
         height:20,
@@ -56,6 +57,7 @@ let platforms = [
     },
     {
         x:35,
+        startX:35,
         y:52,
         width:13,
         height:18,
@@ -65,11 +67,11 @@ let platforms = [
     }
 ];
 platforms.forEach(function(platform, index) {
-    gamePlatforms[index].style.left = platform.x + "%";
-    gamePlatforms[index].style.top = platform.y + "%";
-    gamePlatforms[index].style.width = platform.width + "%";
-    gamePlatforms[index].style.height = platform.height + "px";
-});
+    gamePlatforms[index].style.left = platform.x + "%";// uspdated platforms left position 
+    gamePlatforms[index].style.top = platform.y + "%";// updates platforms top position 
+    gamePlatforms[index].style.width = platform.width + "%";// updates platoforms widtch
+    gamePlatforms[index].style.height = platform.height + "px"; // updates platforms height 
+});// updates platforms 
 
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
@@ -295,6 +297,7 @@ pauseButton.addEventListener("click", function() {// pause button directions
 
     clearInterval(gameTimer); //stops the timer
     pauseStartTime = Date.now();// stores the time when the game was paused so that we can calculate how much time has passed since the game was paused and add it to the start time so that the timer continues from where it left off
+    clearInterval(platformTimer);// stops the platforms from  moving
 });
 
 resumeButton.addEventListener("click", function() {// resume button directions
@@ -303,6 +306,7 @@ resumeButton.addEventListener("click", function() {// resume button directions
 
     startTime += Date.now() - pauseStartTime;// calculates the time that has passed since the game was paused and adds it to the start time so that the timer continues from where it left off
     startTimer();// start the timer asgians 
+    platformTimer = setInterval(platformMovment,30);
 });
 
 quitButton.addEventListener( "click", function() {// quit button directions
@@ -316,6 +320,11 @@ playAgainButton.addEventListener("click", function() {// play again button direc
     gameOverlay.style.display="Flex";// display the overlay
     pauseButton.style.display = "none";// dont show the pause button
 
+    platforms.forEach(function(platform) {// resers platforms to the original position 
+        platform.x = platform.startX;// gets the original position 
+    });//reset
+
+    platformMovment();// runs the platform movment function
     elapsedTime = 0;//resets the timer 
     liveTimer.textContent = "TIME:00:00"; // resets the timer display
 
@@ -335,6 +344,11 @@ restartButton.addEventListener("click", function() {// restart button directions
     pauseButton.style.display = "none";// dont show the pause button
     scoreScreen.style.display = "none";// not show the score screen
 
+    platforms.forEach(function(platform) {// resers platforms to the original position 
+        platform.x = platform.startX;// gets the original position 
+    });//reset
+
+    platformMovment();// runs the platform movment function
     elapsedTime = 0;// resets the timer 
     liveTimer.textContent = "TIME:00:00";// resets the timer display
 });
