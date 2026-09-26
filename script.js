@@ -24,7 +24,7 @@ const finalScore = document.getElementById("finalScore");//keeps trak of the fin
 const finalTime =  document.getElementById("finalTime");// final time display
 const liveTimer = document.querySelector(".liveTimer");//live timer display
 let gameBall=document.querySelector(".gameBall");//this is the ball
-const gamePlatforms = document.querySelector(".gamePlatform");
+const gamePlatforms = document.querySelectorAll(".gamePlatform");
 
 
 //variables For ingame time calculation 
@@ -67,20 +67,14 @@ let platforms = [
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
 }
-function getPlatformDistance() {// gets the distance between the ball and the platform
-    return platformX-ballX;// platfroms bositionn minus the balls position
-}
-function landingWidth() {// checks if the ball landed on the platform horizontaly
-    let platformLeft = platformX;// the left side of the platform is the x cordinat 
-    let platformRight = platformX + 18;// the right side of the platform is left side plus 18 percent
 
-    return ballX >= platformLeft && ballX <= platformRight;// this will chek if the ball is on the platform or not
+function LandingOnPlatform(platform) {
+    let platformLeft = platform.x;
+    let platformRight = platform.x + platform.width;
 
+    return ballX >= platformLeft && ballX <= platformRight && getBallBottom() >= platform.y;
+}
 
-}
-function landingHeight() {// checks if the ball landed on the platform in terms of heihgt
-    return getBallBottom() >= platformY;// if the height is on the platform too.
-}
 
 function jump(direction) { // this is how the ball will jump
     let horizontalMovement =0; // sets a variable that meadure horizontal movement
@@ -219,6 +213,22 @@ function jump(direction) { // this is how the ball will jump
 
 }// jump function 
 
+function platformMovment() {
+    platforms.forEach(function(platform, index){
+        platform.x += platform.speed * platform.direction;
+
+        if (platform.x >=75 || platform.x <= 10) {
+            platform.direction *= -1; // reverse direction when reaching the edges
+        }
+
+        gamePlatforms[index].style.left = platform.x + "%";
+        gamePlatforms[index].style.top = platform.y + "%";
+        gamePlatforms[index].style.width= platform.width + "%";
+        gamePlatforms[index].style.height= platform.height + "px";
+    });
+}
+
+setInterval(platformMovment,30);
 
 document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
     if(event.key === "d") {//if d is press 
