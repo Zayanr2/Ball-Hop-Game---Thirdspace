@@ -24,7 +24,7 @@ const finalScore = document.getElementById("finalScore");//keeps trak of the fin
 const finalTime =  document.getElementById("finalTime");// final time display
 const liveTimer = document.querySelector(".liveTimer");//live timer display
 let gameBall=document.querySelector(".gameBall");//this is the ball
-const gamePlatform = document.querySelector(".gamePlatform");
+const gamePlatforms = document.querySelector(".gamePlatform");
 
 
 //variables For ingame time calculation 
@@ -43,14 +43,26 @@ let BallGoingDown = false;// checks if the pall is going down or not after jumpi
 
 
 // variables for the platform movment and duplication
-let platformX = 56 // x value of the platform
-let platformY = 65 // y value of the platform
-let ballLanded = false;
-let platformDirection = 1;// controls the direction of the platform
-let platformSpeed = 1;// controls the speed of the platform
-let platform2X = 35;
-let platform2Speed = 1;
-let platform2Direction = 0.7;
+let platforms = [
+    {
+        x:56,
+        y:65,
+        width:18,
+        height:20,
+        speed:1,
+        direction:1,
+
+    },
+    {
+        x:35,
+        y:52,
+        width:13,
+        height:18,
+        speed:1,
+        direction:0.7,
+
+    }
+];
 
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
@@ -207,24 +219,7 @@ function jump(direction) { // this is how the ball will jump
 
 }// jump function 
 
-function platformMovement () {// this is the function that move the platform 
-    platformX += platformSpeed * platformDirection;// changing the platforms x cordinate moves the platform 
 
-    if( platformX >= 75 || platformX <= 10) {// if the platform is on the edge 
-        platformDirection *= -1; // changing the direction 
-    }
-    gamePlatform.style.left = platformX + "%";// links to the left attribute 
-}
-function platform2Movement () {
-    platform2X += platform2Speed * platform2Direction;
-
-    if (platform2X>= 75|| platform2X<= 10) {
-        platform2Direction *= -1;
-    }
-    document.querySelector(".gamePlatform2").style.left = platform2X + "%";
-}
-setInterval(platformMovement , 30);// runs the functiolns 
-setInterval(platform2Movement, 30);// runs the function
 document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
     if(event.key === "d") {//if d is press 
         
