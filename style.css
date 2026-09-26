@@ -460,7 +460,21 @@ body {
     background: linear-gradient(to bottom, rgb(145, 142, 215) 0%, rgb(129,126,204) 45%, rgb(88, 86, 149) 100%);
     margin: auto;
     perspective: 800px;
+    overflow:hidden;
  }   
+
+.game::before {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    top: 20%;
+    background: repeating-linear-gradient(90deg , rgba(255,255,255,0.03)0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 80px), rgba(80,78,145,0.35) ;
+    transform: rotateX(50deg);
+    transform-origin: center;
+    z-index: 0;
+}
 
 .gameStartPlatform{
     position: absolute;
@@ -744,4 +758,6 @@ border: radius 20px;
     left: 56%;
     top: 65%;
     box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.379);
+
+    transform: perspective(500px) rotateX(20deg);
 }
