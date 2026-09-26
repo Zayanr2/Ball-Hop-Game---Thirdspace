@@ -48,6 +48,9 @@ let platformY = 65 // y value of the platform
 let ballLanded = false;
 let platformDirection = 1;// controls the direction of the platform
 let platformSpeed = 1;// controls the speed of the platform
+let platform2X = 35;
+let platform2Speed = 1;
+let platform2Direction = 0.7;
 
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
@@ -212,9 +215,16 @@ function platformMovement () {// this is the function that move the platform
     }
     gamePlatform.style.left = platformX + "%";// links to the left attribute 
 }
+function platform2Movement () {
+    platform2X += platform2Speed * platform2Direction;
 
+    if (platform2X>= 75|| platform2X<= 10) {
+        platform2Direction *= -1;
+    }
+    document.querySelector(".gamePlatform2").style.left = platform2X + "%";
+}
 setInterval(platformMovement , 30);// runs the functiolns 
-
+setInterval(platform2Movement, 30);// runs the function
 document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
     if(event.key === "d") {//if d is press 
         
