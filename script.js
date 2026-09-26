@@ -45,8 +45,9 @@ let BallGoingDown = false;// checks if the pall is going down or not after jumpi
 // variables for the platform movment and duplication
 let platformX = 56 // x value of the platform
 let platformY = 65 // y value of the platform
+let ballLanded = false;
 let platformDirection = 1;// controls the direction of the platform
-let platformSpeed = 0.3;// controls the speed of the platform
+let platformSpeed = 1;// controls the speed of the platform
 
 function getBallBottom() {//finds the bottom edge of the ball
     return ballY + 3.2;// give the bottom edge of the ball
@@ -203,16 +204,16 @@ function jump(direction) { // this is how the ball will jump
 
 }// jump function 
 
-function platformMovement () {
-    platformX += platformSpeed * platformDirection;
+function platformMovement () {// this is the function that move the platform 
+    platformX += platformSpeed * platformDirection;// changing the platforms x cordinate moves the platform 
 
-    if( platformX >= 75 || platformX <= 20) {
-        platformDirection *= -1;
+    if( platformX >= 75 || platformX <= 10) {// if the platform is on the edge 
+        platformDirection *= -1; // changing the direction 
     }
-    gamePlatform.style.left = platformX + "%";
+    gamePlatform.style.left = platformX + "%";// links to the left attribute 
 }
 
-setInterval(platformMovement , 30);
+setInterval(platformMovement , 30);// runs the functiolns 
 
 document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
     if(event.key === "d") {//if d is press 
