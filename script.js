@@ -60,15 +60,26 @@
         {
             x:35,// x value 
             startX:35,// the first ex value of the platform helps to reset 
-            y:52,// y value  
+            y:54,// y value  
             width:13,// widthc 
             height:18,// height 
             speed:1,// speed of the platform 
             direction:-1,// direction of the platform 
             opacity: 0.5,// how clear is the platform 
 
+        },
+        {
+            x:55,// x value 
+            startX:55,// the first ex value of the platform helps to reset 
+            y:43,// y value  
+            width:8,// widthc 
+            height:16,// height 
+            speed:1.1,// speed of the platform 
+            direction:1,// direction of the platform 
+            opacity: 0.4,// how clear is the platform 
         }// platforms 
     ];
+
     platforms.forEach(function(platform, index) {
         gamePlatforms[index].style.left = platform.x + "%";// uspdated platforms left position 
         gamePlatforms[index].style.top = platform.y + "%";// updates platforms top position 
@@ -124,10 +135,10 @@
         let horizontalMovement = 0;
 
         if (direction === "left"){
-            horizontalMovement = -1;
+            horizontalMovement = -1.5;
         }
         else if (direction === "right"){
-            horizontalMovement = 1;
+            horizontalMovement = 1.5;
         }
         else if (direction === "up"){
             horizontalMovement = 0;
