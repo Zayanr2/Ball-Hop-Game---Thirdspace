@@ -713,12 +713,12 @@ border: radius 20px;
 
 .scoreBox button:hover{
     transform:scale(1.03);
-    background: rgb(103, 97, 192);
+    background: rgb(55, 51, 116);
 }
 
 .scoreBox button:active{
     transform:scale(1.04);
-    background:  rgb(103, 97, 192);
+    background:  rgb(52, 48, 117);
 }
 
 .scoreBox p {

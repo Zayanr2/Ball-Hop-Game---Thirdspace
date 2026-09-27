@@ -100,30 +100,26 @@ function makePlatforms(x,y,width,height, opacity, speed, direction) {// this fun
     })
 }
 
-function resetPlatforms() {// resets all the platforms 
-    platforms.forEach(function(platform) {// for each platform
-        platform.x = platform.startX;// rests the starting x position of the platform 
-        platform.y = platform.startY;// resets the staring y positon of the platforms 
-        platform.direction = platform.startDirection;//resets the direction of the platforms 
+function removeExtraPlatforms() { // reset function the removes  everything and redras it 
+    platformHolder.innerHTML = "";// removes all the older platforms 
+    platforms = [];// container 
+    makePlatforms(56,65,12,18,1, 0.9,1);// makes the starting platform again 
+    makePlatforms(35,54,12,18,0.5, 1,-1);// makes the starting platform again  
+    makePlatforms(55,43,12,18,0.4, 1.1,1);// makes the staring platform agai n
 
-        let scale = 0.7 + ((platform.y - 43) / 22);// scale to reset the platforms to the original size
+    startplatformY = 85;// sets the valu back to the original value 
+    gameStartPlatform.style.top = "85%"// resets it to the original value 
+    gameStartPlatform.style.width = "70%"// resets it to the original value 
+    gameStartPlatform.style.height = "12%"// resets it to the original value 
 
-        platform.element.style.left = platform.x + "%";// resets the x psoition 
-        platform.element.style.top = platform.y + "%";// resets the y position 
-        platform.element.style.width = (platform.width * scale) + "%";// resets the width 
-        platform.element.style.height = (platform.height * scale) + "px";// resest the height 
+    platformNotch.style.top = "-45%"// resets it to the original value - notch  
+    platformNotch.style.width = "20%"// resets it to the original value - notch 
+    platformNotch.style.height = "42%"// resets it to the original value - notch 
 
+    platformMoveY = 0;// rets the platform moving to 0 
+    platformMoveDistance = 0;// resets the platform distance that has moved to 0 
+    landedPlatform = null; //resets variable 
 
-        platform.element.style.opacity = platform.opacity;// resets the opacity 
-    });
-
-    startplatformY = 85;// resets the variables 
-
-    let StartScale = 0.7 + ((startplatformY - 43) / 22);
-
-    gameStartPlatform.style.top = startplatformY + "%";// linkgs the start platform top property
-    gameStartPlatform.style.width = (750* StartScale) + "px";
-    gameStartPlatform.style.height = (65* StartScale) + "px";
 }
 
 function makeNewPlatofrms() {
@@ -432,7 +428,7 @@ quitButton.addEventListener( "click", function() {// quit button directions
     gameWorking = false;// the controls wont work anymore 
     score = 0; //  the score restes 
     document.querySelector(".score").textContent = "Score: 0";
-    resetPlatforms()
+    removeExtraPlatforms()
 });
 
 playAgainButton.addEventListener("click", function() {// play again button directions
@@ -453,7 +449,7 @@ playAgainButton.addEventListener("click", function() {// play again button direc
     landedPlatform = null// there is no landed platform
     guidePath.innerHTML = "";// removes the old guild path
     elapsedTime = 0;//resets the timer 
-    resetPlatforms()
+    removeExtraPlatforms()
     liveTimer.textContent = "TIME:00:00"; // resets the timer display
 });
 
@@ -464,6 +460,7 @@ mainMenuButton.addEventListener("click", function() {// main menu button directi
     gameWorking = false; // the controls won wok 
     resetBall();// resets the ball to the original position 
     score = 0; //  the score restes 
+    removeExtraPlatforms()
     scoreDisplay.textContent = "SCORE: 0";// resets the score display
 })
 
@@ -476,7 +473,7 @@ restartButton.addEventListener("click", function() {// restart button directions
     scoreScreen.style.display = "none";// not show the score screen
     GameoverOverlay.style.display = "none";// remove overlay 
     NewSpeed = 1.2; // resets the new platfforms speed 
-    resetPlatforms()
+    removeExtraPlatforms()
 
     platforms.forEach(function(platform) {// resers platforms to the original position 
         platform.x = platform.startX;// gets the original position 
