@@ -89,19 +89,25 @@
     });// updates platforms 
 
     function landingCheck() {
-    let platformLeft = platforms.x;
-    let platformRight = platforms.x + platforms.width;
+        for(let platform of platforms) {// in platforms look at platform 
+            let platformLeft = platform.x;// the left is the x cordinate 
+            let platformRight = platform.x + platform.width;// the right is the left plus the wides 
 
-    if (ballX >= platformLeft && ballX <- platformRight){
-        if(ballY >= platforms.y - 3.2){
-            ballY = platforms.Y - 3.2;
-            gameBall.style.top = ballY +"%";
+            if (ballX >= platformLeft && ballX <= platformRight){// if the ball is inside the platform 
+                
+                if(ballY >= platform.y - 3.2){// and if the ball is on top of the platfome 
 
-            landedPlatform = platform
-            return true;
+                    ballY = platform.y - 3.2;// the ball is in the center of the platform(ontop)
+                    gameBall.style.top = ballY +"%";// links the tip atribute iwht the y axis 
+
+                    landedPlatform = platform// the landed platform is this platfomr 
+
+                    return true;// yess landed 
+                }
+
+            }
         }
-    }
-    return false;
+    return false;// no landed
     }
 
     function resetBall() {// resets the ball tot he original position 
@@ -164,6 +170,7 @@
         
         if (jumping) return;// if  your juming then 
         jumping = true;// jumping is in progres 
+        landedPlatform = null;
 
         let horizontalMovement = 0;// horizontal movment is 0
 
@@ -223,7 +230,7 @@
             gamePlatforms[index].style.height= platform.height + "px";// inks height to the height attripute 
             gamePlatforms[index].style.opacity= platform.opacity;// links ipacity to the platforms opacity atribute 
 
-            if (landedPlatform === platforms) {
+            if (landedPlatform === platform) {
                 ballX = platform.x + platform.width /2;
                 gameBall.style.left = ballX + "%"
             }
