@@ -2,12 +2,12 @@
 
 This Game was made with HTML, JS and CSS.
 
-Controls:
+## Controls:
 - W : Jump Forward
 - A : Jump Forward and Left
 - D : Jump Forward and Right
 
-WalkThrough: 
+## WalkThrough: 
 When you open the game, your screen first shows the Start screen. This screen has 2 buttons, Start, and Instructions. Clicking the instructions button takes you to the Instruction screen, where you can see the the controls and your game goal. The Instruction screen has a back button on the top which brings you back to the Start screen. The Start button on the startScreen takes you to the game screen. Your greeted with a pop up which tells you to click to start. Clicking it begins the timer countdown and enables the balls controls, the platforms start moving as well. Now you can use the controls to jump from one plaform to another. Every time you succesfully complete a jump, the score increases by one. You can pause the game with the pause button, which will open a pop up and stop the game platforms and timer. The popup includes options like 
 
 
