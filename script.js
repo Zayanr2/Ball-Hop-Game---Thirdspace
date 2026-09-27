@@ -36,7 +36,7 @@ const gameStartPlatform = document.querySelector(".gameStartPlatform");// the st
 const platformNotch = document.querySelector(".platformNotch");// the starting platform that the ball starts on
 const gameMusic = document.getElementById("gameMusic"); // the music for the games
 const LoseMusic = document.getElementById("LoseMusic"); // the music for the games
-
+const SuccessMusic = document.getElementById("SuccessMusic"); // the music for the games
 //variables reated to time calculation 
 let startTime;//stores the time when the timer starts 
 let elapsedTime = 0;// stores the time that has passed in the game
@@ -144,7 +144,7 @@ function landingCheck() {// this function checks if the platfom landed
                 gameBall.style.top = ballY +"%";// links the tip atribute iwht the y axis 
 
                 landedPlatform = platform// the landed platform is this platfomr
-                    
+                SuccessMusic.play();    
                 platformMoveY = 0.5
                 platformMoveDistance = 11;
                 score += 1; // the score increaces py on if u land succesfull on the platfomr 
@@ -360,7 +360,6 @@ function startTimer(){// the function the will keep track of the time
 
 
 
-
  //screens and butons 
 document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
     if(event.key === "d") {//if d is press 
@@ -376,7 +375,6 @@ document.addEventListener("keydown", function(event) { // assigns W, A and D key
         jump("up");// jump with the up mechanics 
     }
 }); // key functions 
-
 
 instructionButton.addEventListener("click", function() {// instruction button directions
     startScreen.style.display = "none";// dont display the start screen
@@ -505,14 +503,11 @@ restartButton.addEventListener("click", function() {// restart button directions
     });
 
 GameoverOverlay.addEventListener("click", function() {// if the game over overlay is clicked 
-    GameoverOverlay.style.display = "none";// remove overlay 
-    showScoreScreen()// show the score screen 
+    GameoverOverlay.style.display = "none";// removess overlay 
+    showScoreScreen()// shows the score screen 
 })
-    // scorscreen directions
-function showScoreScreen() {//
-
-        //more time suff 
-    clearInterval(gameTimer); // stops tracking the time 
+    
+function showScoreScreen() {// scorscreen directions
         
     clearInterval(gameTimer); // stops tracking the time
             //for rounding to seconds
@@ -526,6 +521,8 @@ function showScoreScreen() {//
     if(seconds <10) {//if its less than 10
         displaySeconds = "0" + seconds;// adds a 0 in front of the seconds 
     }//add a 0 when sconds are less the 10
+
+
     finalTime.textContent = minutes+ ":" + displaySeconds;// displays the final time on scorescreen 
     finalScore.textContent = score;// the final score diasplay gets the valu from the score variable 
     pauseMenu.style.display = "none";// dont display the pause menu
@@ -536,5 +533,5 @@ function showScoreScreen() {//
 }
 
 makePlatforms(56,65,12,18,1, 0.9,1);// makes the first platform
-makePlatforms(35,54,12,18,0.5, 1,-1);// makes the first platform
-makePlatforms(55,43,12,18,0.4, 1.1,1);// makes the first platform
+makePlatforms(35,54,12,18,0.5, 1,-1);// makes the second  platform
+makePlatforms(55,43,12,18,0.4, 1.1,1);// makes the thrid platform
