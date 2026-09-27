@@ -24,6 +24,7 @@
     const finalTime =  document.getElementById("finalTime");// final time display
     const liveTimer = document.querySelector(".liveTimer");//live timer display
     let gameBall=document.querySelector(".gameBall");//this is the ball
+    let guidePath = document.querySelector(".guidePath")
     const gamePlatforms = document.querySelectorAll(".gamePlatform");
 
 
@@ -41,7 +42,6 @@
     let ballSpeed = 10// the speed the abll will move at
     let jumping = false// is the ball currently moving
     let BallGoingDown = false;// checks if the pall is going down or not after jumping
-    let currentPlatform = null;//
 
 
     // variables for the platform movment and duplication
@@ -95,7 +95,6 @@
         jumping  = false;// sets the jumping variable to no 
         BallGoingDown =  false;// sets the ball is going downn variable to no 
 
-        currentPlatform = null;
         gameBall.style.left = ballX + "%";// links balls x to the balls x attribuite 
         gameBall.style.top = ballY + "%";// links the balls y to the y attribute 
     }// resets the ball tot he original position 
@@ -115,7 +114,6 @@
                 ballY = platform.y -3.2;
                 gameBall.style.top = ballY + "%";
 
-                currentPlatform = platform;
                 jumping = false;
                 BallGoingDown = false;
                 return true;
@@ -126,7 +124,6 @@
     
     function jump(direction) {
         
-
         if (jumping) return;
 
         jumping = true;
@@ -150,12 +147,32 @@
         let jumpStartY = ballY;
         let jumpHeight = 15;
         let jumpProgress = 0;
+        guidePath.innerHTML = "";
         let verticalDistance = -11;
+
+        for (let i = 0; i < 10; i++) {
+            let dot = document.createElement("div");
+            dot.className = "guideDot";
+
+            let progress = i /10;
+            let verticalOffset = Math.sin(progress * Math.PI) * jumpHeight;
+
+            let  dotY = jumpStartY +(verticalDistance * progress) - verticalOffset;
+            let dotX = jumpStartX + (horizontalDistance * progress);
+
+            dot.style.top = dotY + "%";
+            dot.style.left = dotX + "%";
+
+            guidePath.appendChild(dot);
+        }
+
         let jumpTimer = setInterval(function() {
         jumpProgress += 0.1;
         if (jumpProgress >1){
             jumpProgress =1;
         }
+
+    
 
         let verticalOffset = Math.sin(jumpProgress * Math.PI) * jumpHeight;
 
@@ -188,7 +205,6 @@
             gamePlatforms[index].style.opacity= platform.opacity;
         });
     }
-
 
     document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
         if(event.key === "d") {//if d is press 
