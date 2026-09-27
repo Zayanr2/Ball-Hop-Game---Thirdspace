@@ -27,7 +27,7 @@
     let guidePath = document.querySelector(".guidePath")
     const platformHolder = document.querySelector(".platformHolder");// these are the platforms that the ball will land on
     const scoreDisplay = document.querySelector(".score"); // the score display on the game screen
-
+    const gameStartPlatform = document.querySelector(".gameStartPlatform");// the starting platform that the ball starts on
 
     //variables For ingame time calculation 
     let startTime;//stores the time when the timer starts 
@@ -48,10 +48,20 @@
     let score = 0; // this variable will keep track of the score  and will be used to displat it 
     let platformMoveY = 0;// this will keep track of how far the platforms have move up and down 
     let platformMoveDistance = 0;// this will keep track of how far the platforms have move up and down 
+    let startPlatformY = 460 
 
     // these are the platforms and there basic attributes 
     let platforms = []; // where the platforms are stored 
 
+
+
+
+
+
+
+
+
+    // game functions 
     function makePlatforms(x,y,width,height, opacity, speed, direction) {// this function will make platforms 
         let platform = document.createElement("div");// this will make divs in the html 
         platform.className = "gamePlatform";// this is the class that will be assigned to the divis
@@ -231,6 +241,10 @@
     }
 
     function platformMovment() {// move the platforms 
+        if (platformMoveY > 0) {// if the platforms are moving up
+            startPlatformY += platformMoveY;// the staring platofmr will also move 
+        }
+        gameStartPlatform.style.top = startPlatformY + "px";// the starting platform will also move up with the other platforms
         platforms.forEach(function(platform, index){// each platform 
             platform.x += platform.speed * platform.direction;// platforms x cordinate changes based on the speed , and direction 
 
@@ -240,12 +254,13 @@
             }
 
             if (platformMoveY > 0) {
-                platform.y +=platformMoveY;
+                platform.y += platformMoveY;
+                startPlatformY +=platformMoveY;
                 platformMoveDistance -= platformMoveY;
-                    if (platformMoveDistance <= 0) {
-                        platformMoveY = 0;
-                        platformMoveDistance = 0;
-                }
+                if  (platformMoveDistance <= 0) {
+                    platformMoveY = 0;
+                    platformMoveDistance = 0;}
+
             }
 
             let scale = 0.7 +((platform.y -43)/22);
@@ -275,21 +290,6 @@
         });// every platform oves 
     }
 
-    document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
-        if(event.key === "d") {//if d is press 
-            
-            jump("right");// jump function with right mechanics 
-        }
-
-        if(event.key === "a") {//if a is press 
-            jump("left");//jump function with the left mechanics
-        }
-
-        if(event.key === "w") {//if d is press and the pall isnt moving
-            jump("up");// jump with the up mechanics 
-        }
-    }); // key functions 
-
     function startTimer(){// the function the will keep track of the time
         startTime = Date.now() - elapsedTime; // if the timer was paused, this will make sure the time is acurate
         gameTimer = setInterval(function() { // updats time every 1000 mliseconds 
@@ -305,6 +305,30 @@
             liveTimer.textContent = "TIME:" + minutes + ":" + seconds;// displays the time
         }, 1000); // runs once every second
     };
+
+
+
+
+
+
+
+
+    //screens and butons 
+    document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
+        if(event.key === "d") {//if d is press 
+            
+            jump("right");// jump function with right mechanics 
+        }
+
+        if(event.key === "a") {//if a is press 
+            jump("left");//jump function with the left mechanics
+        }
+
+        if(event.key === "w") {//if d is press and the pall isnt moving
+            jump("up");// jump with the up mechanics 
+        }
+    }); // key functions 
+
 
     instructionButton.addEventListener("click", function() {// instruction button directions
         startScreen.style.display = "none";// dont display the start screen
