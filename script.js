@@ -46,7 +46,8 @@
     // game variables
     let gameWorking = true;// the game is working right now  soo all  the controls will work 
     let score = 0; // this variable will keep track of the score  and will be used to displat it 
-
+    let platformMoveY = 0;// this will keep track of how far the platforms have move up and down 
+    let platformMoveDistance = 0;// this will keep track of how far the platforms have move up and down 
 
     // these are the platforms and there basic attributes 
     let platforms = []; // where the platforms are stored 
@@ -92,7 +93,10 @@
                     ballY = platform.y - 3.2;// the ball is in the center of the platform(ontop)
                     gameBall.style.top = ballY +"%";// links the tip atribute iwht the y axis 
 
-                    landedPlatform = platform// the landed platform is this platfomr 
+                    landedPlatform = platform// the landed platform is this platfomr
+                    
+                    platformMoveY = 0.5
+                    platformMoveDistance = 11;
                     score += 1; // the score increaces py on if u land succesfull on the platfomr 
                     scoreDisplay.textContent = "SCORE:" + score; // the score display shos score and what ever the number is s
                     return true;// yess landed 
@@ -226,6 +230,19 @@
 
             if (platform.x >=75 || platform.x <= 10) {// if the platfrom is at on edge or the other edge 
                 platform.direction *= -1; // reverse direction when reaching the edges
+                
+
+               
+            }
+            
+
+            if (platformMoveY > 0) {
+                platform.y +=platformMoveY;;
+                platformMoveDistance -= platformMoveY;
+                    if (platformMoveDistance <= 0) {
+                        platformMoveY = 0;
+                        platformMoveDistance = 0;
+                }
             }
 
             let scale = 1 +((65- platform.y) / 100);
