@@ -42,7 +42,7 @@
     let jumping = false// is the ball currently moving
 
 
-    // variables for the platform movment and duplication
+    // these are the platforms and there basic attributes 
     let platforms = [// these are all the platforms 
         {
             x:56,// x value 
@@ -101,98 +101,95 @@
     }
 
     
-    function ShowGuidePath(direction) {
+    function ShowGuidePath(direction) {// this function shows the guild path 
         
+        let horizontalMovement = 0; // how much the ball moves sideways 
+
+        if (direction === "left"){// if the direction is left 
+            horizontalMovement = -1.5;// move -1.5 ( moveing left)
+        }
+        else if (direction === "right"){// if the direction is right  
+            horizontalMovement = 1.5;// mov3 1.5 left 
+        }
+        else if (direction === "up"){// if its up 
+            horizontalMovement = 0;// don't move any sides 
+        }
+
+        let horizontalDistance = horizontalMovement * 8;// total distance 
+
+        let jumpStartX = ballX;// balls x is where the jum start 
+        let jumpStartY = ballY;// pal y is where the jump start
+        let jumpHeight = 15;// the arch of the ball
+        let verticalDistance = -11;// how far the ball will go upward 
         
-        let horizontalMovement = 0;
+        for (let i = 0; i < 10; i++) {// maxe the dots for the paths (10 dots)
+            let dot = document.createElement("div");// lets the code make divs in the HTML 
+            dot.className = "guideDot";// this will be the class name 
 
-        if (direction === "left"){
-            horizontalMovement = -1.5;
-        }
-        else if (direction === "right"){
-            horizontalMovement = 1.5;
-        }
-        else if (direction === "up"){
-            horizontalMovement = 0;
-        }
+            let progress = i /10;// how far along the jump the dot is 
+            let verticalOffset = Math.sin(progress * Math.PI) * jumpHeight; // the math that gives the jump curve 
 
-        let horizontalDistance = horizontalMovement * 8;
+            let  dotY = jumpStartY +(verticalDistance * progress) - verticalOffset;// where the dots go on the screen  (y)
+            let dotX = jumpStartX + (horizontalDistance * progress); // where the dots go horrizontally 
 
-        let jumpStartX = ballX;
-        let jumpStartY = ballY;
-        let jumpHeight = 15;
-        let verticalDistance = -11;
-        
-        for (let i = 0; i < 10; i++) {
-            let dot = document.createElement("div");
-            dot.className = "guideDot";
+            dot.style.top = dotY + "%";// links to the top attripute 
+            dot.style.left = dotX + "%";// links to the  left attrupute 
 
-            let progress = i /10;
-            let verticalOffset = Math.sin(progress * Math.PI) * jumpHeight;
-
-            let  dotY = jumpStartY +(verticalDistance * progress) - verticalOffset;
-            let dotX = jumpStartX + (horizontalDistance * progress);
-
-            dot.style.top = dotY + "%";
-            dot.style.left = dotX + "%";
-
-            guidePath.appendChild(dot);
-
-
+            guidePath.appendChild(dot);// ads the dot to the quildpath so its on the screen 
         }
     }
-    function ShowPaths() {
+    function ShowPaths() {// draws all the paths together 
         ShowGuidePath("left") // use the gide function left 
         ShowGuidePath("right")// use the guide function right 
         ShowGuidePath("up")// use the guild function up 
         }// shows all the paths the pall can take 
 
-    function jump(direction) {
+    function jump(direction) {// this si how the ball jumps 
         
-        if (jumping) return;
-        jumping = true;
+        if (jumping) return;// if  your juming then 
+        jumping = true;// jumping is in progres 
 
-        let horizontalMovement = 0;
+        let horizontalMovement = 0;// horizontal movment is 0
 
-        if (direction === "left"){
-            horizontalMovement = -1.5;
+        if (direction === "left"){// if the direction is left 
+            horizontalMovement = -1.5;// then the movment is twards left 
         }
-        else if (direction === "right"){
-            horizontalMovement = 1.5;
+        else if (direction === "right"){// if th direction  is right 
+            horizontalMovement = 1.5;// then the movment is twards the right 
         }
-        else if (direction === "up"){
-            horizontalMovement = 0;
-        }
-
-        let horizontalDistance = horizontalMovement * 8;
-
-        let jumpStartX = ballX;
-        let jumpStartY = ballY;
-        let jumpHeight = 15;
-        let jumpProgress = 0;
-        let verticalDistance = -11;
-
-        let jumpTimer = setInterval(function() {
-        jumpProgress += 0.1;
-        if (jumpProgress >1){
-            jumpProgress =1;
+        else if (direction === "up"){// if the direction is only up 
+            horizontalMovement = 0;// then the movment side to side is none 
         }
 
-        let verticalOffset = Math.sin(jumpProgress * Math.PI) * jumpHeight;
+        let horizontalDistance = horizontalMovement * 8;// this calculates the total horizontal distance 
 
-        ballY = jumpStartY + (verticalDistance * jumpProgress) - verticalOffset;
-        gameBall.style.top = ballY + "%";
+        let jumpStartX = ballX;// the balls current x is where the jump will start 
+        let jumpStartY = ballY;// the balls current y is where the jump will stard 
+        let jumpHeight = 15;// the balls arch 
+        let jumpProgress = 0;// how much of the jump as happend 
+        let verticalDistance = -11;// total distance up 
 
-        ballX = jumpStartX + (horizontalDistance*jumpProgress);
-        gameBall.style.left = ballX + "%";
-
-        if (jumpProgress >=1) {
-            clearInterval(jumpTimer)
-            jumping = false;
-            guidePath.innerHTML = "";
-            ShowPaths();
+        let jumpTimer = setInterval(function() { // does the jump ever 15 seconds 
+        jumpProgress += 0.1;// 10 percent each times 
+        if (jumpProgress >1){// the jump stops at 100 percent 
+            jumpProgress =1;//cant go over 
         }
-        }, 30);
+
+        let verticalOffset = Math.sin(jumpProgress * Math.PI) * jumpHeight;// the curve of the jump, the math behind it 
+
+        ballY = jumpStartY + (verticalDistance * jumpProgress) - verticalOffset;// where the ball will be now y position 
+        gameBall.style.top = ballY + "%";//inks to the acctual ball y attribute 
+
+        ballX = jumpStartX + (horizontalDistance*jumpProgress);// where the x of the ball will be after the jump 
+        gameBall.style.left = ballX + "%";// links to the acctual ball x attribute 
+
+        if (jumpProgress >=1) {// if the jump has reached the final position
+            clearInterval(jumpTimer)// stops the jump 
+            jumping = false;// yhour not jumping 
+            guidePath.innerHTML = "";// removes the old path
+            ShowPaths();// shows the paths from the current position of the ball(function above)
+        }
+        }, 30);// every 30 milliseconds 
     }
 
     function platformMovment() {// move the platforms 
@@ -262,7 +259,7 @@
     gameOverlay.addEventListener("click", function() {// game overlay directions 
         gameOverlay.style.display="none"; // dont display the overlay anymore
         pauseButton.style.display="block";// display the pause button now 
-        ShowPaths()
+        ShowPaths()// shows the balls baths that can be taken right now 
         elapsedTime = 0 // resets the timer back to 0 to restart the time
         startTimer();// start the timer function again 
         platformTimer = setInterval(platformMovment, 30); // starts the platform movement function every 30 milliseconds
