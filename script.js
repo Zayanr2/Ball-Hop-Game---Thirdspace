@@ -39,9 +39,7 @@
     // vriables for moving the ball using the keys 
     let ballY = 75; // bals y cordinat
     let ballX = 50;//bals x cotdinart
-    let ballSpeed = 10// the speed the abll will move at
     let jumping = false// is the ball currently moving
-    let BallGoingDown = false;// checks if the pall is going down or not after jumping
 
 
     // variables for the platform movment and duplication
@@ -93,7 +91,6 @@
         ballX = 50;// setts the balls x back to 50
         ballY = 75;// sets the balls y back to 50 
         jumping  = false;// sets the jumping variable to no 
-        BallGoingDown =  false;// sets the ball is going downn variable to no 
 
         gameBall.style.left = ballX + "%";// links balls x to the balls x attribuite 
         gameBall.style.top = ballY + "%";// links the balls y to the y attribute 
@@ -110,24 +107,66 @@
     }
     function LandingCheck() {
         for (let platform of platforms) {
-            if(BallGoingDown && LandingOnPlatform(platform)) {
+            if( LandingOnPlatform(platform)) {
                 ballY = platform.y -3.2;
                 gameBall.style.top = ballY + "%";
 
                 jumping = false;
-                BallGoingDown = false;
                 return true;
             }
         }
         return false;
     }
     
+    function ShowGuidePath(direction) {
+        
+        
+        let horizontalMovement = 0;
+
+        if (direction === "left"){
+            horizontalMovement = -1.5;
+        }
+        else if (direction === "right"){
+            horizontalMovement = 1.5;
+        }
+        else if (direction === "up"){
+            horizontalMovement = 0;
+        }
+
+        let horizontalDistance = horizontalMovement * 8;
+
+        let jumpStartX = ballX;
+        let jumpStartY = ballY;
+        let jumpHeight = 15;
+        let verticalDistance = -11;
+        
+        for (let i = 0; i < 10; i++) {
+            let dot = document.createElement("div");
+            dot.className = "guideDot";
+
+            let progress = i /10;
+            let verticalOffset = Math.sin(progress * Math.PI) * jumpHeight;
+
+            let  dotY = jumpStartY +(verticalDistance * progress) - verticalOffset;
+            let dotX = jumpStartX + (horizontalDistance * progress);
+
+            dot.style.top = dotY + "%";
+            dot.style.left = dotX + "%";
+
+            guidePath.appendChild(dot);
+
+
+        }
+    }
+    function ShowPaths() {
+        ShowGuidePath("left")
+        ShowGuidePath("right")
+        ShowGuidePath("up")
+    }
     function jump(direction) {
         
         if (jumping) return;
-
         jumping = true;
-        BallGoingDown = false;
 
         let horizontalMovement = 0;
 
@@ -147,32 +186,13 @@
         let jumpStartY = ballY;
         let jumpHeight = 15;
         let jumpProgress = 0;
-        guidePath.innerHTML = "";
         let verticalDistance = -11;
-
-        for (let i = 0; i < 10; i++) {
-            let dot = document.createElement("div");
-            dot.className = "guideDot";
-
-            let progress = i /10;
-            let verticalOffset = Math.sin(progress * Math.PI) * jumpHeight;
-
-            let  dotY = jumpStartY +(verticalDistance * progress) - verticalOffset;
-            let dotX = jumpStartX + (horizontalDistance * progress);
-
-            dot.style.top = dotY + "%";
-            dot.style.left = dotX + "%";
-
-            guidePath.appendChild(dot);
-        }
 
         let jumpTimer = setInterval(function() {
         jumpProgress += 0.1;
         if (jumpProgress >1){
             jumpProgress =1;
         }
-
-    
 
         let verticalOffset = Math.sin(jumpProgress * Math.PI) * jumpHeight;
 
@@ -185,7 +205,8 @@
         if (jumpProgress >=1) {
             clearInterval(jumpTimer)
             jumping = false;
-            BallGoingDown = false;
+            guidePath.innerHTML = "";
+            ShowPaths();
         }
         }, 30);
     }
@@ -257,10 +278,11 @@
     gameOverlay.addEventListener("click", function() {// game overlay directions 
         gameOverlay.style.display="none"; // dont display the overlay anymore
         pauseButton.style.display="block";// display the pause button now 
-        
+        ShowPaths()
         elapsedTime = 0 // resets the timer back to 0 to restart the time
         startTimer();// start the timer function again 
         platformTimer = setInterval(platformMovment, 30); // starts the platform movement function every 30 milliseconds
+        
     });
 
     pauseButton.addEventListener("click", function() {// pause button directions
