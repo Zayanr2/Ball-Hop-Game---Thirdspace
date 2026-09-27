@@ -41,6 +41,7 @@
     let ballX = 50;//bals x cotdinart
     let jumping = false// is the ball currently moving
     let landedPlatform = null;// the ball hasn't landed on any platforms 
+    let gameWorking = true;// the game is working right now  soo all  the controls will work 
 
 
     // these are the platforms and there basic attributes 
@@ -95,7 +96,7 @@
 
             if (ballX >= platformLeft && ballX <= platformRight){// if the ball is inside the platform 
                 
-                if(ballY >= platform.y - 3.2){// and if the ball is on top of the platfome 
+                if(ballY >= platform.y - 3.2 && ballY <= platform.y + 3.2){// and if the ball is on the platform
 
                     ballY = platform.y - 3.2;// the ball is in the center of the platform(ontop)
                     gameBall.style.top = ballY +"%";// links the tip atribute iwht the y axis 
@@ -167,7 +168,7 @@
         }// shows all the paths the pall can take 
 
     function jump(direction) {// this si how the ball jumps 
-        
+        if (!gameWorking) return; // basicaly if the game ising working then the  jumps wont work, this is usefull fpre after the game has eneded 
         if (jumping) return;// if  your juming then 
         jumping = true;// jumping is in progres 
         landedPlatform = null;
@@ -209,11 +210,15 @@
         if (jumpProgress >=1) {// if the jump has reached the final position
             clearInterval(jumpTimer)// stops the jump 
             jumping = false;// yhour not jumping 
-            
+
             guidePath.innerHTML = "";// removes the old path
 
             if(!landingCheck()) {// it the ball missed the platform 
-                clearInterval(platformTimer);// this will stop the platforms 
+                gameWorking = false;// the game has finish/ended 
+                clearInterval(platformTimer);// this will stop the platforms
+                clearInterval(gameTimer);// the timer will stop iff u miss 
+
+                elapsedTime = Date.now() - startTime;// finds out the toal amount of time played
                 
             }
             else {
@@ -303,6 +308,7 @@
         ShowPaths()// shows the balls baths that can be taken right now 
         elapsedTime = 0 // resets the timer back to 0 to restart the time
         startTimer();// start the timer function again 
+        gameWorking= true;// the game will work
         platformTimer = setInterval(platformMovment, 30); // starts the platform movement function every 30 milliseconds
         
     });
@@ -310,7 +316,7 @@
     pauseButton.addEventListener("click", function() {// pause button directions
         pauseMenu.style.display = "block";// display the pause menu
         pauseOverlay.style.display = "block";// display the pause overlayy screen
-
+        gameWorking = false; // the controls wont work 
         clearInterval(gameTimer); //stops the timer
         pauseStartTime = Date.now();// stores the time when the game was paused so that we can calculate how much time has passed since the game was paused and add it to the start time so that the timer continues from where it left off
         clearInterval(platformTimer);// stops the platforms from  moving
@@ -319,7 +325,7 @@
     resumeButton.addEventListener("click", function() {// resume button directions
         pauseMenu.style.display = "none";// dont display the pause menu
         pauseOverlay.style.display = "none"; // dontdisplay the pause overlay 
-
+        gameWorking = true;// the game will work again 
         startTime += Date.now() - pauseStartTime;// calculates the time that has passed since the game was paused and adds it to the start time so that the timer continues from where it left off
         startTimer();// start the timer asgians 
         platformTimer = setInterval(platformMovment,30);
@@ -328,6 +334,7 @@
     quitButton.addEventListener( "click", function() {// quit button directions
         
         showScoreScreen();// show the score screen
+        gameWorking = false;// the controls wont work anymore 
     });
 
     playAgainButton.addEventListener("click", function() {// play again button directions
@@ -340,6 +347,7 @@
             platform.x = platform.startX;// gets the original position 
         });//reset
 
+        gameWorking = true;// the game will work again 
         platformMovment();// runs the platform movment function
         resetBall();// this resets the ball to the original position 
         landedPlatform = null// there is no landed platform
@@ -353,6 +361,8 @@
         scoreScreen.style.display="none";// dont schow the score screen
         gameScreen.style.display="none";// dont show the gamescreen
         startScreen.style.display = "block"; // show startscreen
+        gameWorking = false; // the controls won wok 
+        resetBall();// resets the ball to the original position 
     })
 
     restartButton.addEventListener("click", function() {// restart button directions
@@ -367,6 +377,7 @@
             platform.x = platform.startX;// gets the original position 
         });//reset
 
+        gameWorking = true;// the game is playables 
         platformMovment();// runs the platform movment function
         resetBall();//this resets the ball to the pikining position 
         guidePath.innerHTML = ""; // remvoed the old paths from the screen 
@@ -380,11 +391,8 @@
 
         //more time suff 
         clearInterval(gameTimer); // stops tracking the time 
-        if (pauseStartTime) // if the game was paused
-            {elapsedTime = pauseStartTime - startTime; }// collects the final time that was tracked when u were paused
-        else{//everything else 
-            elapsedTime= Date.now() - startTime;//colects the time u were playing the game
-        }
+        
+        clearInterval(gameTimer); // stops tracking the time
             //for rounding to seconds
         let seconds = Math.floor(elapsedTime/1000);//converts milisecons to seconds 
 
