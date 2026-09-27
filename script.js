@@ -35,6 +35,7 @@ const scoreDisplay = document.querySelector(".score"); // the score display on t
 const gameStartPlatform = document.querySelector(".gameStartPlatform");// the starting platform that the ball starts on
 const platformNotch = document.querySelector(".platformNotch");// the starting platform that the ball starts on
 const gameMusic = document.getElementById("gameMusic"); // the music for the games
+const LoseMusic = document.getElementById("LoseMusic"); // the music for the games
 
 //variables reated to time calculation 
 let startTime;//stores the time when the timer starts 
@@ -263,7 +264,8 @@ function jump(direction) {// this si how the ball jumps
             clearInterval(gameTimer);// the timer will stop iff u miss 
             GameoverOverlay.style.display = "flex"; // show the game over overlay screen 
             elapsedTime = Date.now() - startTime;// finds out the toal amount of time played
-                
+            LoseMusic.play(); 
+            gameMusic.pause();   
         }
         else {
             ShowPaths();// shows the guild paths
@@ -395,7 +397,7 @@ startButton.addEventListener("click", function(){// start button directions
         
 gameOverlay.addEventListener("click", function() {// game overlay directions 
      
-    gameMusic.volume = 1;
+    gameMusic.volume = 0.5;
     gameMusic.currentTime = 0;
     gameMusic.play();// plays the music
     gameOverlay.style.display="none"; // dont display the overlay anymore
@@ -409,6 +411,7 @@ gameOverlay.addEventListener("click", function() {// game overlay directions
 });
 
 pauseButton.addEventListener("click", function() {// pause button directions
+    gameMusic.pause();
     pauseMenu.style.display = "block";// display the pause menu
     pauseOverlay.style.display = "block";// display the pause overlayy screen
     gameWorking = false; // the controls wont work 
@@ -418,6 +421,9 @@ pauseButton.addEventListener("click", function() {// pause button directions
 });
 
 resumeButton.addEventListener("click", function() {// resume button directions
+    gameMusic.volume = 0.5;
+    gameMusic.currentTime = 0;
+    gameMusic.play();// plays the music
     pauseMenu.style.display = "none";// dont display the pause menu
     pauseOverlay.style.display = "none"; // dontdisplay the pause overlay 
     gameWorking = true;// the game will work again 
@@ -427,8 +433,8 @@ resumeButton.addEventListener("click", function() {// resume button directions
 });
 
 quitButton.addEventListener( "click", function() {// quit button directions
-        
-     showScoreScreen();// show the score screen
+    gameMusic.pause();    
+    showScoreScreen();// show the score screen
     gameWorking = false;// the controls wont work anymore 
     score = 0; //  the score restes 
     document.querySelector(".score").textContent = "Score: 0";
@@ -469,6 +475,9 @@ mainMenuButton.addEventListener("click", function() {// main menu button directi
 })
 
 restartButton.addEventListener("click", function() {// restart button directions
+    gameMusic.volume = 0.5;
+    gameMusic.currentTime = 0;
+    gameMusic.play();// plays the music
     pauseMenu.style.display ="none"; // dont display to pause menu
     pauseOverlay.style.display = "none";// dont display the pause overlay 
     gameScreen.style.display = "block";// ddisplay the gamescreen
