@@ -501,7 +501,7 @@ body {
     border-radius:20px;
     transform:translateX(-50%) perspective(500px) rotateX(20deg);
     left: 50%;
-    top: 460px;
+    top: 85%;
     box-shadow: -8px 8px 0px rgba(0,0,0,0.15);
 
 }

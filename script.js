@@ -48,12 +48,9 @@
     let score = 0; // this variable will keep track of the score  and will be used to displat it 
     let platformMoveY = 0;// this will keep track of how far the platforms have move up and down 
     let platformMoveDistance = 0;// this will keep track of how far the platforms have move up and down 
-
+    let startplatformY = 85; // this is the startng position of the staring platform 
     // these are the platforms and there basic attributes 
     let platforms = []; // where the platforms are stored 
-
-
-
 
 
 
@@ -82,12 +79,36 @@
             x: x, //x value
             startX: x, //starting x value 
             y: y, //y value 
+            startY: y,
             width: width,  // width value
             height: height, // height value
             speed: speed, // speed 
             direction: direction,// directin 
+            startDirection: direction, // starting direction
             opacity: opacity // opacity value
         })
+    }
+
+    function resetPlatforms() {// resets all the platforms 
+        platforms.forEach(function(platform) {// for each platform
+            platform.x = platform.startX;// rests the starting x position of the platform 
+            platform.y = platform.startY;// resets the staring y positon of the platforms 
+            platform.direction = platform.startDirection;//resets the direction of the platforms 
+
+            let scale = 0.7 + ((platform.y - 43) / 22);// scale to reset the platforms to the original size
+
+            platform.element.style.left = platform.x + "%";// resets the x psoition 
+            platform.element.style.top = platform.y + "%";// resets the y position 
+            platform.element.style.width = (platform.width * scale) + "%";// resets the width 
+            platform.element.style.height = (platform.height * scale) + "px";// resest the height 
+
+
+            platform.element.style.opacity = platform.opacity;// resets the opacity 
+        });
+
+        startplatformY = 85;// resets the variables 
+        gameStartPlatform.style.top = startplatformY + "%";// linkgs the start platform top property
+
     }
 
     makePlatforms(56,65,12,18,1, 0.9,1);// makes the first platform
@@ -95,7 +116,8 @@
     makePlatforms(55,43,12,18,0.4, 1.1,1);// makes the first platform
 
     function landingCheck() {// this function checks if the platfom landed 
-        for(let platform of platforms) {// in platforms look at platform 
+         
+            for(let platform of platforms) {// in platforms look at platform 
             let scale = 0.7 + ((platform.y - 43) / 22);
             let platformWidth = platform.width *scale;  
             let platformLeft = platform.x;// the left is the x cordinate 
@@ -240,15 +262,19 @@
     }
 
     function platformMovment() {// move the platforms 
-        
+
+        if(platformMoveY > 0) {// if the platforms are moving up
+            startplatformY += platformMoveY;// the starting platform will also move up with the other platforms
+                gameStartPlatform.style.top = startplatformY + "%"; // links the atributes
+        } 
         platforms.forEach(function(platform, index){// each platform 
             platform.x += platform.speed * platform.direction;// platforms x cordinate changes based on the speed , and direction 
 
-            if (platform.x >=75 || platform.x <= 10) {// if the platfrom is at on edge or the other edge 
+            if (platform.x >=75 || platform.x <= 0) {// if the platfrom is at on edge or the other edge 
                 platform.direction *= -1; // reverse direction when reaching the edges
                 
             }
-            if (platformMoveY > 0) {
+            if (platformMoveY > 0) {    
                 platform.y += platformMoveY;
  
             }
@@ -381,6 +407,7 @@
         gameWorking = false;// the controls wont work anymore 
         score = 0; //  the score restes 
         document.querySelector(".score").textContent = "Score: 0";
+        resetPlatforms()
     });
 
     playAgainButton.addEventListener("click", function() {// play again button directions
@@ -400,6 +427,7 @@
         landedPlatform = null// there is no landed platform
         guidePath.innerHTML = "";// removes the old guild path
         elapsedTime = 0;//resets the timer 
+        resetPlatforms()
         liveTimer.textContent = "TIME:00:00"; // resets the timer display
 
     });
@@ -421,6 +449,7 @@
         gameOverlay.style.display = "flex";// display the overlay
         pauseButton.style.display = "none";// dont show the pause button
         scoreScreen.style.display = "none";// not show the score screen
+        resetPlatforms()
 
         platforms.forEach(function(platform) {// resers platforms to the original position 
             platform.x = platform.startX;// gets the original position 
