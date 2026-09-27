@@ -43,7 +43,7 @@
 
 
     // variables for the platform movment and duplication
-    let platforms = [
+    let platforms = [// these are all the platforms 
         {
             x:56,// x value 
             startX:56,// starting x value helps to rested 
@@ -87,36 +87,19 @@
 
     });// updates platforms 
 
-    function resetBall() {
+    function resetBall() {// resets the ball tot he original position 
         ballX = 50;// setts the balls x back to 50
         ballY = 75;// sets the balls y back to 50 
         jumping  = false;// sets the jumping variable to no 
 
         gameBall.style.left = ballX + "%";// links balls x to the balls x attribuite 
         gameBall.style.top = ballY + "%";// links the balls y to the y attribute 
-    }// resets the ball tot he original position 
+    }
 
     function getBallBottom() {//finds the bottom edge of the ball
         return ballY + 3.2;// give the bottom edge of the ball
     }
-    function LandingOnPlatform(platform) {
-        let platformLeft = platform.x;
-        let platformRight = platform.x + platform.width;
 
-        return ballX >= platformLeft && ballX <= platformRight && getBallBottom() >= platform.y;
-    }
-    function LandingCheck() {
-        for (let platform of platforms) {
-            if( LandingOnPlatform(platform)) {
-                ballY = platform.y -3.2;
-                gameBall.style.top = ballY + "%";
-
-                jumping = false;
-                return true;
-            }
-        }
-        return false;
-    }
     
     function ShowGuidePath(direction) {
         
@@ -159,10 +142,11 @@
         }
     }
     function ShowPaths() {
-        ShowGuidePath("left")
-        ShowGuidePath("right")
-        ShowGuidePath("up")
-    }
+        ShowGuidePath("left") // use the gide function left 
+        ShowGuidePath("right")// use the guide function right 
+        ShowGuidePath("up")// use the guild function up 
+        }// shows all the paths the pall can take 
+
     function jump(direction) {
         
         if (jumping) return;
@@ -211,20 +195,20 @@
         }, 30);
     }
 
-    function platformMovment() {
-        platforms.forEach(function(platform, index){
-            platform.x += platform.speed * platform.direction;
+    function platformMovment() {// move the platforms 
+        platforms.forEach(function(platform, index){// each platform 
+            platform.x += platform.speed * platform.direction;// platforms x cordinate changes based on the speed , and direction 
 
-            if (platform.x >=75 || platform.x <= 10) {
+            if (platform.x >=75 || platform.x <= 10) {// if the platfrom is at on edge or the other edge 
                 platform.direction *= -1; // reverse direction when reaching the edges
             }
 
-            gamePlatforms[index].style.left = platform.x + "%";
-            gamePlatforms[index].style.top = platform.y + "%";
-            gamePlatforms[index].style.width= platform.width + "%";
-            gamePlatforms[index].style.height= platform.height + "px";
-            gamePlatforms[index].style.opacity= platform.opacity;
-        });
+            gamePlatforms[index].style.left = platform.x + "%";// link left to the x attribute 
+            gamePlatforms[index].style.top = platform.y + "%";// links top to the y attripute 
+            gamePlatforms[index].style.width= platform.width + "%";// links width to the width attribut 
+            gamePlatforms[index].style.height= platform.height + "px";// inks height to the height attripute 
+            gamePlatforms[index].style.opacity= platform.opacity;// links ipacity to the platforms opacity atribute 
+        });// every platform oves 
     }
 
     document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
