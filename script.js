@@ -20,6 +20,7 @@
     const pauseMenu = document.querySelector(".pauseMenu");// where all the pause buttons are
     const pauseOverlay = document.querySelector(".pauseOverlay");// blurs the game when paused
     const gameOverlay = document.querySelector(".gameOverlay");// tells you to click to begin the timer and game
+    const GameoverOverlay = document.querySelector(".GameoverOverlay");// tells you to click the screen to continue after u missed 
     const finalScore = document.getElementById("finalScore");//keeps trak of the final score
     const finalTime =  document.getElementById("finalTime");// final time display
     const liveTimer = document.querySelector(".liveTimer");//live timer display
@@ -261,7 +262,7 @@
                 gameWorking = false;// the game has finish/ended 
                 clearInterval(platformTimer);// this will stop the platforms
                 clearInterval(gameTimer);// the timer will stop iff u miss 
-
+                GameoverOverlay.style.display = "flex"; // show the game over overlay screen 
                 elapsedTime = Date.now() - startTime;// finds out the toal amount of time played
                 
             }
@@ -489,6 +490,10 @@
         liveTimer.textContent = "TIME:00:00";// resets the timer display
     });
 
+    GameoverOverlay.addEventListener("click", function() {// if the game over overlay is clicked 
+        GameoverOverlay.style.display = "none";// remove overlay 
+        showScoreScreen()// show the score screen 
+    })
     // scorscreen directions
     function showScoreScreen() {//
 
