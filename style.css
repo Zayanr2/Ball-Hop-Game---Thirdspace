@@ -798,3 +798,7 @@ border: radius 20px;
     transform: translate(-50%,-50%);
     pointer-events:none;
 }   
+
+.GameoverOverlay {
+    display: none;
+}

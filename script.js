@@ -52,6 +52,7 @@
     let startplatformY = 85; // this is the startng position of the staring platform 
     // these are the platforms and there basic attributes 
     let platforms = []; // where the platforms are stored 
+    let NewSpeed = 1.2;
 
 
 
@@ -119,6 +120,11 @@
     makePlatforms(56,65,12,18,1, 0.9,1);// makes the first platform
     makePlatforms(35,54,12,18,0.5, 1,-1);// makes the first platform
     makePlatforms(55,43,12,18,0.4, 1.1,1);// makes the first platform
+
+    function makeNewPlatofrms() {
+        makePlatforms(55,43,12,18,0.4, NewSpeed,1);// makes the first platform
+        NewSpeed  += 0.1;
+    }
 
     function landingCheck() {// this function checks if the platfom landed 
          
@@ -325,6 +331,9 @@
             if  (platformMoveDistance <= 0) {
                 platformMoveY = 0;
                 platformMoveDistance = 0;
+
+                makeNewPlatofrms();// will add a new platform 
+
             }
          }
     }
