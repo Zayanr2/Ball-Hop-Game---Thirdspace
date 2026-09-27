@@ -49,40 +49,7 @@
 
 
     // these are the platforms and there basic attributes 
-    let platforms = [// these are all the platforms 
-        {
-            x:56,// x value 
-            startX:56,// starting x value helps to rested 
-            y:65,// y value 
-            width:18,//width 
-            height:20,// height 
-            speed:0.9,// speed that the platform moves 
-            direction:1,// direction of the platform 
-            opacity:1,// how clear the platform is 
-
-        },
-        {
-            x:35,// x value 
-            startX:35,// the first ex value of the platform helps to reset 
-            y:54,// y value  
-            width:13,// widthc 
-            height:18,// height 
-            speed:1,// speed of the platform 
-            direction:-1,// direction of the platform 
-            opacity: 0.5,// how clear is the platform 
-
-        },
-        {
-            x:55,// x value 
-            startX:55,// the first ex value of the platform helps to reset 
-            y:43,// y value  
-            width:8,// widthc 
-            height:16,// height 
-            speed:1.1,// speed of the platform 
-            direction:1,// direction of the platform 
-            opacity: 0.4,// how clear is the platform 
-        }// platforms 
-    ];
+    let platforms = []; // where the platforms are stored 
 
     function makePlatforms(x,y,width,height, opacity, speed, direction) {// this function will make platforms 
         let platform = document.createElement("div");// this will make divs in the html 
@@ -97,6 +64,7 @@
         platformHolder.appendChild(platform); // this adds platfoms to holder to show on screen
 
         platforms.push({
+            element: platform, // the elemnt that was created
             x: x, //x value
             startX: x, //starting x value 
             y: y, //y value 
@@ -109,15 +77,8 @@
     }
 
     makePlatforms(56,65,18,20,1, 0.9,1);// makes the first platform
-
-    platforms.forEach(function(platform, index) {
-        gamePlatforms[index].style.left = platform.x + "%";// uspdated platforms left position 
-        gamePlatforms[index].style.top = platform.y + "%";// updates platforms top position 
-        gamePlatforms[index].style.width = platform.width + "%";// updates platoforms widtch
-        gamePlatforms[index].style.height = platform.height + "px"; // updates platforms height 
-        gamePlatforms[index].style.opacity= platform.opacity; // updates the platforms transperency 
-
-    });// updates platforms 
+    makePlatforms(35,54,13,18,0.5, 1,-1);// makes the first platform
+    makePlatforms(55,43,8,16,0.4, 1.1,1);// makes the first platform
 
     function landingCheck() {// this function checks if the platfom landed 
         for(let platform of platforms) {// in platforms look at platform 
@@ -267,11 +228,14 @@
                 platform.direction *= -1; // reverse direction when reaching the edges
             }
 
-            gamePlatforms[index].style.left = platform.x + "%";// link left to the x attribute 
-            gamePlatforms[index].style.top = platform.y + "%";// links top to the y attripute 
-            gamePlatforms[index].style.width= platform.width + "%";// links width to the width attribut 
-            gamePlatforms[index].style.height= platform.height + "px";// inks height to the height attripute 
-            gamePlatforms[index].style.opacity= platform.opacity;// links ipacity to the platforms opacity atribute 
+            let scale = 1 +((65- platform.y) / 100);
+            let newOpacity = platform.opacity +((65- platform.y) / 100);
+
+            platform.element.style.left = platform.x + "%";// link left to the x attribute 
+            platform.element.style.top = platform.y + "%";// links top to the y attripute 
+            platform.element.style.width= (platform.width * scale) + "%";// links width to the width attribut 
+            platform.element.style.height= (platform.height * scale) + "px";// inks height to the height attripute 
+            platform.element.style.opacity= Math.min(newOpacity, 1);// links ipacity to the platforms opacity atribute 
 
             if (landedPlatform === platform) {// if the laded platform is a platfomr 
                 ballX = platform.x + platform.width /2;// then the bals x valy becaome the sma e as the platfoms x value 
