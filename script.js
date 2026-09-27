@@ -28,6 +28,7 @@
     const platformHolder = document.querySelector(".platformHolder");// these are the platforms that the ball will land on
     const scoreDisplay = document.querySelector(".score"); // the score display on the game screen
     const gameStartPlatform = document.querySelector(".gameStartPlatform");// the starting platform that the ball starts on
+    const platformNotch = document.querySelector(".platformNotch");// the starting platform that the ball starts on
 
     //variables For ingame time calculation 
     let startTime;//stores the time when the timer starts 
@@ -107,8 +108,12 @@
         });
 
         startplatformY = 85;// resets the variables 
-        gameStartPlatform.style.top = startplatformY + "%";// linkgs the start platform top property
 
+        let StartScale = 0.7 + ((startplatformY - 43) / 22);
+
+        gameStartPlatform.style.top = startplatformY + "%";// linkgs the start platform top property
+        gameStartPlatform.style.width = (750* StartScale) + "px";
+        gameStartPlatform.style.height = (65* StartScale) + "px";
     }
 
     makePlatforms(56,65,12,18,1, 0.9,1);// makes the first platform
@@ -265,7 +270,16 @@
 
         if(platformMoveY > 0) {// if the platforms are moving up
             startplatformY += platformMoveY;// the starting platform will also move up with the other platforms
-                gameStartPlatform.style.top = startplatformY + "%"; // links the atributes
+            
+            let StartScale = 0.7 + ((startplatformY - 43) / 10);
+
+            platformNotch.style.width = (5* StartScale) + "%";
+            platformNotch.style.height = (4* StartScale) + "%";
+            platformNotch.style.top = -25 + "%"; // links the atributes
+            gameStartPlatform.style.top = startplatformY + "%"; // links the atributes
+            gameStartPlatform.style.width = (15* StartScale) + "%";
+            gameStartPlatform.style.height = (6* StartScale) + "%";
+
         } 
         platforms.forEach(function(platform, index){// each platform 
             platform.x += platform.speed * platform.direction;// platforms x cordinate changes based on the speed , and direction 
@@ -279,8 +293,8 @@
  
             }
     
-            let scale = 0.7 +((platform.y -43)/22);
-            let newOpacity = 0.4 +((platform.y -43) / 22) *0.6;
+            let scale = 0.7 +((platform.y -43)/22);// the scale is here 
+            let newOpacity = 0.4 +((platform.y -43) / 22) *0.6;// the opacity increases 
 
             platform.element.style.left = platform.x + "%";// link left to the x attribute 
             platform.element.style.top = platform.y + "%";// links top to the y attripute 
@@ -295,8 +309,8 @@
                 ballX = platform.x + platformWidth /2;// then the bals x valy becaome the sma e as the platfoms x value 
                 gameBall.style.left = ballX + "%"// lins the left function witht he bals x cordinate 
                 
-                ballY = platform.y -3.2;
-                gameBall.style.top = ballY + "%";
+                ballY = platform.y -3.2;// the balls y is equal to the platofms y cordinate 
+                gameBall.style.top = ballY + "%";// links it 
 
                 guidePath.innerHTML = "";// remove old pats 
                 ShowPaths();// shows current paths 
@@ -422,7 +436,6 @@
         score = 0; //  the score restes 
         scoreDisplay.textContent = "SCORE: 0";// resets the score display
         gameWorking = true;// the game will work again 
-        platformMovment();// runs the platform movment function
         resetBall();// this resets the ball to the original position 
         landedPlatform = null// there is no landed platform
         guidePath.innerHTML = "";// removes the old guild path
