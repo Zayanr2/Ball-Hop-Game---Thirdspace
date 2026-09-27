@@ -279,15 +279,14 @@ function platformMovment() {// move the platforms
     if(platformMoveY > 0) {// if the platforms are moving up
         startplatformY += platformMoveY;// the starting platform will also move up with the other platforms
             
-        let StartScale = 0.7 + ((startplatformY - 43) / 10);
+        let StartScale = 0.7 + ((startplatformY - 43) / 10);// the scale at which the platform will be resized 
 
-        platformNotch.style.width = (5* StartScale) + "%";
-        platformNotch.style.height = (4* StartScale) + "%";
-        platformNotch.style.top = -25 + "%"; // links the atributes
-        gameStartPlatform.style.top = startplatformY + "%"; // links the atributes
-        gameStartPlatform.style.width = (15* StartScale) + "%";
-        gameStartPlatform.style.height = (6* StartScale) + "%";
-
+        platformNotch.style.width = (5* StartScale) + "%";// sets the nots width 
+        platformNotch.style.height = (4* StartScale) + "%";// sets the noches height 
+        platformNotch.style.top = -25 + "%"; // sets the noches top position 
+        gameStartPlatform.style.top = startplatformY + "%"; // sets the platform top postion 
+        gameStartPlatform.style.width = (15* StartScale) + "%";// sets the starting platforms width 
+        gameStartPlatform.style.height = (6* StartScale) + "%";// sets the starting  platforms height 
     } 
     platforms.forEach(function(platform, index){// each platform 
         platform.x += platform.speed * platform.direction;// platforms x cordinate changes based on the speed , and direction 
@@ -324,34 +323,34 @@ function platformMovment() {// move the platforms
             
         }// this will make the ball move lefte anrd right witht he platform after landing 
 
-    });// every platform oves 
+    });// every es platform oves 
 
-    if (platformMoveY > 0) {
-        platformMoveDistance -= platformMoveY;
+    if (platformMoveY > 0) {// is the platform moving down 
+        platformMoveDistance -= platformMoveY;// calculates how much more the platform will mve 
 
-        if  (platformMoveDistance <= 0) {
-            platformMoveY = 0;
-            platformMoveDistance = 0;
-
-            makeNewPlatofrms();// will add a new platform 
+        if  (platformMoveDistance <= 0) { // has the platfomr finish moving 
+            platformMoveY = 0;// stop moving 
+            platformMoveDistance = 0;// remian distance is 0 
+            makeNewPlatofrms();// will add a new platforms every time  
         }
     }
 }
 
-function startTimer(){// the function the will keep track of the time
+function startTimer(){// the function the will keep track of the time 
+
     startTime = Date.now() - elapsedTime; // if the timer was paused, this will make sure the time is acurate
     gameTimer = setInterval(function() { // updats time every 1000 mliseconds 
         elapsedTime = Date.now() - startTime; // checks how much time has passes in milliseconds since u started
 
-        let seconds = Math.floor(elapsedTime/1000);// checks for the number of seconds
-        let minutes = Math.floor(seconds/60);// checks for the number of minutes 
+        let seconds = Math.floor(elapsedTime/1000);// checks for the total number of seconds  
+        let minutes = Math.floor(seconds/60);// checks for the number of minutes passed  
         seconds = seconds % 60;// calculates the seconds remaining after the minutes
 
         if(seconds<10) {// if the time is less then 10s
-                seconds = "0" + seconds;}// ads a zer if its 0-9 seconds 
+                seconds = "0" + seconds;}// ads a zer0 Example 09, 08
     
-        liveTimer.textContent = "TIME:" + minutes + ":" + seconds;// displays the time
-    }, 1000); // runs once every second
+        liveTimer.textContent = "TIME:" + minutes + ":" + seconds;// displays the time on the live timre 
+    }, 1000); // runs once every second or 1000 miliseconds 
 };
 
 
@@ -360,20 +359,19 @@ function startTimer(){// the function the will keep track of the time
 
 
 
- //screens and butons 
+ //ALL OF THE SCREENS AND BUTTONS ARE BELOW THIS 
+
 document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
     if(event.key === "d") {//if d is press 
             
-        jump("right");// jump function with right mechanics 
-    }
-
+        jump("right");}// jump function with right mechanics 
+    
     if(event.key === "a") {//if a is press 
-        jump("left");//jump function with the left mechanics
-    }
-
+        jump("left");}//jump function with the left mechanics
+    
     if(event.key === "w") {//if d is press and the pall isnt moving
-        jump("up");// jump with the up mechanics 
-    }
+        jump("up");}// jump with the up mechanics 
+    
 }); // key functions 
 
 instructionButton.addEventListener("click", function() {// instruction button directions
@@ -395,8 +393,8 @@ startButton.addEventListener("click", function(){// start button directions
         
 gameOverlay.addEventListener("click", function() {// game overlay directions 
      
-    gameMusic.volume = 0.5;
-    gameMusic.currentTime = 0;
+    gameMusic.volume = 0.5;// The volume for the song 
+    gameMusic.currentTime = 0;// restarts the song 
     gameMusic.play();// plays the music
     gameOverlay.style.display="none"; // dont display the overlay anymore
     pauseButton.style.display="block";// display the pause button now 
@@ -404,12 +402,11 @@ gameOverlay.addEventListener("click", function() {// game overlay directions
     elapsedTime = 0 // resets the timer back to 0 to restart the time
     startTimer();// start the timer function again 
     gameWorking= true;// the game will not work
-    platformTimer = setInterval(platformMovment, 30); // starts the platform movement function every 30 milliseconds
-        
+    platformTimer = setInterval(platformMovment, 30); // starts the platform movement function every 30 milliseconds    
 });
 
 pauseButton.addEventListener("click", function() {// pause button directions
-    gameMusic.pause();
+    gameMusic.pause();// pauses the music too 
     pauseMenu.style.display = "block";// display the pause menu
     pauseOverlay.style.display = "block";// display the pause overlayy screen
     gameWorking = false; // the controls wont work 
@@ -419,24 +416,24 @@ pauseButton.addEventListener("click", function() {// pause button directions
 });
 
 resumeButton.addEventListener("click", function() {// resume button directions
-    gameMusic.volume = 0.5;
-    gameMusic.currentTime = 0;
-    gameMusic.play();// plays the music
+    gameMusic.volume = 0.5;// the volume for the song 
+    gameMusic.currentTime = 0;// restarts the song 
+    gameMusic.play();// plays the music again 
     pauseMenu.style.display = "none";// dont display the pause menu
     pauseOverlay.style.display = "none"; // dontdisplay the pause overlay 
     gameWorking = true;// the game will work again 
     startTime += Date.now() - pauseStartTime;// calculates the time that has passed since the game was paused and adds it to the start time so that the timer continues from where it left off
     startTimer();// start the timer asgians 
-    platformTimer = setInterval(platformMovment,30);
+    platformTimer = setInterval(platformMovment,30);// runs the platform movment every 30 milliseconds 
 });
 
 quitButton.addEventListener( "click", function() {// quit button directions
-    gameMusic.pause();    
+    gameMusic.pause(); // pauses the music 
     showScoreScreen();// show the score screen
     gameWorking = false;// the controls wont work anymore 
     score = 0; //  the score restes 
-    document.querySelector(".score").textContent = "Score: 0";
-    removeExtraPlatforms()
+    document.querySelector(".score").textContent = "Score: 0";// resets the score 
+    removeExtraPlatforms()// removes the extra platforms and restes the games 
 });
 
 playAgainButton.addEventListener("click", function() {// play again button directions
@@ -457,7 +454,7 @@ playAgainButton.addEventListener("click", function() {// play again button direc
     landedPlatform = null// there is no landed platform
     guidePath.innerHTML = "";// removes the old guild path
     elapsedTime = 0;//resets the timer 
-    removeExtraPlatforms()
+    removeExtraPlatforms()// removes all the extra platforms and rests the game 
     liveTimer.textContent = "TIME:00:00"; // resets the timer display
 });
 
@@ -467,14 +464,14 @@ mainMenuButton.addEventListener("click", function() {// main menu button directi
     startScreen.style.display = "block"; // show startscreen
     gameWorking = false; // the controls won wok 
     resetBall();// resets the ball to the original position 
-    score = 0; //  the score restes 
-    removeExtraPlatforms()
+    score = 0; //  the score resets  
+    removeExtraPlatforms()// removes all the extra platforms and rests the game 
     scoreDisplay.textContent = "SCORE: 0";// resets the score display
 })
 
 restartButton.addEventListener("click", function() {// restart button directions
-    gameMusic.volume = 0.5;
-    gameMusic.currentTime = 0;
+    gameMusic.volume = 0.5;// this adjusts the volume on the screen 
+    gameMusic.currentTime = 0;// this starts the music from the begining 
     gameMusic.play();// plays the music
     pauseMenu.style.display ="none"; // dont display to pause menu
     pauseOverlay.style.display = "none";// dont display the pause overlay 
@@ -484,7 +481,7 @@ restartButton.addEventListener("click", function() {// restart button directions
     scoreScreen.style.display = "none";// not show the score screen
     GameoverOverlay.style.display = "none";// remove overlay 
     NewSpeed = 1.2; // resets the new platfforms speed 
-    removeExtraPlatforms()
+    removeExtraPlatforms()// removes all the platforms and resets the game 
 
     platforms.forEach(function(platform) {// resers platforms to the original position 
         platform.x = platform.startX;// gets the original position 
