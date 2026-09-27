@@ -25,7 +25,7 @@
     const liveTimer = document.querySelector(".liveTimer");//live timer display
     let gameBall=document.querySelector(".gameBall");//this is the ball
     let guidePath = document.querySelector(".guidePath")
-    const gamePlatforms = document.querySelectorAll(".gamePlatform");
+    const platformHolder = document.querySelector(".platformHolder");// these are the platforms that the ball will land on
     const scoreDisplay = document.querySelector(".score"); // the score display on the game screen
 
 
@@ -83,6 +83,32 @@
             opacity: 0.4,// how clear is the platform 
         }// platforms 
     ];
+
+    function makePlatforms(x,y,width,height, opacity, speed, direction) {// this function will make platforms 
+        let platform = document.createElement("div");// this will make divs in the html 
+        platform.className = "gamePlatform";// this is the class that will be assigned to the divis
+
+        platform.style.left = x + "%"; // links to the left attripute of the function 
+        platform.style.top = y + "%"; // links to the top attribute of the funcions 
+        platform.style.width = width + "%"; // links ot the width attriptue of the platforms 
+        platform.style.height = height + "px"; //height attribute gets linked 
+        platform.style.opacity = opacity; // links to the opacity attribute of the platforms
+
+        platformHolder.appendChild(platform); // this adds platfoms to holder to show on screen
+
+        platforms.push({
+            x: x, //x value
+            startX: x, //starting x value 
+            y: y, //y value 
+            width: width,  // width value
+            height: height, // height value
+            speed: speed, // speed 
+            direction: direction,// directin 
+            opacity: opacity // opacity value
+        })
+    }
+
+    makePlatforms(56,65,18,20,1, 0.9,1);// makes the first platform
 
     platforms.forEach(function(platform, index) {
         gamePlatforms[index].style.left = platform.x + "%";// uspdated platforms left position 
@@ -425,4 +451,3 @@
         pauseButton.style.display = "none";// dont display the bpause button 
         scoreScreen.style.display = "flex";// display the scorescreen 
     }
-
