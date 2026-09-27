@@ -73,13 +73,14 @@
             height: height, // height value
             speed: speed, // speed 
             direction: direction,// directin 
-            opacity: opacity // opacity value
+            opacity: opacity, // opacity value
+            moveAmount: 0
         })
     }
 
-    makePlatforms(56,65,18,20,1, 0.9,1);// makes the first platform
-    makePlatforms(35,54,13,18,0.5, 1,-1);// makes the first platform
-    makePlatforms(55,43,8,16,0.4, 1.1,1);// makes the first platform
+    makePlatforms(56,65,12,18,1, 0.9,1);// makes the first platform
+    makePlatforms(35,54,12,18,0.5, 1,-1);// makes the first platform
+    makePlatforms(55,43,12,18,0.4, 1.1,1);// makes the first platform
 
     function landingCheck() {// this function checks if the platfom landed 
         for(let platform of platforms) {// in platforms look at platform 
@@ -96,13 +97,13 @@
                     landedPlatform = platform// the landed platform is this platfomr
                     
                     platformMoveY = 0.5
-                    platformMoveDistance = 11;
+                    platformMoveDistance = 30;
                     score += 1; // the score increaces py on if u land succesfull on the platfomr 
                     scoreDisplay.textContent = "SCORE:" + score; // the score display shos score and what ever the number is s
                     return true;// yess landed 
-                }
+                }   
 
-            }
+            }       
         }
     return false;// no landed
     }// end of function 
@@ -231,13 +232,11 @@
             if (platform.x >=75 || platform.x <= 10) {// if the platfrom is at on edge or the other edge 
                 platform.direction *= -1; // reverse direction when reaching the edges
                 
-
-               
             }
-            
 
             if (platformMoveY > 0) {
-                platform.y +=platformMoveY;;
+                platform.y +=platformMoveY;
+                platform.moveAmount += platformMoveY;
                 platformMoveDistance -= platformMoveY;
                     if (platformMoveDistance <= 0) {
                         platformMoveY = 0;
@@ -245,7 +244,7 @@
                 }
             }
 
-            let scale = 1 +((65- platform.y) / 100);
+            let scale = 1 +(platform.moveAmount / 25);
             let newOpacity = platform.opacity +((65- platform.y) / 100);
 
             platform.element.style.left = platform.x + "%";// link left to the x attribute 
@@ -257,7 +256,10 @@
             if (landedPlatform === platform) {// if the laded platform is a platfomr 
                 ballX = platform.x + platform.width /2;// then the bals x valy becaome the sma e as the platfoms x value 
                 gameBall.style.left = ballX + "%"// lins the left function witht he bals x cordinate 
-            
+                
+                ballY = platform.y -3.2;
+                gameBall.style.top = ballY + "%";
+
                 guidePath.innerHTML = "";// remove old pats 
                 ShowPaths();// shows current paths 
             
