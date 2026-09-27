@@ -40,6 +40,7 @@
     let ballY = 75; // bals y cordinat
     let ballX = 50;//bals x cotdinart
     let jumping = false// is the ball currently moving
+    let landedPlatform = null;
 
 
     // these are the platforms and there basic attributes 
@@ -87,6 +88,22 @@
 
     });// updates platforms 
 
+    function landingCheck() {
+    let platformLeft = platforms.x;
+    let platformRight = platforms.x + platforms.width;
+
+    if (ballX >= platformLeft && ballX <- platformRight){
+        if(ballY >= platforms.y - 3.2){
+            ballY = platforms.Y - 3.2;
+            gameBall.style.top = ballY +"%";
+
+            landedPlatform = platform
+            return true;
+        }
+    }
+    return false;
+    }
+
     function resetBall() {// resets the ball tot he original position 
         ballX = 50;// setts the balls x back to 50
         ballY = 75;// sets the balls y back to 50 
@@ -99,8 +116,7 @@
     function getBallBottom() {//finds the bottom edge of the ball
         return ballY + 3.2;// give the bottom edge of the ball
     }
-
-    
+ 
     function ShowGuidePath(direction) {// this function shows the guild path 
         
         let horizontalMovement = 0; // how much the ball moves sideways 
@@ -122,11 +138,11 @@
         let jumpHeight = 15;// the arch of the ball
         let verticalDistance = -11;// how far the ball will go upward 
         
-        for (let i = 0; i < 10; i++) {// maxe the dots for the paths (10 dots)
+        for (let i = 0; i < 13; i++) {// maxe the dots for the paths (10 dots)
             let dot = document.createElement("div");// lets the code make divs in the HTML 
             dot.className = "guideDot";// this will be the class name 
 
-            let progress = i /10;// how far along the jump the dot is 
+            let progress = i /13;// how far along the jump the dot is 
             let verticalOffset = Math.sin(progress * Math.PI) * jumpHeight; // the math that gives the jump curve 
 
             let  dotY = jumpStartY +(verticalDistance * progress) - verticalOffset;// where the dots go on the screen  (y)
@@ -187,6 +203,7 @@
             clearInterval(jumpTimer)// stops the jump 
             jumping = false;// yhour not jumping 
             guidePath.innerHTML = "";// removes the old path
+            landingCheck();
             ShowPaths();// shows the paths from the current position of the ball(function above)
         }
         }, 30);// every 30 milliseconds 
@@ -205,8 +222,28 @@
             gamePlatforms[index].style.width= platform.width + "%";// links width to the width attribut 
             gamePlatforms[index].style.height= platform.height + "px";// inks height to the height attripute 
             gamePlatforms[index].style.opacity= platform.opacity;// links ipacity to the platforms opacity atribute 
+
+            if (landedPlatform === platforms) {
+                ballX = platform.x + platform.width /2;
+                gameBall.style.left = ballX + "%"
+            }
         });// every platform oves 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
         if(event.key === "d") {//if d is press 
