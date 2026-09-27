@@ -34,7 +34,7 @@ const platformHolder = document.querySelector(".platformHolder");// these are th
 const scoreDisplay = document.querySelector(".score"); // the score display on the game screen
 const gameStartPlatform = document.querySelector(".gameStartPlatform");// the starting platform that the ball starts on
 const platformNotch = document.querySelector(".platformNotch");// the starting platform that the ball starts on
-
+const gameMusic = document.getElementById("gameMusic"); // the music for the games
 
 //variables reated to time calculation 
 let startTime;//stores the time when the timer starts 
@@ -394,6 +394,8 @@ startButton.addEventListener("click", function(){// start button directions
 });
         
 gameOverlay.addEventListener("click", function() {// game overlay directions 
+    gameMusic.play();// plays the music 
+    gameMusic.volume = 1;
     gameOverlay.style.display="none"; // dont display the overlay anymore
     pauseButton.style.display="block";// display the pause button now 
     ShowPaths()// shows the balls baths that can be taken right now 
