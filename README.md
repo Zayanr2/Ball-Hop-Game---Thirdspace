@@ -1,9 +1,30 @@
 # Ball Hop Game
 
-This is a simple Game created from HTML, JS and CSS. Its still in the making and not all of it works right now. 
+This is a simple Game created from HTML, JS and CSS. You start from the starting platform, and you use the keys "A", "W" or "D" to move left, forward or right. Your goal is to jump from one platform, to another without missing. Each time you succesfull complete a landing, your score goes up by one, Every platform moves faster, so the difficulty increases as you progress. Once you miss the game is over. The higher your score the better you did. 
 
 
 # WEEK 1 - Update 
+
+What was completed 
+
+- Designed the startscreen page
+- Designed the instruction page
+- Designed the starting overlay page
+- Designed the game page
+- Designed the pause menu  page
+- Designed the game over page
+- Designed the pauseoverlay 
+- Added button (start, Instruction, back, click to play, pause, resume, restart, quit, play again, and main menu)
+- linked the puttons for basic page navigation
+- game timer
+- Score display(dosn't work yet only shows score: 0) 
+- ball 
+- platform 
+- key controls (W, A, D)
+- jumping (its VERY choppy and bad, we might change this in the future update)
+
+
+
 Currently all the bages work together, you can flow seamleassy from on bage to another, for example you can go from the main screen, to the instruction screen and back, then you can also go to the game screen where you will se a click to play popup. once you click it the game timere will start counting you time, you can pause the time using the pause button on the top of the page. The pause button on the page opens a menu, were you can reasue when you want, or resart the game, or you can quit witch will bring you to the score screen. the scorscreen will display your final time (and score in the future). you can return to the mains creen from the score screen or play again. Right now the game itself doesnt work, however, you can move the pall on the page using W, A or D. We are working on the game still so it will be better in the comming weeks. there are several function inside the javascrip regarding the ball and platform that are doing nothing right now in the final output, that is because were sill working o them
 
 
