@@ -209,9 +209,16 @@
         if (jumpProgress >=1) {// if the jump has reached the final position
             clearInterval(jumpTimer)// stops the jump 
             jumping = false;// yhour not jumping 
+            
             guidePath.innerHTML = "";// removes the old path
-            landingCheck();
-            ShowPaths();// shows the paths from the current position of the ball(function above)
+
+            if(!landingCheck()) {// it the ball missed the platform 
+                clearInterval(platformTimer);// this will stop the platforms 
+                
+            }
+            else {
+                ShowPaths();// shows the guild paths
+            }
         }
         }, 30);// every 30 milliseconds 
     }
