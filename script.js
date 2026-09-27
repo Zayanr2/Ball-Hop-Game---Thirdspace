@@ -48,7 +48,6 @@
     let score = 0; // this variable will keep track of the score  and will be used to displat it 
     let platformMoveY = 0;// this will keep track of how far the platforms have move up and down 
     let platformMoveDistance = 0;// this will keep track of how far the platforms have move up and down 
-    let startPlatformY = 460 
 
     // these are the platforms and there basic attributes 
     let platforms = []; // where the platforms are stored 
@@ -112,7 +111,7 @@
                     landedPlatform = platform// the landed platform is this platfomr
                     
                     platformMoveY = 0.5
-                    platformMoveDistance = 30;
+                    platformMoveDistance = 11;
                     score += 1; // the score increaces py on if u land succesfull on the platfomr 
                     scoreDisplay.textContent = "SCORE:" + score; // the score display shos score and what ever the number is s
                     return true;// yess landed 
@@ -241,10 +240,7 @@
     }
 
     function platformMovment() {// move the platforms 
-        if (platformMoveY > 0) {// if the platforms are moving up
-            startPlatformY += platformMoveY;// the staring platofmr will also move 
-        }
-        gameStartPlatform.style.top = startPlatformY + "px";// the starting platform will also move up with the other platforms
+        
         platforms.forEach(function(platform, index){// each platform 
             platform.x += platform.speed * platform.direction;// platforms x cordinate changes based on the speed , and direction 
 
@@ -252,17 +248,11 @@
                 platform.direction *= -1; // reverse direction when reaching the edges
                 
             }
-
             if (platformMoveY > 0) {
                 platform.y += platformMoveY;
-                startPlatformY +=platformMoveY;
-                platformMoveDistance -= platformMoveY;
-                if  (platformMoveDistance <= 0) {
-                    platformMoveY = 0;
-                    platformMoveDistance = 0;}
-
+ 
             }
-
+    
             let scale = 0.7 +((platform.y -43)/22);
             let newOpacity = 0.4 +((platform.y -43) / 22) *0.6;
 
@@ -288,6 +278,15 @@
             }// this will make the ball move lefte anrd right witht he platform after landing 
 
         });// every platform oves 
+
+        if (platformMoveY > 0) {
+            platformMoveDistance -= platformMoveY;
+
+            if  (platformMoveDistance <= 0) {
+                platformMoveY = 0;
+                platformMoveDistance = 0;
+            }
+         }
     }
 
     function startTimer(){// the function the will keep track of the time
