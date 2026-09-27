@@ -1,275 +1,282 @@
-    // game screens 
-    const startScreen = document.getElementById("startScreen");// this is the main  screen or the first on eyou see
-    const instructionScreen =document.querySelector(".instructionScreen");// this is the screen with the instructions 
-    const gameScreen = document.querySelector(".game");// game screen where we will build the game
-    const scoreScreen = document.getElementById("scoreScreen");// score screen where you go after loosing or quitting the game
-
-    // game buttons
-    const startButton = document.querySelector(".startButton");//  takes you to the game screen
-    const instructionButton = document.querySelector(".instructionButton");//  takes you to the instruction screen
-    const backButtonInstructionScreen = document.querySelector(".BackButtonInstructionScreen");//  returns you from instruction screen to the main screen
-    const pauseButton = document.querySelector(".pauseButton"); //pauses the game, shows a menu
-    const resumeButton = document.querySelector(".resumeButton");// in the pause menu, resumes the game
-    const restartButton = document.querySelector(".restartButton");// in the pause menu, restarts the game
-    const quitButton = document.querySelector(".quitButton");// in the pause menu, takes you to the score screen
-    const playAgainButton = document.getElementById("playAgainButton");// in the score screen , takes you to the game
-    const mainMenuButton = document.getElementById("mainMenuButton");// take you to the main screen from the score screen
+// game screens 
+const startScreen = document.getElementById("startScreen");// this is the main  screen or the first on eyou see
+const instructionScreen =document.querySelector(".instructionScreen");// this is the screen with the instructions 
+const gameScreen = document.querySelector(".game");// game screen where we will build the game
+const scoreScreen = document.getElementById("scoreScreen");// score screen where you go after loosing or quitting the game
 
 
-    // other game elements
-    const pauseMenu = document.querySelector(".pauseMenu");// where all the pause buttons are
-    const pauseOverlay = document.querySelector(".pauseOverlay");// blurs the game when paused
-    const gameOverlay = document.querySelector(".gameOverlay");// tells you to click to begin the timer and game
-    const GameoverOverlay = document.querySelector(".GameoverOverlay");// tells you to click the screen to continue after u missed 
-    const finalScore = document.getElementById("finalScore");//keeps trak of the final score
-    const finalTime =  document.getElementById("finalTime");// final time display
-    const liveTimer = document.querySelector(".liveTimer");//live timer display
-    let gameBall=document.querySelector(".gameBall");//this is the ball
-    let guidePath = document.querySelector(".guidePath")
-    const platformHolder = document.querySelector(".platformHolder");// these are the platforms that the ball will land on
-    const scoreDisplay = document.querySelector(".score"); // the score display on the game screen
-    const gameStartPlatform = document.querySelector(".gameStartPlatform");// the starting platform that the ball starts on
-    const platformNotch = document.querySelector(".platformNotch");// the starting platform that the ball starts on
-
-    //variables For ingame time calculation 
-    let startTime;//stores the time when the timer starts 
-    let elapsedTime = 0;// stores the time that has passed in the game
-    let gameTimer; // this is what changes the elapsed time every second
-    let pauseStartTime; //stors the amount of time the game was paused using the button
-    let platformTimer;
+// game buttons
+const startButton = document.querySelector(".startButton");//  takes you to the game screen
+const instructionButton = document.querySelector(".instructionButton");//  takes you to the instruction screen
+const backButtonInstructionScreen = document.querySelector(".BackButtonInstructionScreen");//  returns you from instruction screen to the main screen
+const pauseButton = document.querySelector(".pauseButton"); //pauses the game, shows a menu
+const resumeButton = document.querySelector(".resumeButton");// in the pause menu, resumes the game
+const restartButton = document.querySelector(".restartButton");// in the pause menu, restarts the game
+const quitButton = document.querySelector(".quitButton");// in the pause menu, takes you to the score screen
+const playAgainButton = document.getElementById("playAgainButton");// in the score screen , takes you to the game
+const mainMenuButton = document.getElementById("mainMenuButton");// take you to the main screen from the score screen
 
 
-    // vriables for moving the ball using the keys 
-    let ballY = 75; // bals y cordinat
-    let ballX = 50;//bals x cotdinart
-    let jumping = false// is the ball currently moving
-    let landedPlatform = null;// the ball hasn't landed on any platforms 
-
-    // game variables
-    let gameWorking = true;// the game is working right now  soo all  the controls will work 
-    let score = 0; // this variable will keep track of the score  and will be used to displat it 
-    let platformMoveY = 0;// this will keep track of how far the platforms have move up and down 
-    let platformMoveDistance = 0;// this will keep track of how far the platforms have move up and down 
-    let startplatformY = 85; // this is the startng position of the staring platform 
-    // these are the platforms and there basic attributes 
-    let platforms = []; // where the platforms are stored 
-    let NewSpeed = 1.2;
+// mini scree/ overlays / menus
+const pauseMenu = document.querySelector(".pauseMenu");// where all the pause buttons are
+const pauseOverlay = document.querySelector(".pauseOverlay");// blurs the game when paused
+const gameOverlay = document.querySelector(".gameOverlay");// tells you to click to begin the timer and game
+const GameoverOverlay = document.querySelector(".GameoverOverlay");// tells you to click the screen to continue after u missed 
 
 
+// other game elements
+const finalScore = document.getElementById("finalScore");//keeps trak of the final score
+const finalTime =  document.getElementById("finalTime");// final time display
+const liveTimer = document.querySelector(".liveTimer");//live timer display
+let gameBall=document.querySelector(".gameBall");//this is the ball
+let guidePath = document.querySelector(".guidePath")
+const platformHolder = document.querySelector(".platformHolder");// these are the platforms that the ball will land on
+const scoreDisplay = document.querySelector(".score"); // the score display on the game screen
+const gameStartPlatform = document.querySelector(".gameStartPlatform");// the starting platform that the ball starts on
+const platformNotch = document.querySelector(".platformNotch");// the starting platform that the ball starts on
+
+
+//variables reated to time calculation 
+let startTime;//stores the time when the timer starts 
+let elapsedTime = 0;// stores the time that has passed in the game
+let gameTimer; // this is what changes the elapsed time every second
+let pauseStartTime; //stors the amount of time the game was paused using the button
+
+
+//ball related variables 
+let ballY = 75; // bals y cordinat
+let ballX = 50;//bals x cotdinart
+let jumping = false// is the ball currently moving
+
+
+// Other game game variables
+let gameWorking = true;// the game is working right now  soo all  the controls will work 
+let score = 0; // this variable will keep track of the score  and will be used to displat it 
+let platformTimer;// runs the platform side to side movement  
+
+
+// these are the platform related variables 
+let platforms = []; // where the platforms are stored 
+let NewSpeed = 1.2;// this is the speed of the new platforms 
+let startplatformY = 85; // this is the startng position of the staring platform 
+let platformMoveY = 0;// this will keep track of how far the platforms have move up and down 
+let platformMoveDistance = 0;// this will keep track of how far the platforms have move up and down
+let landedPlatform = null;// the ball hasn't landed on any platforms 
 
 
 
 
-    // game functions 
-    function makePlatforms(x,y,width,height, opacity, speed, direction) {// this function will make platforms 
-        let platform = document.createElement("div");// this will make divs in the html 
-        platform.className = "gamePlatform";// this is the class that will be assigned to the divis
-
-        platform.style.left = x + "%"; // links to the left attripute of the function 
-        platform.style.top = y + "%"; // links to the top attribute of the funcions 
-        platform.style.width = width + "%"; // links ot the width attriptue of the platforms 
-        platform.style.height = height + "px"; //height attribute gets linked 
-        platform.style.opacity = opacity; // links to the opacity attribute of the platforms
-
-        platformHolder.appendChild(platform); // this adds platfoms to holder to show on screen
-
-        let scale = 0.7 +((y-43)/22);// the scale of the platform is identitical to the on eing used in the moving platform function 
-        platform.style.width = (width * scale) + "%";// shows the true size and scale of the platform 
-        platform.style.height = (height *scale) + "px";// shows the tru size and scale of the platform 
-
-        platforms.push({
-            element: platform, // the elemnt that was created
-            x: x, //x value
-            startX: x, //starting x value 
-            y: y, //y value 
-            startY: y,
-            width: width,  // width value
-            height: height, // height value
-            speed: speed, // speed 
-            direction: direction,// directin 
-            startDirection: direction, // starting direction
-            opacity: opacity // opacity value
-        })
-    }
-
-    function resetPlatforms() {// resets all the platforms 
-        platforms.forEach(function(platform) {// for each platform
-            platform.x = platform.startX;// rests the starting x position of the platform 
-            platform.y = platform.startY;// resets the staring y positon of the platforms 
-            platform.direction = platform.startDirection;//resets the direction of the platforms 
-
-            let scale = 0.7 + ((platform.y - 43) / 22);// scale to reset the platforms to the original size
-
-            platform.element.style.left = platform.x + "%";// resets the x psoition 
-            platform.element.style.top = platform.y + "%";// resets the y position 
-            platform.element.style.width = (platform.width * scale) + "%";// resets the width 
-            platform.element.style.height = (platform.height * scale) + "px";// resest the height 
 
 
-            platform.element.style.opacity = platform.opacity;// resets the opacity 
-        });
+// game functions 
+function makePlatforms(x,y,width,height, opacity, speed, direction) {// this function will make platforms 
+    let platform = document.createElement("div");// this will make divs in the html 
+    platform.className = "gamePlatform";// this is the class that will be assigned to the divis
 
-        startplatformY = 85;// resets the variables 
+    platform.style.left = x + "%"; // links to the left attripute of the function 
+    platform.style.top = y + "%"; // links to the top attribute of the funcions 
+    platform.style.width = width + "%"; // links ot the width attriptue of the platforms 
+    platform.style.height = height + "px"; //height attribute gets linked 
+    platform.style.opacity = opacity; // links to the opacity attribute of the platforms
 
-        let StartScale = 0.7 + ((startplatformY - 43) / 22);
+    platformHolder.appendChild(platform); // this adds platfoms to holder to show on screen
 
-        gameStartPlatform.style.top = startplatformY + "%";// linkgs the start platform top property
-        gameStartPlatform.style.width = (750* StartScale) + "px";
-        gameStartPlatform.style.height = (65* StartScale) + "px";
-    }
+    let scale = 0.7 +((y-43)/22);// the scale of the platform is identitical to the on eing used in the moving platform function 
+    platform.style.width = (width * scale) + "%";// shows the true size and scale of the platform 
+    platform.style.height = (height *scale) + "px";// shows the tru size and scale of the platform 
+
+    platforms.push({
+        element: platform, // the elemnt that was created
+        x: x, //x value
+        startX: x, //starting x value 
+        y: y, //y value 
+        startY: y,
+        width: width,  // width value
+        height: height, // height value
+        speed: speed, // speed 
+        direction: direction,// directin 
+        startDirection: direction, // starting direction
+        opacity: opacity // opacity value
+    })
+}
+
+function resetPlatforms() {// resets all the platforms 
+    platforms.forEach(function(platform) {// for each platform
+        platform.x = platform.startX;// rests the starting x position of the platform 
+        platform.y = platform.startY;// resets the staring y positon of the platforms 
+        platform.direction = platform.startDirection;//resets the direction of the platforms 
+
+        let scale = 0.7 + ((platform.y - 43) / 22);// scale to reset the platforms to the original size
+
+        platform.element.style.left = platform.x + "%";// resets the x psoition 
+        platform.element.style.top = platform.y + "%";// resets the y position 
+        platform.element.style.width = (platform.width * scale) + "%";// resets the width 
+        platform.element.style.height = (platform.height * scale) + "px";// resest the height 
+
+
+        platform.element.style.opacity = platform.opacity;// resets the opacity 
+    });
+
+    startplatformY = 85;// resets the variables 
+
+    let StartScale = 0.7 + ((startplatformY - 43) / 22);
+
+    gameStartPlatform.style.top = startplatformY + "%";// linkgs the start platform top property
+    gameStartPlatform.style.width = (750* StartScale) + "px";
+    gameStartPlatform.style.height = (65* StartScale) + "px";
+}
 
    
 
-    function makeNewPlatofrms() {
-        makePlatforms(55,43,12,18,0.4, NewSpeed,1);// makes the first platform
-        NewSpeed  += 0.1;
-    }
+function makeNewPlatofrms() {
+    makePlatforms(55,43,12,18,0.4, NewSpeed,1);// makes the first platform
+    NewSpeed  += 0.1;
+}
 
-    function landingCheck() {// this function checks if the platfom landed 
+function landingCheck() {// this function checks if the platfom landed 
          
-            for(let platform of platforms) {// in platforms look at platform 
-            let scale = 0.7 + ((platform.y - 43) / 22);
-            let platformWidth = platform.width *scale;  
-            let platformLeft = platform.x;// the left is the x cordinate 
-            let platformRight = platform.x + platformWidth;// the right is the left plus the wides 
+    for(let platform of platforms) {// in platforms look at platform 
+        let scale = 0.7 + ((platform.y - 43) / 22);
+        let platformWidth = platform.width *scale;  
+        let platformLeft = platform.x;// the left is the x cordinate 
+        let platformRight = platform.x + platformWidth;// the right is the left plus the wides 
 
-            if (ballX >= platformLeft && ballX <= platformRight){// if the ball is inside the platform 
+        if (ballX >= platformLeft && ballX <= platformRight){// if the ball is inside the platform 
                 
-                if(ballY >= platform.y - 3.2 && ballY <= platform.y + 3.2){// and if the ball is on the platform
+            if(ballY >= platform.y - 3.2 && ballY <= platform.y + 3.2){// and if the ball is on the platform
 
-                    ballY = platform.y - 3.2;// the ball is in the center of the platform(ontop)
-                    gameBall.style.top = ballY +"%";// links the tip atribute iwht the y axis 
+                ballY = platform.y - 3.2;// the ball is in the center of the platform(ontop)
+                gameBall.style.top = ballY +"%";// links the tip atribute iwht the y axis 
 
-                    landedPlatform = platform// the landed platform is this platfomr
+                landedPlatform = platform// the landed platform is this platfomr
                     
-                    platformMoveY = 0.5
-                    platformMoveDistance = 11;
-                    score += 1; // the score increaces py on if u land succesfull on the platfomr 
-                    scoreDisplay.textContent = "SCORE:" + score; // the score display shos score and what ever the number is s
-                    return true;// yess landed 
-                }   
+                platformMoveY = 0.5
+                platformMoveDistance = 11;
+                score += 1; // the score increaces py on if u land succesfull on the platfomr 
+                scoreDisplay.textContent = "SCORE:" + score; // the score display shos score and what ever the number is s
+                return true;// yess landed 
+            }   
 
-            }       
-        }
+        }       
+    }
     return false;// no landed
-    }// end of function 
+}// end of function 
 
-    function resetBall() {// resets the ball tot he original position 
-        ballX = 50;// setts the balls x back to 50
-        ballY = 75;// sets the balls y back to 50 
-        jumping  = false;// sets the jumping variable to no 
+function resetBall() {// resets the ball tot he original position 
+    ballX = 50;// setts the balls x back to 50
+    ballY = 75;// sets the balls y back to 50 
+    jumping  = false;// sets the jumping variable to no 
 
-        gameBall.style.left = ballX + "%";// links balls x to the balls x attribuite 
-        gameBall.style.top = ballY + "%";// links the balls y to the y attribute 
-    }
+    gameBall.style.left = ballX + "%";// links balls x to the balls x attribuite 
+    gameBall.style.top = ballY + "%";// links the balls y to the y attribute 
+}
 
-    function getBallBottom() {//finds the bottom edge of the ball
-        return ballY + 3.2;// give the bottom edge of the ball
-    }
+function getBallBottom() {//finds the bottom edge of the ball
+    return ballY + 3.2;// give the bottom edge of the ball
+}
  
-    function ShowGuidePath(direction) {// this function shows the guild path 
+function ShowGuidePath(direction) {// this function shows the guild path 
         
-        let horizontalMovement = 0; // how much the ball moves sideways 
+    let horizontalMovement = 0; // how much the ball moves sideways 
 
-        if (direction === "left"){// if the direction is left 
-            horizontalMovement = -1.5;// move -1.5 ( moveing left)
-        }
-        else if (direction === "right"){// if the direction is right  
-            horizontalMovement = 1.5;// mov3 1.5 left 
-        }
-        else if (direction === "up"){// if its up 
-            horizontalMovement = 0;// don't move any sides 
-        }
-
-        let horizontalDistance = horizontalMovement * 8;// total distance 
-
-        let jumpStartX = ballX;// balls x is where the jum start 
-        let jumpStartY = ballY;// pal y is where the jump start
-        let jumpHeight = 15;// the arch of the ball
-        let verticalDistance = -11;// how far the ball will go upward 
-        
-        for (let i = 0; i < 13; i++) {// maxe the dots for the paths (10 dots)
-            let dot = document.createElement("div");// lets the code make divs in the HTML 
-            dot.className = "guideDot";// this will be the class name 
-
-            let progress = i /13;// how far along the jump the dot is 
-            let verticalOffset = Math.sin(progress * Math.PI) * jumpHeight; // the math that gives the jump curve 
-
-            let  dotY = jumpStartY +(verticalDistance * progress) - verticalOffset;// where the dots go on the screen  (y)
-            let dotX = jumpStartX + (horizontalDistance * progress); // where the dots go horrizontally 
-
-            dot.style.top = dotY + "%";// links to the top attripute 
-            dot.style.left = dotX + "%";// links to the  left attrupute 
-
-            guidePath.appendChild(dot);// ads the dot to the quildpath so its on the screen 
-        }
+    if (direction === "left"){// if the direction is left 
+        horizontalMovement = -1.5;// move -1.5 ( moveing left)
     }
-    function ShowPaths() {// draws all the paths together 
-        ShowGuidePath("left") // use the gide function left 
-        ShowGuidePath("right")// use the guide function right 
-        ShowGuidePath("up")// use the guild function up 
-        }// shows all the paths the pall can take 
+    else if (direction === "right"){// if the direction is right  
+        horizontalMovement = 1.5;// mov3 1.5 left 
+    }
+    else if (direction === "up"){// if its up 
+        horizontalMovement = 0;// don't move any sides 
+    }
 
-    function jump(direction) {// this si how the ball jumps 
-        if (!gameWorking) return; // basicaly if the game ising working then the  jumps wont work, this is usefull fpre after the game has eneded 
-        if (jumping) return;// if  your juming then 
-        jumping = true;// jumping is in progres 
-        landedPlatform = null;
+    let horizontalDistance = horizontalMovement * 8;// total distance 
 
-        let horizontalMovement = 0;// horizontal movment is 0
+    let jumpStartX = ballX;// balls x is where the jum start 
+    let jumpStartY = ballY;// pal y is where the jump start
+    let jumpHeight = 15;// the arch of the ball
+    let verticalDistance = -11;// how far the ball will go upward 
+        
+    for (let i = 0; i < 13; i++) {// maxe the dots for the paths (10 dots)
+        let dot = document.createElement("div");// lets the code make divs in the HTML 
+        dot.className = "guideDot";// this will be the class name 
 
-        if (direction === "left"){// if the direction is left 
-            horizontalMovement = -1.5;// then the movment is twards left 
-        }
-        else if (direction === "right"){// if th direction  is right 
-            horizontalMovement = 1.5;// then the movment is twards the right 
-        }
-        else if (direction === "up"){// if the direction is only up 
-            horizontalMovement = 0;// then the movment side to side is none 
-        }
+        let progress = i /13;// how far along the jump the dot is 
+        let verticalOffset = Math.sin(progress * Math.PI) * jumpHeight; // the math that gives the jump curve 
 
-        let horizontalDistance = horizontalMovement * 8;// this calculates the total horizontal distance 
+        let  dotY = jumpStartY +(verticalDistance * progress) - verticalOffset;// where the dots go on the screen  (y)
+        let dotX = jumpStartX + (horizontalDistance * progress); // where the dots go horrizontally 
 
-        let jumpStartX = ballX;// the balls current x is where the jump will start 
-        let jumpStartY = ballY;// the balls current y is where the jump will stard 
-        let jumpHeight = 15;// the balls arch 
-        let jumpProgress = 0;// how much of the jump as happend 
-        let verticalDistance = -11;// total distance up 
+        dot.style.top = dotY + "%";// links to the top attripute 
+        dot.style.left = dotX + "%";// links to the  left attrupute 
 
-        let jumpTimer = setInterval(function() { // does the jump ever 15 seconds 
-        jumpProgress += 0.1;// 10 percent each times 
-        if (jumpProgress >1){// the jump stops at 100 percent 
-            jumpProgress =1;//cant go over 
-        }
+        guidePath.appendChild(dot);// ads the dot to the quildpath so its on the screen 
+    }
+}
+function ShowPaths() {// draws all the paths together 
+    ShowGuidePath("left") // use the gide function left 
+    ShowGuidePath("right")// use the guide function right 
+    ShowGuidePath("up")// use the guild function up 
+}// shows all the paths the pall can take 
 
-        let verticalOffset = Math.sin(jumpProgress * Math.PI) * jumpHeight;// the curve of the jump, the math behind it 
+function jump(direction) {// this si how the ball jumps 
+    if (!gameWorking) return; // basicaly if the game ising working then the  jumps wont work, this is usefull fpre after the game has eneded 
+    if (jumping) return;// if  your juming then 
+    jumping = true;// jumping is in progres 
+    landedPlatform = null;
 
-        ballY = jumpStartY + (verticalDistance * jumpProgress) - verticalOffset;// where the ball will be now y position 
-        gameBall.style.top = ballY + "%";//inks to the acctual ball y attribute 
+    let horizontalMovement = 0;// horizontal movment is 0
 
-        ballX = jumpStartX + (horizontalDistance*jumpProgress);// where the x of the ball will be after the jump 
-        gameBall.style.left = ballX + "%";// links to the acctual ball x attribute 
+    if (direction === "left"){// if the direction is left 
+        horizontalMovement = -1.5;// then the movment is twards left 
+    }
+    else if (direction === "right"){// if th direction  is right 
+        horizontalMovement = 1.5;// then the movment is twards the right 
+    }
+    else if (direction === "up"){// if the direction is only up 
+        horizontalMovement = 0;// then the movment side to side is none 
+    }
 
-        if (jumpProgress >=1) {// if the jump has reached the final position
-            clearInterval(jumpTimer)// stops the jump 
-            jumping = false;// yhour not jumping 
+    let horizontalDistance = horizontalMovement * 8;// this calculates the total horizontal distance 
 
-            guidePath.innerHTML = "";// removes the old path
+    let jumpStartX = ballX;// the balls current x is where the jump will start 
+    let jumpStartY = ballY;// the balls current y is where the jump will stard 
+    let jumpHeight = 15;// the balls arch 
+    let jumpProgress = 0;// how much of the jump as happend 
+    let verticalDistance = -11;// total distance up 
 
-            if(!landingCheck()) {// it the ball missed the platform 
-                gameWorking = false;// the game has finish/ended 
-                clearInterval(platformTimer);// this will stop the platforms
-                clearInterval(gameTimer);// the timer will stop iff u miss 
-                GameoverOverlay.style.display = "flex"; // show the game over overlay screen 
-                elapsedTime = Date.now() - startTime;// finds out the toal amount of time played
+    let jumpTimer = setInterval(function() { // does the jump ever 15 seconds 
+    jumpProgress += 0.1;// 10 percent each times 
+    if (jumpProgress >1){// the jump stops at 100 percent 
+        jumpProgress =1;//cant go over 
+    }
+
+    let verticalOffset = Math.sin(jumpProgress * Math.PI) * jumpHeight;// the curve of the jump, the math behind it 
+
+    ballY = jumpStartY + (verticalDistance * jumpProgress) - verticalOffset;// where the ball will be now y position 
+    gameBall.style.top = ballY + "%";//inks to the acctual ball y attribute 
+    ballX = jumpStartX + (horizontalDistance*jumpProgress);// where the x of the ball will be after the jump 
+    gameBall.style.left = ballX + "%";// links to the acctual ball x attribute 
+
+    if (jumpProgress >=1) {// if the jump has reached the final position
+        clearInterval(jumpTimer)// stops the jump 
+        jumping = false;// yhour not jumping 
+
+        guidePath.innerHTML = "";// removes the old path
+
+        if(!landingCheck()) {// it the ball missed the platform 
+            gameWorking = false;// the game has finish/ended 
+            clearInterval(platformTimer);// this will stop the platforms
+            clearInterval(gameTimer);// the timer will stop iff u miss 
+            GameoverOverlay.style.display = "flex"; // show the game over overlay screen 
+            elapsedTime = Date.now() - startTime;// finds out the toal amount of time played
                 
-            }
-            else {
-                ShowPaths();// shows the guild paths
-            }
         }
-        }, 30);// every 30 milliseconds 
+        else {
+            ShowPaths();// shows the guild paths
+        }
     }
+    }, 30);// every 30 milliseconds 
+}
 
 function platformMovment() {// move the platforms 
 
