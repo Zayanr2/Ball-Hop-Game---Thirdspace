@@ -30,11 +30,7 @@ When you open the game, your screen first shows the Start screen. This screen ha
 - Game Over screen 
 - Pausable game 
 
-
-
 # WEEK 1 - Update 
-
-What was completed 
 
 - Designed the startscreen page
 - Designed the instruction page
