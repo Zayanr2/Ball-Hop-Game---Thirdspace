@@ -394,8 +394,10 @@ startButton.addEventListener("click", function(){// start button directions
 });
         
 gameOverlay.addEventListener("click", function() {// game overlay directions 
-    gameMusic.play();// plays the music 
+     
     gameMusic.volume = 1;
+    gameMusic.currentTime = 0;
+    gameMusic.play();// plays the music
     gameOverlay.style.display="none"; // dont display the overlay anymore
     pauseButton.style.display="block";// display the pause button now 
     ShowPaths()// shows the balls baths that can be taken right now 
