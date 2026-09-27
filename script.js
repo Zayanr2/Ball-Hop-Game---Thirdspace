@@ -50,7 +50,7 @@ let jumping = false// is the ball currently moving
 
 
 // Other game game variables
-let gameWorking = true;// the game is working right now  soo all  the controls will work 
+let gameWorking = false;// the is not on right no so the controls wont works 
 let score = 0; // this variable will keep track of the score  and will be used to displat it 
 let platformTimer;// runs the platform side to side movement  
 
@@ -125,8 +125,6 @@ function resetPlatforms() {// resets all the platforms
     gameStartPlatform.style.width = (750* StartScale) + "px";
     gameStartPlatform.style.height = (65* StartScale) + "px";
 }
-
-   
 
 function makeNewPlatofrms() {
     makePlatforms(55,43,12,18,0.4, NewSpeed,1);// makes the first platform
@@ -405,7 +403,7 @@ gameOverlay.addEventListener("click", function() {// game overlay directions
     ShowPaths()// shows the balls baths that can be taken right now 
     elapsedTime = 0 // resets the timer back to 0 to restart the time
     startTimer();// start the timer function again 
-    gameWorking= true;// the game will work
+    gameWorking= true;// the game will not work
     platformTimer = setInterval(platformMovment, 30); // starts the platform movement function every 30 milliseconds
         
 });
