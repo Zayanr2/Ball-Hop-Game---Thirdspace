@@ -40,7 +40,7 @@
     let ballY = 75; // bals y cordinat
     let ballX = 50;//bals x cotdinart
     let jumping = false// is the ball currently moving
-    let landedPlatform = null;
+    let landedPlatform = null;// the ball hasn't landed on any platforms 
 
 
     // these are the platforms and there basic attributes 
@@ -88,7 +88,7 @@
 
     });// updates platforms 
 
-    function landingCheck() {
+    function landingCheck() {// this function checks if the platfom landed 
         for(let platform of platforms) {// in platforms look at platform 
             let platformLeft = platform.x;// the left is the x cordinate 
             let platformRight = platform.x + platform.width;// the right is the left plus the wides 
@@ -108,7 +108,7 @@
             }
         }
     return false;// no landed
-    }
+    }// end of function 
 
     function resetBall() {// resets the ball tot he original position 
         ballX = 50;// setts the balls x back to 50
@@ -230,27 +230,17 @@
             gamePlatforms[index].style.height= platform.height + "px";// inks height to the height attripute 
             gamePlatforms[index].style.opacity= platform.opacity;// links ipacity to the platforms opacity atribute 
 
-            if (landedPlatform === platform) {
-                ballX = platform.x + platform.width /2;
-                gameBall.style.left = ballX + "%"
-            }
+            if (landedPlatform === platform) {// if the laded platform is a platfomr 
+                ballX = platform.x + platform.width /2;// then the bals x valy becaome the sma e as the platfoms x value 
+                gameBall.style.left = ballX + "%"// lins the left function witht he bals x cordinate 
+            
+                guidePath.innerHTML = "";// remove old pats 
+                ShowPaths();// shows current paths 
+            
+            }// this will make the ball move lefte anrd right witht he platform after landing 
+
         });// every platform oves 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     document.addEventListener("keydown", function(event) { // assigns W, A and D keys jump directions
         if(event.key === "d") {//if d is press 
@@ -345,6 +335,8 @@
 
         platformMovment();// runs the platform movment function
         resetBall();// this resets the ball to the original position 
+        landedPlatform = null// there is no landed platform
+        guidePath.innerHTML = "";// removes the old guild path
         elapsedTime = 0;//resets the timer 
         liveTimer.textContent = "TIME:00:00"; // resets the timer display
 
@@ -370,6 +362,8 @@
 
         platformMovment();// runs the platform movment function
         resetBall();//this resets the ball to the pikining position 
+        guidePath.innerHTML = ""; // remvoed the old paths from the screen 
+        landedPlatform = null// there is no landed platform
         elapsedTime = 0;// resets the timer 
         liveTimer.textContent = "TIME:00:00";// resets the timer display
     });
