@@ -26,6 +26,7 @@
     let gameBall=document.querySelector(".gameBall");//this is the ball
     let guidePath = document.querySelector(".guidePath")
     const gamePlatforms = document.querySelectorAll(".gamePlatform");
+    const scoreDisplay = document.querySelector(".score"); // the score display on the game screen
 
 
     //variables For ingame time calculation 
@@ -41,7 +42,10 @@
     let ballX = 50;//bals x cotdinart
     let jumping = false// is the ball currently moving
     let landedPlatform = null;// the ball hasn't landed on any platforms 
+
+    // game variables
     let gameWorking = true;// the game is working right now  soo all  the controls will work 
+    let score = 0; // this variable will keep track of the score  and will be used to displat it 
 
 
     // these are the platforms and there basic attributes 
@@ -102,7 +106,8 @@
                     gameBall.style.top = ballY +"%";// links the tip atribute iwht the y axis 
 
                     landedPlatform = platform// the landed platform is this platfomr 
-
+                    score += 1; // the score increaces py on if u land succesfull on the platfomr 
+                    scoreDisplay.textContent = "SCORE:" + score; // the score display shos score and what ever the number is s
                     return true;// yess landed 
                 }
 
@@ -335,6 +340,8 @@
         
         showScoreScreen();// show the score screen
         gameWorking = false;// the controls wont work anymore 
+        score = 0; //  the score restes 
+        document.querySelector(".score").textContent = "Score: 0";
     });
 
     playAgainButton.addEventListener("click", function() {// play again button directions
@@ -346,7 +353,8 @@
         platforms.forEach(function(platform) {// resers platforms to the original position 
             platform.x = platform.startX;// gets the original position 
         });//reset
-
+        score = 0; //  the score restes 
+        scoreDisplay.textContent = "SCORE: 0";// resets the score display
         gameWorking = true;// the game will work again 
         platformMovment();// runs the platform movment function
         resetBall();// this resets the ball to the original position 
@@ -363,6 +371,8 @@
         startScreen.style.display = "block"; // show startscreen
         gameWorking = false; // the controls won wok 
         resetBall();// resets the ball to the original position 
+        score = 0; //  the score restes 
+        scoreDisplay.textContent = "SCORE: 0";// resets the score display
     })
 
     restartButton.addEventListener("click", function() {// restart button directions
@@ -376,6 +386,9 @@
         platforms.forEach(function(platform) {// resers platforms to the original position 
             platform.x = platform.startX;// gets the original position 
         });//reset
+
+         score = 0; //  the score restes 
+        scoreDisplay.textContent = "SCORE: 0";// resets the score display
 
         gameWorking = true;// the game is playables 
         platformMovment();// runs the platform movment function
@@ -405,7 +418,7 @@
             displaySeconds = "0" + seconds;// adds a 0 in front of the seconds 
         }//add a 0 when sconds are less the 10
         finalTime.textContent = minutes+ ":" + displaySeconds;// displays the final time on scorescreen 
-
+        finalScore.textContent = score;// the final score diasplay gets the valu from the score variable 
         pauseMenu.style.display = "none";// dont display the pause menu
         pauseOverlay.style.display = "none";// dont display the paus overlay
         gameOverlay.style.display = "none";// dont display the overlay
