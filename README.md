@@ -2,18 +2,34 @@
 
 This Game was made with HTML, JS and CSS.
 
-## Controls:
+## GAME CONTROLS:
+
 - W : Jump Forward
 - A : Jump Forward and Left
 - D : Jump Forward and Right
 
-## WalkThrough: 
-When you open the game, your screen first shows the Start screen. This screen has 2 buttons, Start, and Instructions. Clicking the instructions button takes you to the Instruction screen, where you can see the the controls and your game goal. The Instruction screen has a back button on the top which brings you back to the Start screen. The Start button on the startScreen takes you to the game screen. Your greeted with a pop up which tells you to click to start. Clicking it begins the timer countdown and enables the balls controls, the platforms start moving as well. Now you can use the controls to jump from one plaform to another. Every time you succesfully complete a jump, the score increases by one. You can pause the game with the pause button, which will open a pop up and stop the game platforms and timer. The popup includes options like 
+## GAME OBJECTIVE/GOAL
 
+Using the controls, jump from one platform to another. Increase your score everytime you get a succesfull jump. Challenge yourself to get the highest score you can!
 
+## WALKTHROUGH: 
 
+When you open the game, your screen first shows the Start screen. This screen has 2 buttons, Start, and Instructions. Clicking the instructions button takes you to the Instruction screen, where you can see the the controls and your game goal. The Instruction screen has a back button on the top which brings you back to the Start screen. The Start button on the startScreen takes you to the game screen. Your greeted with a pop up which tells you to click to start. Clicking it begins the timer countdown and enables the balls controls, the platforms start moving as well. Now you can use the controls to jump from one plaform to another. Every time you succesfully complete a jump, the score increases by one. You can pause the game with the pause button, which will open a pop up and stop the game platforms and timer. The popup includes options like Resuming the game, Restarting the game and Quiting the game. Resuming, resumes the game from where you left of, and restarting resets the score and timer. Quiting takes you to the Score Screen. If you happen to miss a jump, a pop up comes which tells you that you missed, clicking it, takes you to the Score Screen as well. On the Score Screen, you can see your final time, and score, along with 2 more buttons. The Play Again button will take you to the click to play popup, and the Main Menu button will take you to the Start screen again. 
 
- You start from the a stationary(not moving) platform, The ball form contains a ball that can jump Up, left, or right based on which key you click "A", "W" or "D".  Your goal is to jump from one platform, to another without missing. Each time you succesfull complete a landing, your score goes up by one, Every platform moves faster, so the difficulty increases as you progress. Once you miss the game is over. The higher your score the better you did. 
+## GAME FEATURES/MECHANICS
+
+- Startscreen
+- gamescreen
+- Instruction screen
+- Unlimited Moving PLatforms 
+- Ball Controls (W,A,D)
+- Ball Jump Trajectory Indicator 
+- Live Timer Display
+- Final Time 
+- Score keeping 
+- Game Over screen 
+- Pausable game 
+
 
 
 # WEEK 1 - Update 
@@ -35,27 +51,45 @@ What was completed
 - platform 
 - key controls (W, A, D)
 - jumping (its VERY choppy and bad, we might change this in the future update)
+- 3D looking game enviorment (only the game screen)
+- Music and sound effects 
+
+## WEEK 1 - WHAT WE DID: 
+
+- Came up with a blue, purple, white theme 
+- Designed the Starting page 
+- Designed the instruction page 
+- Designed the Game over page 
+- Designed the Pause menu 
+- Added the timer that tracks time 
+- Essablished basic navigation using butons on each screen 
+- Created key controls (VERY CHOPPY RIGHT NOW)
+- Added  stationary platforms and the ball 
+- Designed the Game Screen (THE GAME DOESN"T WORK YET)
+
+Currently all the pages work. You can navigate from one page to another, Example you can go from the Main screen, to the Instruction screen and back. Additionaly the Timer keeps accurate game time(the amount of time u stay on the game screen). The Pause button pauses the timer and game screen, while the score screen will show you your final time as of now. Right now the game itself doesnt work, however, you can move the ball on the page using W, A or D. We are working on the movement and it will be better in the futer weeks. There are also alot of Functions that have no use right now because we havent added them to the game logic. 
 
 
+P.S : THE GAME IS NOT FULL FINISHED!!!!!!!!!!!!
 
-Currently all the bages work together, you can flow seamleassy from on bage to another, for example you can go from the main screen, to the instruction screen and back, then you can also go to the game screen where you will se a click to play popup. once you click it the game timere will start counting you time, you can pause the time using the pause button on the top of the page. The pause button on the page opens a menu, were you can reasue when you want, or resart the game, or you can quit witch will bring you to the score screen. the scorscreen will display your final time (and score in the future). you can return to the mains creen from the score screen or play again. Right now the game itself doesnt work, however, you can move the pall on the page using W, A or D. We are working on the game still so it will be better in the comming weeks. there are several function inside the javascrip regarding the ball and platform that are doing nothing right now in the final output, that is because were sill working o them
+## WEEK 2 - WHAT WE DID: 
 
+- Fixed minor UI mistakes like fonts and color
+- Designed the "You iIssed Popup  
+- ReMade a more efficent Jump function 
+- Made the platforms Move 
+- added a function that Makes UNLIMITED amount of platforms
+- Made the game screen have a 3D effect 
+- Added a ball Trajectory indicator, which shows where the ball would land it you jump
+- Score Keeping 
+- Music 
+- Reset fucntions 
 
-THE GAME IS NOT FULL FINISHED!!!!!!!!!!!!
-
-# WEEK 2 - Update 
 
 What we added this week:
+We basically completed the game. We did some UI tweeks that made sure the game screens look conscitent. We remade the jump fucntion so that the arc is smoooth. THe coolest thing we did was adding a Trajectory indicator, which shows the player where the ball would land if they click the spacefic key. We made the platforms move, and apear by themselves. and essentialy finished the game mechanics. We also added some game sounds that make the game seem like is coplete. there are 3 sound, a succesfull jump sound, a background sound and a you missed sound. If your playing the game and see any buys that we can fix please let us know. THank you 
 
-- New jumping syestem - this syestem is more efficent then the one from week 1, and it looks    smoother lick a proper hop or arch 
-
-- 3d effect  -  instead of maching the game flat, we added a 3d plan and perspective to the game it look alot nicer now and everything loks propper 
-
-- More platforms - now there are 3 platforms that move side to side all on different speeds 
-- Ball guild paths - to help players know when to jump from on platform to another we added guild paths witch show the terjectory of the jump. so it will show 3 paths, forward, left or right and you can choos which on you wna t to use 
-- basic tracking for the ball - if you land on the platform you pall stays on it and moves with the platform side to side, it adds difficulty to the game because now your jumping from a moving platform to another platform that is moving 
-- ball reset  - this resets the ball and its guild paths and terjectories if you click restart in the pause menu, or play again in the game over menu 
+THE GAME IS COMPLETE!
 
 
-the game is still in progress my partner will complete it tommorw hopfully 
 
