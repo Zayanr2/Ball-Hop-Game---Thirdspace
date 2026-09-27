@@ -64,6 +64,10 @@
 
         platformHolder.appendChild(platform); // this adds platfoms to holder to show on screen
 
+        let scale = 0.7 +((y-43)/22);// the scale of the platform is identitical to the on eing used in the moving platform function 
+        platform.style.width = (width * scale) + "%";// shows the true size and scale of the platform 
+        platform.style.height = (height *scale) + "px";// shows the tru size and scale of the platform 
+
         platforms.push({
             element: platform, // the elemnt that was created
             x: x, //x value
@@ -73,8 +77,7 @@
             height: height, // height value
             speed: speed, // speed 
             direction: direction,// directin 
-            opacity: opacity, // opacity value
-            moveAmount: 0
+            opacity: opacity // opacity value
         })
     }
 
@@ -84,8 +87,10 @@
 
     function landingCheck() {// this function checks if the platfom landed 
         for(let platform of platforms) {// in platforms look at platform 
+            let scale = 0.7 + ((platform.y - 43) / 22);
+            let platformWidth = platform.width *scale;  
             let platformLeft = platform.x;// the left is the x cordinate 
-            let platformRight = platform.x + platform.width;// the right is the left plus the wides 
+            let platformRight = platform.x + platformWidth;// the right is the left plus the wides 
 
             if (ballX >= platformLeft && ballX <= platformRight){// if the ball is inside the platform 
                 
@@ -236,7 +241,6 @@
 
             if (platformMoveY > 0) {
                 platform.y +=platformMoveY;
-                platform.moveAmount += platformMoveY;
                 platformMoveDistance -= platformMoveY;
                     if (platformMoveDistance <= 0) {
                         platformMoveY = 0;
@@ -244,8 +248,8 @@
                 }
             }
 
-            let scale = 1 +(platform.moveAmount / 25);
-            let newOpacity = platform.opacity +((65- platform.y) / 100);
+            let scale = 0.7 +((platform.y -43)/22);
+            let newOpacity = 0.4 +((platform.y -43) / 22) *0.6;
 
             platform.element.style.left = platform.x + "%";// link left to the x attribute 
             platform.element.style.top = platform.y + "%";// links top to the y attripute 
@@ -254,7 +258,10 @@
             platform.element.style.opacity= Math.min(newOpacity, 1);// links ipacity to the platforms opacity atribute 
 
             if (landedPlatform === platform) {// if the laded platform is a platfomr 
-                ballX = platform.x + platform.width /2;// then the bals x valy becaome the sma e as the platfoms x value 
+                let scale = 0.7 + ((platform.y - 43) / 22);
+                let platformWidth = platform.width *scale;
+
+                ballX = platform.x + platformWidth /2;// then the bals x valy becaome the sma e as the platfoms x value 
                 gameBall.style.left = ballX + "%"// lins the left function witht he bals x cordinate 
                 
                 ballY = platform.y -3.2;
